@@ -1,0 +1,95 @@
+[
+      {
+      	"code": "01",
+      	"time": "上午",
+        "classify": "家务",
+        "classify_code": "01",
+        "desc": "洗漱,刷牙,穿好衣服"
+      },
+      {
+      	"code": "02",
+        "classify": "饮食",
+        "classify_code": "02",
+        "desc": "准备吃早餐"
+      },
+      {
+      	"code": "03",
+        "classify": "交流",
+        "classify_code": "07",
+        "desc": "喝咖啡，聊天"
+      },
+      {
+      	"code": "04",
+        "classify": "创作",
+        "classify_code": "03",
+        "desc": "讨论报纸,试一试手工艺,追忆老照片"
+      },
+      {
+      	"code": "05",
+        "classify": "休息",
+        "classify_code": "00",
+        "desc": "休息一下,有一些安静的时间"
+      },
+      {
+      	"code": "06",
+        "classify": "家务",
+        "classify_code": "01",
+        "desc": "一起做家务"
+      },
+      {
+      	"code": "07",
+        "classify": "运动",
+        "classify_code": "04",
+        "desc": "散步,玩健脑游戏"
+      },
+      {
+      	"code": "08",
+      	"time": "下午",
+        "classify": "家务",
+        "classify_code": "01",
+        "desc": "准备吃午饭,读邮件,洗碗"
+      },
+      {
+      	"code": "09",
+        "classify": "娱乐",
+        "classify_code": "01",
+        "desc": "听音乐,看电视"
+      },
+      {
+      	"code": "10",
+        "classify": "游戏",
+        "classify_code": "01",
+        "desc": "做填字游戏"
+      },
+      {
+      	"code": "11",
+        "classify": "交流",
+        "classify_code": "01",
+        "desc": "做一些园艺、散步,拜访朋友。"
+      },
+      {
+      	"code": "12",
+        "classify": "休息",
+        "classify_code": "01",
+        "desc": "休息片刻,或小睡"
+      },
+      {
+      	"code": "13",
+      	"time": "晚上",
+        "classify": "家务",
+        "classify_code": "01",
+        "desc": "准备吃晚饭,打扫厨房"
+      },
+      {
+      	"code": "15",
+        "classify": "家务",
+        "classify_code": "01",
+        "desc": "打牌,看电影,做下按摩"
+      },
+      {
+      	"code": "16",
+        "classify": "家务",
+        "classify_code": "01",
+        "desc": "洗澡,准备睡觉,读一本书"
+      }
+]
