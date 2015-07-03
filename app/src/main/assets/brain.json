@@ -1,7 +1,29 @@
 [
+  {
+    "code": "01",
+    "title": "9:30  手指操训练",
+    "icon": "bike"
+  },
+  {
+    "code": "02",
+    "header": "推荐内容",
+    "footer": "更多推荐",
+    "item": [
       {
-      	"code": "01",
-        "title": "9:30  手指操训练",
-        "icon": "bike",
+        "title": "地中海饮食",
+        "desc": "地中海饮食可以预防老年痴呆",
+        "icon": "topic"
+      },
+      {
+        "title": "世界名画欣赏",
+        "desc": "梵高、毕加索名画",
+        "icon": "topic"
+      },
+      {
+        "title": "音乐疗法",
+        "desc": "音乐能改善大脑皮层的功能",
+        "icon": "topic"
       }
+    ]
+  }
 ]

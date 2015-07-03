@@ -21,8 +21,8 @@
             android:background="@color/white"
             android:clickable="true"
             android:drawableTop="@drawable/ic_loading"
-            android:text="运动"
-            android:textColor="@color/red"
+            android:text="身体运动"
+            android:textColor="@color/black"
             android:textSize="12sp" />
 
         <Button
@@ -32,9 +32,9 @@
             android:layout_weight="1"
             android:background="@color/white"
             android:clickable="true"
-            android:drawableTop="@drawable/ic_loading"
-            android:text="饮食"
-            android:textColor="@color/red"
+            android:drawableTop="@drawable/meat"
+            android:text="健康饮食"
+            android:textColor="@color/black"
             android:textSize="12sp" />
 
         <Button
@@ -46,7 +46,7 @@
             android:clickable="true"
             android:drawableTop="@drawable/ic_loading"
             android:text="教育"
-            android:textColor="@color/red"
+            android:textColor="@color/black"
             android:textSize="12sp" />
     </LinearLayout>
     
@@ -66,8 +66,8 @@
             android:background="@color/white"
             android:clickable="true"
             android:drawableTop="@drawable/run"
-            android:text="游戏"
-            android:textColor="@color/red"
+            android:text="益智游戏"
+            android:textColor="@color/black"
             android:textSize="12sp" />
 
         <Button
@@ -79,7 +79,7 @@
             android:clickable="true"
             android:drawableTop="@drawable/ic_loading"
             android:text="健康"
-            android:textColor="@color/red"
+            android:textColor="@color/black"
             android:textSize="12sp" />
 
         <Button
@@ -89,9 +89,9 @@
             android:layout_weight="1"
             android:background="@color/white"
             android:clickable="true"
-            android:drawableTop="@drawable/ic_loading"
-            android:text="社交"
-            android:textColor="@color/red"
+            android:drawableTop="@drawable/meat"
+            android:text="社交活动"
+            android:textColor="@color/black"
             android:textSize="12sp" />
     </LinearLayout>
 

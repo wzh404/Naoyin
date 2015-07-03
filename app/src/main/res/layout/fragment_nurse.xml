@@ -24,29 +24,29 @@
             android:layout_width="0dip"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="计划"
+            android:text="每日计划"
             android:background="@color/white"
             android:clickable="true"
             android:textSize="12sp"
             android:drawableTop="@drawable/ic_loading"/>
 
         <Button
-            android:id="@+id/button_mail"
+            android:id="@+id/button_risk"
             android:layout_width="0dip"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="预防"
+            android:text="风险预防"
             android:clickable="true"
             android:background="@color/white"
             android:textSize="12sp"
             android:drawableTop="@drawable/ic_loading"/>
 
         <Button
-            android:id="@+id/button_train"
+            android:id="@+id/button_diagnosis"
             android:layout_width="0dip"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="我的"
+            android:text="早期诊断"
             android:clickable="true"
             android:background="@color/white"
             android:textSize="12sp"

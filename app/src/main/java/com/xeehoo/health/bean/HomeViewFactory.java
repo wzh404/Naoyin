@@ -22,6 +22,7 @@ public class HomeViewFactory {
 				
 				View convertView = holder.getView(context, obj);
 				convertView.setTag(holder);
+
 				return convertView;
 			} catch (JSONException e) {
 				e.printStackTrace();

@@ -53,8 +53,6 @@ public class ViewHolderV2 implements ViewHolder {
 		JSONObject json = (JSONObject)obj;
 		JSONArray array = json.getJSONArray("item");
 		createViewDetail(context, mLinear, array.size());
-		
-		//ll.getChildAt(index);
 
 		mHeader = (TextView) convertView.findViewById(R.id.item_v2_header);
 		mFooter = (TextView) convertView.findViewById(R.id.item_v2_more);

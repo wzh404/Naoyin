@@ -6,6 +6,7 @@ import android.view.View;
 import com.alibaba.fastjson.JSONException;
 import com.alibaba.fastjson.JSONObject;
 import com.xeehoo.health.bean.ViewHolder;
+import com.xeehoo.health.bean.ViewHolderV2;
 
 public class BrainViewFactory {
 	public static View createViewWithJson(Context context, Object obj) {
@@ -17,6 +18,9 @@ public class BrainViewFactory {
 				String code = jsonObject.getString("code");
 				if ("01".equals(code)){
 					holder = new ViewHolderBrainV1();
+				}
+				if ("02".equals(code)){
+					holder = new ViewHolderV2();
 				}
 				
 				View convertView = holder.getView(context, obj);
