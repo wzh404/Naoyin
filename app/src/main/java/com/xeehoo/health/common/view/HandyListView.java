@@ -1,4 +1,4 @@
-package com.xeehoo.health.view;
+package com.xeehoo.health.common.view;
 
 import android.content.Context;
 import android.graphics.Point;

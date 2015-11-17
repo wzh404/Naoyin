@@ -1,4 +1,4 @@
-package com.xeehoo.health.webview;
+package com.xeehoo.health.common.layout;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,13 +9,12 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
-import java.util.ArrayList;
-
+import com.nostra13.universalimageloader.core.ImageLoader;
 import com.xeehoo.health.R;
-import com.xeehoo.health.bean.SlidePage;
+import com.xeehoo.health.common.bean.SlidePage;
 import com.xeehoo.health.util.ResourceUtils;
+import com.xeehoo.health.common.webview.BaseWebActivity;
 
 public class SlideImageLayout {
 	//private ArrayList<ImageView> mImageList = null;
@@ -31,18 +30,20 @@ public class SlideImageLayout {
 	
 	public View getSlideImageLayout(SlidePage slidePage){
 		LinearLayout imageLinerLayout = new LinearLayout(mContext);
-		LinearLayout.LayoutParams imageLinerLayoutParames = new LinearLayout.LayoutParams(
+		LinearLayout.LayoutParams imageLinerLayoutParameters = new LinearLayout.LayoutParams(
 				LinearLayout.LayoutParams.WRAP_CONTENT, 
 				LinearLayout.LayoutParams.MATCH_PARENT,
 				1);
 		
 		ImageView iv = new ImageView(mContext);
+		iv.setScaleType(ScaleType.FIT_XY);
 		iv.setTag(slidePage);
 		
-		int id = ResourceUtils.getDrawableIdentifier(mContext, slidePage.getImage());
-		iv.setBackgroundResource(id);
+//		int id = ResourceUtils.getDrawableIdentifier(mContext, slidePage.getImage());
+//		iv.setBackgroundResource(id);
+		ImageLoader.getInstance().displayImage(slidePage.getImage(), iv);
 		iv.setOnClickListener(new ImageOnClickListener());
-		imageLinerLayout.addView(iv,imageLinerLayoutParames);
+		imageLinerLayout.addView(iv, imageLinerLayoutParameters);
 //		mImageList.add(iv);
 		
 		return imageLinerLayout;

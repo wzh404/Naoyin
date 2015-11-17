@@ -2,8 +2,7 @@ package com.xeehoo.health.brain.adapter;
 
 import java.util.List;
 
-import com.xeehoo.health.bean.ViewHolder;
-import com.xeehoo.health.bean.HomeViewFactory;
+import com.xeehoo.health.common.view.ViewHolder;
 import com.xeehoo.health.brain.bean.BrainViewFactory;
 
 import android.content.Context;

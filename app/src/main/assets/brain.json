@@ -1,11 +1,11 @@
 [
   {
-    "code": "01",
+    "type": "V3",
     "title": "9:30  手指操训练",
     "icon": "bike"
   },
   {
-    "code": "02",
+    "type": "V2",
     "header": "推荐内容",
     "footer": "更多推荐",
     "item": [

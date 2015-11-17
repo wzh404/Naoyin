@@ -1,4 +1,4 @@
-package com.xeehoo.health.webview;
+package com.xeehoo.health.common.webview;
 
 
 import com.xeehoo.health.R;

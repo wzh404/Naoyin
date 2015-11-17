@@ -1,48 +1,52 @@
 package com.xeehoo.health.fragment;
 
-import java.util.List;
-
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.xeehoo.health.R;
-import com.xeehoo.health.adapter.HomeListAdapter;
-import com.xeehoo.health.bean.SlidePage;
+import com.xeehoo.health.common.presenter.HomePresenter;
+import com.xeehoo.health.common.view.TrainView;
+import com.xeehoo.health.home.adapter.HomeRecyclerAdapter;
 import com.xeehoo.health.util.AssetsUtils;
-import com.xeehoo.health.util.SlideImageUtil;
 
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
+
+import com.xeehoo.health.util.RecyclerViewHolderFactory;
 
 public class HomeFragment extends Fragment {
-	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
-		super.onCreateView(inflater, container, savedInstanceState);
+    private View rootView;
 
-		final Context context = getActivity().getBaseContext();
-		View chatView = inflater.inflate(R.layout.fragment_home, container,
-				false);
-		ListView lv = (ListView) chatView.findViewById(R.id.lv_home);
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        super.onCreateView(inflater, container, savedInstanceState);
 
-		String slide = AssetsUtils.getFromAssets(inflater.getContext(), "home_slide.json");
-		List<SlidePage> slidePages = JSON.parseArray(slide, SlidePage.class);
+        if (rootView == null) {
+            Log.e("onCreateView", "-----in HomeFragment-------");
+            final Context context = getActivity().getBaseContext();
+            TrainView trainView = new TrainView();
+            trainView.init(context, container);
+            rootView = trainView.getView();
+            HomePresenter presenter = new HomePresenter();
+            presenter.onCreate(context, trainView);
+        }
 
-		SlideImageUtil.addSlideImageHeaderView(inflater, lv, slidePages);
-		String json = AssetsUtils.getFromAssets(context, "home.json");
-        JSONArray jsonArray = JSON.parseArray(json);
-        
-		lv.setAdapter(new HomeListAdapter(this.getActivity()
-				.getApplicationContext(), jsonArray));
-		return chatView;
-	}
+        ViewGroup parent = (ViewGroup) rootView.getParent();
+        if (parent != null) {
+            parent.removeView(rootView);
+        }
+        return rootView;
+    }
 
-	@Override
-	public void onActivityCreated(Bundle savedInstanceState) {
-		super.onActivityCreated(savedInstanceState);
-	}
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+    }
 }

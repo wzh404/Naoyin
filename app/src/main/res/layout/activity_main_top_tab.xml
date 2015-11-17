@@ -6,35 +6,6 @@
     android:paddingBottom="0dip"
     android:background="@color/white">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="#ff495a" >
-
-        <TextView
-            android:id="@+id/watcher_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:padding="10dp"
-            android:text="@string/app_name"
-            android:textColor="#fff"
-            android:textSize="18dp"
-            android:textStyle="bold" />
-
-        <ImageButton
-            android:id="@+id/show_history"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="10dp"
-            android:background="@null"
-            android:onClick="toggleMenu"
-            android:padding="4dp"
-            android:src="@drawable/history" />
-    </RelativeLayout>
-
     <LinearLayout
         android:id="@+id/id_switch_tab_ll"
         android:layout_width="match_parent"
@@ -133,7 +104,7 @@
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:background="@drawable/tab_selected_pressed_holo"
-        android:contentDescription="tab" >
+        android:contentDescription="tab">
     </ImageView>
 
     <View

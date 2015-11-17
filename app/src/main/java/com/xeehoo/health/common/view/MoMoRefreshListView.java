@@ -1,13 +1,9 @@
-package com.xeehoo.health.view;
+package com.xeehoo.health.common.view;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import com.xeehoo.health.R;
-import com.xeehoo.health.R.anim;
-import com.xeehoo.health.R.drawable;
-import com.xeehoo.health.R.id;
-import com.xeehoo.health.R.layout;
 
 
 import android.content.Context;

@@ -1,4 +1,4 @@
-package com.xeehoo.health.bean;
+package com.xeehoo.health.common.bean;
 
 public class SlidePage {
 	private String image;

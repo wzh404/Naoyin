@@ -26,11 +26,11 @@ public class DailyPlanActivity extends Activity{
 		ListView lv = (ListView)findViewById(R.id.lv_daily_plan);
 		lv.setDividerHeight(0);
 		LayoutInflater inflater = getLayoutInflater();
-		View hv = inflater.inflate(R.layout.lv_item_header, lv, false);
+//		View hv = inflater.inflate(R.layout.lv_item_header, lv, false);
 		
-		ImageView iv = (ImageView)hv.findViewById(R.id.lv_image);
-        iv.setImageResource(R.drawable.daily_plan);
-        lv.addHeaderView(hv);
+//		ImageView iv = (ImageView)hv.findViewById(R.id.lv_image);
+//        iv.setImageResource(R.drawable.daily_plan);
+//        lv.addHeaderView(hv);
         
 		Context context = getBaseContext();
 		String json = AssetsUtils.getFromAssets(context, "daily_plan.json");

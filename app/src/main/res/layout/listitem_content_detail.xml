@@ -1,61 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/item_v2_detail_root"
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:background="@color/white"
-    android:clickable="true" >
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="obj"
+            type="com.alibaba.fastjson.JSONObject" />
+    </data>
 
-    <ImageView
-        android:id="@+id/item_v2_detail_icon"
-        android:layout_width="72sp"
-        android:layout_height="72sp"
-        android:layout_centerVertical="true"
-        android:layout_gravity="center_vertical"
-        android:layout_marginLeft="10dp"
-        android:src="@drawable/vegetable"/>
-
-    <LinearLayout
-        android:id="@+id/item_v2_detail_layout"
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:id="@+id/item_v2_detail_root"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="10dp"
-        android:layout_toRightOf="@id/item_v2_detail_icon"
-        android:orientation="vertical">
-        
-        <TextView
-            android:id="@+id/item_v2_detail_title"
-            android:layout_width="wrap_content"
+        android:background="@color/white"
+        android:clickable="true">
+
+        <ImageView
+            android:id="@+id/item_v2_detail_icon"
+            android:layout_width="72sp"
+            android:layout_height="72sp"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:src="@{obj[`icon`]}" />
+
+        <RelativeLayout
+            android:id="@+id/item_v2_detail_layout"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="地中海饮食指导@@@"
-            android:textColor="@android:color/black"
-            android:textSize="16sp"/>
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/item_v2_detail_icon"
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/item_v2_detail_desc"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="test stest"
-            android:textColor="@android:color/darker_gray"
-            android:textSize="13sp"/>
-    </LinearLayout>
+            <TextView
+                android:id="@+id/item_v2_detail_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{obj[`title`]}"
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
 
-    <ImageView
-        android:id="@+id/item_v2_detail_more"
-        android:layout_width="wrap_content"
-        android:layout_height="50sp"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:layout_marginRight="8dp"
-        android:src="@drawable/arrow_right_normal"/>
+            <TextView
+                android:id="@+id/item_v2_detail_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/item_v2_detail_title"
+                android:text="@{obj[`desc`]}"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="13sp" />
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_alignLeft="@id/item_v2_detail_icon"
-        android:layout_alignRight="@id/item_v2_detail_more"
-        android:layout_below="@id/item_v2_detail_icon"
-        android:background="@color/background_dark">
-    </View>
-</RelativeLayout>
+            <TextView
+                android:id="@+id/item_v2_detail_numbers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/item_v2_detail_desc"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="8dp"
+                android:text="@{obj[`numbers`]}"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="13sp" />
+        </RelativeLayout>
+
+        <!--<ImageView-->
+            <!--android:id="@+id/item_v2_detail_more"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="50sp"-->
+            <!--android:layout_alignParentRight="true"-->
+            <!--android:layout_centerVertical="true"-->
+            <!--android:layout_marginRight="8dp"-->
+            <!--android:src="@drawable/arrow_right_normal" />-->
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_alignRight="@id/item_v2_detail_layout"
+            android:layout_below="@id/item_v2_detail_icon"
+            android:background="@color/background_dark"></View>
+    </RelativeLayout>
+</layout>

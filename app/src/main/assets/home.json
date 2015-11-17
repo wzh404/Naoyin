@@ -1,17 +1,66 @@
 [
-      {
-      	"code": "01",
-        "title": "9:30  手指操训练",
-        "icon": "bike",
-      },
-      {
-      	"code": "02",
-        "header": "我的圈子",
-        "footer": "更多圈子",
-        "item": [
-        	{"title": "脑健康", "desc": "预防及训练", "icon":"topic"},
-        	{"title": "初期照护者", "desc": "初期患者照护经验分享", "icon":"topic"},
-        	{"title": "中期照护者", "desc": "中期患者照护经验分享", "icon":"topic"},
-        ]
-      }
+  {
+    "type": "V0",
+    "code": "1000",
+    "title": "推荐训练计划",
+    "icon": "bike"
+  },
+  {
+    "type": "V3",
+    "code": "3000",
+    "title": "MCI预防训练",
+    "icon": "bike"
+  },
+  {
+    "type": "V3",
+    "code": "3000",
+    "title": "痴呆初期照护",
+    "icon": "bike"
+  },
+  {
+    "type": "V0",
+    "code": "1000",
+    "title": "推荐单项训练",
+    "icon": "bike"
+  },
+  {
+    "type": "V2",
+    "title": "MMSE量表测评",
+    "code": "1001",
+    "desc": "简易精神状态检查量表",
+    "numbers": "4059人已测评",
+    "icon": "topic"
+  },
+  {
+    "type": "V2",
+    "title": "地中海饮食",
+    "code": "1002",
+    "desc": "地中海饮食可以预防老年痴呆",
+    "numbers": "2045人已阅读",
+    "icon": "topic"
+  },
+  {
+    "type": "V2",
+    "title": "世界名画欣赏",
+    "code": "1003",
+    "desc": "梵高、毕加索名画",
+    "numbers": "904人已查看",
+    "icon": "topic"
+  },
+  {
+    "type": "V2",
+    "title": "音乐疗法",
+    "code": "1004",
+    "desc": "音乐能改善大脑皮层的功能",
+    "numbers": "98人已查看",
+    "icon": "topic"
+  },
+  {
+    "type": "V2",
+    "title": "位置记忆",
+    "code": "1004",
+    "desc": "短期记忆训练",
+    "numbers": "1004人已训练",
+    "icon": "topic"
+  }
 ]

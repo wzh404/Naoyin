@@ -1,27 +1,27 @@
 [
       {
-      	"image": "image01",
+      	"image": "http://renben.neowave.com.cn:8080/xeehoo/images/image01.jpg",
       	"title": "脑康01",
-        "url": "http://blog.csdn.net/finddreams/article/details/44301359",
+        "url": "http://192.168.10.60/ball"
       },
       {
-      	"image": "image02",
+      	"image": "http://renben.neowave.com.cn:8080/xeehoo/images/image02.jpg",
       	"title": "脑康02",
-        "url": "http://blog.csdn.net/finddreams/article/details/44301359",
+        "url": "http://blog.csdn.net/finddreams/article/details/44301359"
       },
       {
-      	"image": "image03",
+      	"image": "http://renben.neowave.com.cn:8080/xeehoo/images/image03.jpg",
       	"title": "脑康03",
-        "url": "http://blog.csdn.net/finddreams/article/details/44301359",
+        "url": "http://blog.csdn.net/finddreams/article/details/44301359"
       },
       {
-      	"image": "image04",
+      	"image": "http://renben.neowave.com.cn:8080/xeehoo/images/image04.jpg",
       	"title": "脑康04",
-        "url": "http://blog.csdn.net/finddreams/article/details/44301359",
+        "url": "http://blog.csdn.net/finddreams/article/details/44301359"
       },
       {
-      	"image": "image05",
+      	"image": "http://renben.neowave.com.cn:8080/xeehoo/images/image05.jpg",
       	"title": "脑康05",
-        "url": "http://blog.csdn.net/finddreams/article/details/44301359",
+        "url": "http://blog.csdn.net/finddreams/article/details/44301359"
       }
 ]

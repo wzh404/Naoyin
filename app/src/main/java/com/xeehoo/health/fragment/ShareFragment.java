@@ -4,15 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.alibaba.fastjson.JSON;
+import com.google.gson.JsonObject;
 import com.xeehoo.health.R;
-import com.xeehoo.health.plan.bean.DailyPlan;
 import com.xeehoo.health.share.activity.ShareActivity;
 import com.xeehoo.health.share.adapter.ShareListAdapter;
 import com.xeehoo.health.share.bean.ShareContent;
+import com.xeehoo.health.share.bean.ShareService;
 import com.xeehoo.health.util.AssetsUtils;
-import com.xeehoo.health.view.MoMoRefreshListView;
-import com.xeehoo.health.view.MoMoRefreshListView.OnCancelListener;
-import com.xeehoo.health.view.MoMoRefreshListView.OnRefreshListener;
+import com.xeehoo.health.common.view.MoMoRefreshListView;
+import com.xeehoo.health.common.view.MoMoRefreshListView.OnCancelListener;
+import com.xeehoo.health.common.view.MoMoRefreshListView.OnRefreshListener;
 
 import android.content.Context;
 import android.content.Intent;
@@ -24,6 +25,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import retrofit.RestAdapter;
+import rx.Observable;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Action1;
+import rx.schedulers.Schedulers;
 
 
 public class ShareFragment extends Fragment implements
@@ -31,13 +37,13 @@ public class ShareFragment extends Fragment implements
 
 	//private HeaderLayout mHeaderLayout;
 	private MoMoRefreshListView mMmrlvList;
-	private ShareListAdapter mAdapter;
+//	private ShareListAdapter mAdapter;
 	//private NearByPeople mPeople;
 	//private NearByPeopleProfile mProfile;
 
 //	private List<Feed> mFeeds;
-	private View chatView;
-	private Context context;
+//	private View chatView;
+//	private Context context;
 //	private List<Object> items = new ArrayList<Object>();
 	
 	protected List<AsyncTask<Void, Void, Boolean>> mAsyncTasks = new ArrayList<AsyncTask<Void, Void, Boolean>>();
@@ -48,10 +54,11 @@ public class ShareFragment extends Fragment implements
 		super.onCreateView(inflater, container, savedInstanceState);
 		View chatView = inflater.inflate(R.layout.fragment_share, container,
 				false);
-		this.chatView = chatView;
-		this.context = inflater.getContext();
-		
-		initViews();
+//		this.chatView = chatView;
+//		this.context = inflater.getContext();
+		mMmrlvList = (MoMoRefreshListView) chatView.findViewById(R.id.otherfeedlist_mmrlv_list);
+
+//		initViews();
 		initEvents();
 		init();
 		return chatView;
@@ -61,23 +68,28 @@ public class ShareFragment extends Fragment implements
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 	}
-//	@Override
-//	protected void onCreate(Bundle savedInstanceState) {
-//		super.onCreate(savedInstanceState);
-//		setContentView(R.layout.activity_otherfeedlist);
-//		initViews();
-//		initEvents();
-//		init();
-//	}
 
-//	@Override
 	protected void initViews() {
-		//mHeaderLayout = (HeaderLayout) findViewById(R.id.otherfeedlist_header);
-		//mHeaderLayout.init(HeaderStyle.DEFAULT_TITLE);
-		mMmrlvList = (MoMoRefreshListView) chatView.findViewById(R.id.otherfeedlist_mmrlv_list);
+
+
+//		RestAdapter restAdapter = new RestAdapter.Builder()
+//				.setEndpoint("http://192.168.10.10:9000/zhiqiang/")
+//				.setLogLevel(RestAdapter.LogLevel.FULL)
+//				.build();
+//
+//		ShareService service = restAdapter.create(ShareService.class);
+//		Observable<JsonObject> json = service.listRepos();
+//		json.subscribeOn(Schedulers.io())
+//				.observeOn(AndroidSchedulers.mainThread())
+//				.subscribe(new Action1<JsonObject>() {
+//					@Override
+//					public void call(JsonObject jo) {
+//						Log.e("retrofit", "***[" + jo.toString() + "]");
+//					}
+//				});
+
 	}
 
-//	@Override
 	protected void initEvents() {
 		mMmrlvList.setOnRefreshListener(this);
 		mMmrlvList.setOnCancelListener(this);
@@ -85,60 +97,17 @@ public class ShareFragment extends Fragment implements
 
 	private void init() {
 		mMmrlvList.setItemsCanFocus(false);
-		//mProfile = getIntent().getParcelableExtra("entity_profile");
-		//mPeople = getIntent().getParcelableExtra("entity_people");
-		//mHeaderLayout.setDefaultTitle(mProfile.getName() + "的动态", null);
-//		getStatus();
-		
-//		items.add("abc");
-//		items.add("abc");
+
 		Context context = this.getActivity().getBaseContext();
 		String json = AssetsUtils.getFromAssets(context, "share_content.json");
         final List<ShareContent> items = JSON.parseArray(json, ShareContent.class);
-        
-		mAdapter = new ShareListAdapter(context, items);
+
+		ShareListAdapter mAdapter = new ShareListAdapter(context, items);
 		mMmrlvList.setAdapter(mAdapter);
 	}
 
-//	private void getStatus() {
-//		if (mFeeds == null) {
-//			putAsyncTask(new AsyncTask<Void, Void, Boolean>() {
-//
-//				@Override
-//				protected void onPreExecute() {
-//					super.onPreExecute();
-//					//showLoadingDialog("正在加载,请稍后...");
-//				}
-//
-//				@Override
-//				protected Boolean doInBackground(Void... params) {
-//					mFeeds = new ArrayList<Feed>();
-//					return JsonResolveUtils.resolveNearbyStatus(
-//							OtherFeedListActivity.this, mFeeds,
-//							mProfile.getUid());
-//				}
-//
-//				@Override
-//				protected void onPostExecute(Boolean result) {
-//					super.onPostExecute(result);
-//					dismissLoadingDialog();
-//					if (!result) {
-//						showCustomToast("数据加载失败...");
-//					} else {
-//						mAdapter = new OtherFeedListAdapter(mProfile, mPeople,
-//								mApplication, OtherFeedListActivity.this,
-//								mFeeds);
-//						mMmrlvList.setAdapter(mAdapter);
-//					}
-//				}
-//
-//			});
-//		}
-//	}
-
 	@Override
 	public void onCancel() {
-		//clearAsyncTask();
 		mMmrlvList.onRefreshComplete();
 	}
 	
@@ -168,10 +137,8 @@ public class ShareFragment extends Fragment implements
 		});
 	}
 	
-	public void testListAdd(){
-		//items.add("aaa");
-		//mAdapter.notifyDataSetChanged();
-		Intent intent = new Intent(getActivity(),ShareActivity.class);  
-        getActivity().startActivityForResult(intent, 2); 
-	}
+//	public void testListAdd(){
+//		Intent intent = new Intent(getActivity(),ShareActivity.class);
+//        getActivity().startActivityForResult(intent, 2);
+//	}
 }

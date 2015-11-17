@@ -1,4 +1,4 @@
-package com.xeehoo.health.adapter;
+package com.xeehoo.health.common.adapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,5 +25,4 @@ public class FragmentAdapter extends FragmentPagerAdapter {
 	public int getCount() {
 		return fragmentList.size();
 	}
-
 }

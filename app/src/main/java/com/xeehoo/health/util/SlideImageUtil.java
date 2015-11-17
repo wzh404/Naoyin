@@ -3,6 +3,7 @@ package com.xeehoo.health.util;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.content.Context;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,17 +12,17 @@ import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.xeehoo.health.R;
-import com.xeehoo.health.adapter.SlideImageAdapter;
-import com.xeehoo.health.bean.SlidePage;
-import com.xeehoo.health.listener.SlideImagePageChangeListener;
-import com.xeehoo.health.webview.SlideImageLayout;
+import com.xeehoo.health.common.adapter.SlideImageAdapter;
+import com.xeehoo.health.common.bean.SlidePage;
+import com.xeehoo.health.common.listener.SlideImagePageChangeListener;
+import com.xeehoo.health.common.layout.SlideImageLayout;
 
 public class SlideImageUtil {
-	public static void addSlideImageHeaderView(LayoutInflater inflater, ListView lv, List<SlidePage> slidePages) {
-        View view = inflater.inflate(R.layout.slide_image, lv, false);  
+	public static View getSlideImageHeaderView(Context context,  List<SlidePage> slidePages) {
+        View view = LayoutInflater.from(context).inflate(R.layout.slide_image, null, false);
 		ViewPager mViewPager = (ViewPager) view.findViewById(R.id.image_slide_page);
 
-		SlideImageLayout mSlideLayout = new SlideImageLayout(inflater.getContext());
+		SlideImageLayout mSlideLayout = new SlideImageLayout(context);
 		int length = slidePages.size();
 		ImageView[] mImageCircleViews = new ImageView[length];
 		ViewGroup mImageCircleView = (ViewGroup) view
@@ -43,9 +44,9 @@ public class SlideImageUtil {
 		}
 
 		// 设置ViewPager
-		mViewPager.setAdapter(new SlideImageAdapter(mImagePageViewList));
-		mViewPager.setOnPageChangeListener(new SlideImagePageChangeListener(mImageCircleViews));
+//		mViewPager.setAdapter(new SlideImageAdapter(mImagePageViewList));
+//		mViewPager.setOnPageChangeListener(new SlideImagePageChangeListener(mImageCircleViews));
 		
-		lv.addHeaderView(view);
+		return view;
 	}
 }

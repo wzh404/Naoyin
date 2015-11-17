@@ -31,7 +31,7 @@
             android:textSize="20sp" />
     </RelativeLayout>
 
-    <com.xeehoo.health.webview.ProgressWebView
+    <com.xeehoo.health.common.webview.ProgressWebView
         android:id="@+id/baseweb_webview"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"

@@ -1,13 +1,19 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.android.databinding'
 
 android {
-    compileSdkVersion 19
+    compileSdkVersion 22
     buildToolsVersion "22.0.1"
 
     defaultConfig {
         applicationId "com.xeehoo.health"
         minSdkVersion 14
-        targetSdkVersion 18
+        targetSdkVersion 20
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
     }
 
     buildTypes {
@@ -19,7 +25,10 @@ android {
 }
 
 dependencies {
-    compile 'com.android.support:support-v4:19.1.0'
-    compile files('libs/fastjson-1.1.45.android.jar')
-    compile files('libs/universal-image-loader-1.9.3.jar')
+    compile 'com.android.support:support-v4:22.0.0'
+    compile 'com.android.support:recyclerview-v7:22.0.+'
+    compile 'io.reactivex:rxandroid:0.25.0'
+    compile 'com.squareup.retrofit:retrofit:1.9.0'
+    compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.4'
+    compile 'com.alibaba:fastjson:1.1.45.android'
 }

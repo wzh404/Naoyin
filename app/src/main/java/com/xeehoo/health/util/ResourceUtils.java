@@ -2,6 +2,8 @@ package com.xeehoo.health.util;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.WindowManager;
@@ -14,6 +16,15 @@ public class ResourceUtils {
 
 		Resources res = context.getResources();
 		return res.getIdentifier(field, type, context.getPackageName());
+	}
+
+	public static Drawable getDrawable(Context context, String name){
+		int id = ResourceUtils.getDrawableIdentifier(context, name);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            return context.getResources().getDrawable(id, context.getTheme());
+        } else {
+            return context.getResources().getDrawable(id);
+        }
 	}
 
 	public static int getDrawableIdentifier(Context context, String field) {

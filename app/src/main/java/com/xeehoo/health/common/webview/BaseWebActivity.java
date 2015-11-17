@@ -1,11 +1,10 @@
-package com.xeehoo.health.webview;
+package com.xeehoo.health.common.webview;
 
 import com.xeehoo.health.R;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
 

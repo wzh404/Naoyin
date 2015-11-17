@@ -2,6 +2,9 @@ package com.xeehoo.health.share.adapter;
 
 import java.util.List;
 
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 import com.xeehoo.health.R;
 import com.xeehoo.health.util.ResourceUtils;
 
@@ -15,11 +18,11 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 
-public class GridviewImageAdapter extends BaseAdapter {
+public class ShareImageGridAdapter extends BaseAdapter {
 	private Context context;
 	private String[] items;
 
-	GridviewImageAdapter(Context context, String[] items) {
+	ShareImageGridAdapter(Context context, String[] items) {
 		this.context = context;
 		this.items = items;
 	}
@@ -57,18 +60,25 @@ public class GridviewImageAdapter extends BaseAdapter {
 		} else {
 			holder = (Holder) convertView.getTag();
 		}
+
+//		if (getCount() == 1){
+//			ViewGroup.LayoutParams layoutParams =
+//					holder.img.getLayoutParams();
+////			layoutParams.width = ViewGroup.LayoutParams.WRAP_CONTENT;
+////			layoutParams.height = ViewGroup.LayoutParams.WRAP_CONTENT;
+////			holder.img.setScaleType(ScaleType.FIT_XY);
+////			holder.img.setLayoutParams(layoutParams);
+//		}
 		
-		if (getCount() == 1){
-			ViewGroup.LayoutParams layoutParams =
-					holder.img.getLayoutParams();
-			layoutParams.width = ViewGroup.LayoutParams.WRAP_CONTENT;//ResourceUtils.dip2px(context, 200);
-			layoutParams.height = ViewGroup.LayoutParams.WRAP_CONTENT;//ResourceUtils.dip2px(context, 140);
-			holder.img.setScaleType(ScaleType.FIT_XY);
-			holder.img.setLayoutParams(layoutParams);
-		}
-		
-		int resID = ResourceUtils.getDrawableIdentifier(context, (String)getItem(position));
-		holder.img.setImageResource(resID);
+//		int resID = ResourceUtils.getDrawableIdentifier(context, (String)getItem(position));
+//		holder.img.setImageResource(resID);
+        Log.e("grid image - " + position, (String) getItem(position));
+		DisplayImageOptions options = new DisplayImageOptions.Builder()
+				.cacheInMemory(true)
+				.cacheOnDisk(true)
+				.imageScaleType(ImageScaleType.EXACTLY)
+				.build();
+		ImageLoader.getInstance().displayImage((String)getItem(position), holder.img, options);
 		return convertView;
 	}
 

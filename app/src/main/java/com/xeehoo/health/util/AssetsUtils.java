@@ -4,7 +4,11 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
 import android.content.Context;
+import android.databinding.BindingAdapter;
 import android.util.Log;
+import android.widget.ImageView;
+
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 public class AssetsUtils {
     public static String getFromAssets(Context context, String fileName) {
@@ -23,5 +27,11 @@ public class AssetsUtils {
         }
 
         return null;
+    }
+
+    @BindingAdapter("app:imageUrl")
+    public static void setImageUrl(ImageView view, String url) {
+        Log.e("--imageloader", "---" + url);
+        ImageLoader.getInstance().displayImage(url, view);
     }
 }

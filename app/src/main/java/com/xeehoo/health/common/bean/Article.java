@@ -1,19 +1,22 @@
-package com.xeehoo.health.nurse.bean;
+package com.xeehoo.health.common.bean;
 
-public class Nurse {
-	private Integer nurseID;
+public class Article {
+	private Integer articleID;
 	private String title;
 	private String time;
 	private Integer likes;
 	private Integer comments;
 	private Integer views;
 	private String image;
-	public Integer getNurseID() {
-		return nurseID;
+
+	public Integer getArticleID() {
+		return articleID;
 	}
-	public void setNurseID(Integer nurseID) {
-		this.nurseID = nurseID;
+
+	public void setArticleID(Integer articleID) {
+		this.articleID = articleID;
 	}
+
 	public String getTitle() {
 		return title;
 	}

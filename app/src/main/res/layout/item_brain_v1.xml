@@ -20,10 +20,10 @@
             android:layout_weight="1"
             android:background="@color/white"
             android:clickable="true"
-            android:drawableTop="@drawable/ic_loading"
-            android:text="身体运动"
+            android:drawableTop="@drawable/meat"
+            android:text="运动指导"
             android:textColor="@color/black"
-            android:textSize="12sp" />
+            android:textSize="16sp" />
 
         <Button
             android:id="@+id/button_mail"
@@ -35,7 +35,7 @@
             android:drawableTop="@drawable/meat"
             android:text="健康饮食"
             android:textColor="@color/black"
-            android:textSize="12sp" />
+            android:textSize="16sp" />
 
         <Button
             android:id="@+id/button_train"
@@ -44,10 +44,10 @@
             android:layout_weight="1"
             android:background="@color/white"
             android:clickable="true"
-            android:drawableTop="@drawable/ic_loading"
-            android:text="教育"
+            android:drawableTop="@drawable/run"
+            android:text="老年大学"
             android:textColor="@color/black"
-            android:textSize="12sp" />
+            android:textSize="16sp" />
     </LinearLayout>
     
     <LinearLayout
@@ -68,7 +68,7 @@
             android:drawableTop="@drawable/run"
             android:text="益智游戏"
             android:textColor="@color/black"
-            android:textSize="12sp" />
+            android:textSize="16sp" />
 
         <Button
             android:id="@+id/button_mail2"
@@ -77,10 +77,10 @@
             android:layout_weight="1"
             android:background="@color/white"
             android:clickable="true"
-            android:drawableTop="@drawable/ic_loading"
-            android:text="健康"
+            android:drawableTop="@drawable/run"
+            android:text="健康建议"
             android:textColor="@color/black"
-            android:textSize="12sp" />
+            android:textSize="16sp" />
 
         <Button
             android:id="@+id/button_train2"
@@ -92,7 +92,7 @@
             android:drawableTop="@drawable/meat"
             android:text="社交活动"
             android:textColor="@color/black"
-            android:textSize="12sp" />
+            android:textSize="16sp" />
     </LinearLayout>
 
 </LinearLayout>

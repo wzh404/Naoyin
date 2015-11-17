@@ -1,4 +1,4 @@
-package com.xeehoo.health.bean;
+package com.xeehoo.health.common.view;
 
 
 import com.alibaba.fastjson.JSONArray;
@@ -52,7 +52,7 @@ public class ViewHolderV2 implements ViewHolder {
 				.findViewById(R.id.item_v2_layout);
 		JSONObject json = (JSONObject)obj;
 		JSONArray array = json.getJSONArray("item");
-		createViewDetail(context, mLinear, array.size());
+		createViewDetail(context, mLinear, array);
 
 		mHeader = (TextView) convertView.findViewById(R.id.item_v2_header);
 		mFooter = (TextView) convertView.findViewById(R.id.item_v2_more);
@@ -67,17 +67,18 @@ public class ViewHolderV2 implements ViewHolder {
 		}
 	}
 
-	private void createViewDetail(final Context context, LinearLayout ll, int itemSize) {
-		for (int i = 0; i < itemSize; i++) {
+	private void createViewDetail(final Context context, LinearLayout ll, JSONArray array) {
+//		JSONArray array = json.getJSONArray("item");
+		for (int i = 0; i < array.size(); i++) {
 			View detailView = LayoutInflater.from(context).inflate(
 					R.layout.listitem_content_detail, null);
-			detailView.setTag(i + 1);
+			detailView.setTag(array.getJSONObject(i).get("code"));
 			detailView.setOnClickListener(new OnClickListener(){
 
 				@Override
 				public void onClick(View arg0) {
-					Integer index = (Integer)arg0.getTag();
-					Toast.makeText(context, index + "clicked", Toast.LENGTH_LONG).show();
+					String code = (String)arg0.getTag();
+					Toast.makeText(context, code + " clicked", Toast.LENGTH_LONG).show();
 				}
 				
 			});

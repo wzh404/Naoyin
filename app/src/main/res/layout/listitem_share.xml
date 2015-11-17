@@ -11,8 +11,7 @@
         android:id="@+id/feed_item_layout_root"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/bg_card"
-        android:clickable="true" >
+        android:background="@drawable/bg_card">
 
         <RelativeLayout
             android:id="@+id/feed_item_layout_topcontent"
@@ -39,15 +38,16 @@
                     android:id="@+id/feed_item_layout_time"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
                     android:layout_alignParentRight="true"
-                    android:gravity="center" >
+                    android:minHeight="36dip">
 
                     <TextView
                         android:id="@+id/feed_item_htv_time"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/font_value"
-                        android:textSize="12sp" />
+                        android:textSize="16sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -65,7 +65,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:singleLine="true"
-                        android:textColor="@color/font_value"
+                        android:textColor="#ff495a"
                         android:textSize="16sp" />
                 </LinearLayout>
             </RelativeLayout>
@@ -78,9 +78,18 @@
                 android:gravity="center_vertical"
                 android:lineSpacingExtra="3dip"
                 android:textColor="@color/font_attribute"
-                android:textSize="15sp" />
+                android:textSize="16sp" />
 
-            <com.xeehoo.health.view.NoScrollGridView
+            <ImageView
+                android:id="@+id/share_image_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_below="@id/feed_item_etv_content"
+                android:scaleType="fitXY"
+                android:background="@color/white"/>
+
+            <com.xeehoo.health.common.view.NoScrollGridView
                 android:id="@+id/share_image_grid_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -91,7 +100,7 @@
                 android:scrollbars="none"
                 android:verticalSpacing="3dp" 
                 android:background="@color/white">
-            </com.xeehoo.health.view.NoScrollGridView>
+            </com.xeehoo.health.common.view.NoScrollGridView>
         </RelativeLayout>
 
         <RelativeLayout
@@ -115,7 +124,7 @@
                     android:id="@+id/feed_item_layout_ok"
                     android:layout_width="0dp"
                     android:layout_height="fill_parent"
-                    android:layout_weight="1"
+                    android:layout_weight="2"
                     android:background="@drawable/bg_card_inner_bottom_left"
                     android:clickable="true"
                     android:gravity="center"
@@ -123,10 +132,10 @@
                     android:padding="5dip" >
 
                     <ImageView
-                        android:layout_width="25dip"
-                        android:layout_height="25dip"
+                        android:layout_width="20dip"
+                        android:layout_height="20dip"
                         android:layout_marginRight="2dip"
-                        android:src="@drawable/like65" />
+                        android:src="@drawable/ic_like_default" />
 
                     <TextView
                         android:id="@+id/feed_item_htv_site"
@@ -138,7 +147,7 @@
                         android:gravity="right"
                         android:singleLine="true"
                         android:textColor="@color/font_value"
-                        android:textSize="12sp" />
+                        android:textSize="16sp" />
                 </LinearLayout>
 
                 <View
@@ -155,50 +164,49 @@
                     android:clickable="true"
                     android:gravity="center"
                     android:orientation="horizontal"
-                    android:padding="5dip" >
+                    android:padding="5dip">
 
                     <ImageView
-                        android:layout_width="25dip"
-                        android:layout_height="25dip"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
                         android:layout_marginRight="2dip"
-                        android:src="@drawable/chat64" />
+                        android:src="@drawable/ic_comment_default" />
 
                     <TextView
-                        android:id="@+id/feed_item_htv_commentcount"
+                        android:id="@+id/feed_item_htv_comment_count"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="2dip"
                         android:background="@null"
                         android:textColor="@color/font_value"
-                        android:textSize="12sp" />
+                        android:textSize="16sp"/>
                 </LinearLayout>
 
-                <View
-                    android:layout_width="1px"
-                    android:layout_height="25dip"
-                    android:background="#ffdfdfdf" />
+                <!--<View-->
+                    <!--android:layout_width="1px"-->
+                    <!--android:layout_height="25dip"-->
+                    <!--android:background="#ffdfdfdf" />-->
 
-                <LinearLayout
-                    android:id="@+id/feed_item_layout_share"
-                    android:layout_width="0dp"
-                    android:layout_height="fill_parent"
-                    android:layout_weight="1"
-                    android:background="@drawable/bg_card_inner_bottom_right"
-                    android:clickable="true"
-                    android:gravity="center"
-                    android:orientation="horizontal"
-                    android:padding="5dip" >
+                <!--<LinearLayout-->
+                    <!--android:id="@+id/feed_item_layout_share"-->
+                    <!--android:layout_width="0dp"-->
+                    <!--android:layout_height="fill_parent"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:background="@drawable/bg_card_inner_bottom_right"-->
+                    <!--android:clickable="true"-->
+                    <!--android:gravity="center"-->
+                    <!--android:orientation="horizontal"-->
+                    <!--android:padding="5dip" >-->
 
-                    <ImageView
-                        android:id="@+id/feed_item_ib_more"
-                        android:layout_width="25dip"
-                        android:layout_height="25dip"
-                        android:focusable="false"
-                        android:focusableInTouchMode="false"
-                        android:src="@drawable/share31" />
-                </LinearLayout>
+                    <!--<ImageView-->
+                        <!--android:id="@+id/feed_item_ib_more"-->
+                        <!--android:layout_width="20dp"-->
+                        <!--android:layout_height="20dp"-->
+                        <!--android:focusable="false"-->
+                        <!--android:focusableInTouchMode="false"-->
+                        <!--android:src="@drawable/ic_share_default" />-->
+                <!--</LinearLayout>-->
             </LinearLayout>
         </RelativeLayout>
     </RelativeLayout>
-
 </LinearLayout>
