@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="obj"
+            type="com.alibaba.fastjson.JSONObject" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="8dp">
+
+        <RelativeLayout
+            android:id="@+id/train_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_xeehoo"
+            android:padding="0dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="#00000000"
+                android:gravity="center_vertical"
+                android:paddingLeft="16dp"
+                android:text="@{obj[`title`]}"
+                android:textColor="@color/white"
+                android:textSize="32sp" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/train_type"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/train_layout"
+            android:layout_marginRight="16dp"
+            android:background="#00000000"
+            android:gravity="left"
+            android:paddingLeft="16dp"
+            android:text="训练周期：1个月"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            android:layout_marginBottom="12dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/train_layout"
+            android:layout_marginRight="16dp"
+            android:layout_toLeftOf="@id/train_type"
+            android:background="#00000000"
+            android:gravity="right"
+            android:paddingLeft="16dp"
+            android:text="1356人已训练"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            android:layout_marginBottom="12dp"/>
+    </RelativeLayout>
+</layout>
