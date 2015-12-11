@@ -15,7 +15,7 @@ import com.xeehoo.health.R;
  * Created by wangzunhui on 2015/11/16.
  */
 public class StateView extends AbstractView {
-    private int[] res = {R.id.watcher_me, R.id.watcher_tuijian, R.id.watcher_new};
+    private int[] res = {};//{R.id.watcher_me, R.id.watcher_tuijian, R.id.watcher_new};
     private Resources resource;
     private SparseArray<TextView> array = new SparseArray<TextView>();
 

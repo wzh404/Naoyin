@@ -28,6 +28,5 @@ public class SpacesItemDecoration extends RecyclerView.ItemDecoration {
 //        if (pos >= 3){
 //            outRect.bottom = 0;
 //        }
-
     }
 }

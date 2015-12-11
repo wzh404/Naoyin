@@ -77,9 +77,9 @@ public class MainPresenter implements Presenter {
 
         int[] selectors = {R.drawable.selector_tab_home,
                 R.drawable.selector_tab_train,
-                R.drawable.selector_tab_share,
+//                R.drawable.selector_tab_share,
                 R.drawable.selector_tab_me};
-        String[] names = {"训练", "动态","知识", "我的"};
+        String[] names = {"训练", "动态", "我的"};
 
         for (int i = 0; i < names.length; i++) {
             TabshotContentView v = new TabshotContentView();
@@ -104,7 +104,7 @@ public class MainPresenter implements Presenter {
         List<Fragment> mFragmentList = new ArrayList<Fragment>();
         mFragmentList.add(homeFragment);
         mFragmentList.add(nurseFragment);
-        mFragmentList.add(brainFragment);
+//        mFragmentList.add(brainFragment);
         mFragmentList.add(myFragment);
 
         FragmentAdapter mFragmentAdapter = new FragmentAdapter(fragmentManager, mFragmentList);

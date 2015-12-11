@@ -6,8 +6,10 @@ import java.util.List;
 
 import com.xeehoo.health.R;
 import com.xeehoo.health.common.adapter.FragmentAdapter;
+import com.xeehoo.health.common.presenter.TrackerNewPresenter;
 import com.xeehoo.health.common.presenter.TrackerPresenter;
 import com.xeehoo.health.common.view.StateView;
+import com.xeehoo.health.common.view.TrackerView;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -24,10 +26,10 @@ public class NurseFragment extends Fragment {
 			Bundle savedInstanceState) {
 		super.onCreateView(inflater, container, savedInstanceState);
 		final Context context = this.getActivity().getBaseContext();
-        final StateView view = new StateView();
+        final TrackerView view = new TrackerView();
         view.init(context, container);
-        TrackerPresenter presenter = new TrackerPresenter();
-        presenter.setFragmentManager(this.getChildFragmentManager());
+		TrackerNewPresenter presenter = new TrackerNewPresenter();
+//        presenter.setFragmentManager(this.getChildFragmentManager());
         presenter.onCreate(context, view);
 
 		return view.getView();
