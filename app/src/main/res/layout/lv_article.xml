@@ -97,44 +97,5 @@
                 android:text = "第3天"
                 />
         </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="40dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:background="@color/white"
-            android:clickable="true">
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:layout_marginTop="8dp"
-                android:background="@color/background_dark"></View>
-
-            <TextView
-                android:id="@+id/item_article_like"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_alignParentLeft="true"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="8dp"
-                android:gravity="center_vertical"
-                android:text='@{"likes " + String.valueOf(article.likes)}'
-                android:textColor="#999"
-                android:textSize="14sp" />
-
-            <TextView
-                android:id="@+id/item_article_comments"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="8dp"
-                android:gravity="center_vertical"
-                android:text='@{"views " + String.valueOf(article.views)}'
-                android:textColor="@color/gray"
-                android:textSize="12sp" />
-        </RelativeLayout>
     </LinearLayout>
 </layout>

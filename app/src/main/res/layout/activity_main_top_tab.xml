@@ -31,7 +31,7 @@
                 android:layout_height="wrap_content"
                 android:clickable="false"
                 android:gravity="center"
-                android:text="@string/tab_home"
+                android:text="@string/tab_train"
                 android:textColor="#000000"
                 android:textSize="15dip" />
         </LinearLayout>
@@ -53,7 +53,7 @@
                 android:layout_height="wrap_content"
                 android:clickable="true"
                 android:gravity="center"
-                android:text="@string/tab_share"
+                android:text="@string/tab_tracker"
                 android:textColor="#000000"
                 android:textSize="15dip" />
         </LinearLayout>
@@ -73,7 +73,7 @@
                 android:layout_height="wrap_content"
                 android:clickable="true"
                 android:gravity="center"
-                android:text="@string/tab_plan"
+                android:text="@string/tab_health"
                 android:textColor="#000000"
                 android:textSize="15dip" />
         </LinearLayout>
@@ -93,7 +93,7 @@
                 android:layout_height="wrap_content"
                 android:clickable="true"
                 android:gravity="center"
-                android:text="@string/tab_care"
+                android:text="@string/tab_me"
                 android:textColor="#000000"
                 android:textSize="15dip" />
         </LinearLayout>
