@@ -52,6 +52,15 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<RecyclerViewHolder
     public int getItemViewType(int position) {
         JSONObject obj = (JSONObject) items.get(position);
         String type = obj.getString("type");
+
+        switch (type){
+            case "V0" : return RecyclerViewHolderFactory.VIEW_TYPE_RECOMMEND_TITLE;
+            case "V1" : return RecyclerViewHolderFactory.VIEW_TYPE_CONTENT_1;
+            case "V2" : return RecyclerViewHolderFactory.VIEW_TYPE_CONTENT_2;
+            case "V3" : return RecyclerViewHolderFactory.VIEW_TYPE_TRAIN_ITEM;
+            default: return RecyclerViewHolderFactory.VIEW_TYPE_INVALID;
+        }
+        /*
         if ("V0".equalsIgnoreCase(type)){
             return RecyclerViewHolderFactory.VIEW_TYPE_RECOMMEND_TITLE;
         }
@@ -66,6 +75,7 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<RecyclerViewHolder
         }
         else
             return RecyclerViewHolderFactory.VIEW_TYPE_INVALID;
+            */
     }
 
     private void convert(Context context, JSONObject obj){
