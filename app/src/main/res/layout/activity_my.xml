@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="obj"
+            type="com.alibaba.fastjson.JSONObject" />
+    </data>
+
+    <LinearLayout
+        android:id="@+id/activity_my_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/my_title"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/bg_title">
+
+            <TextView
+                android:id="@+id/watcher_name"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_centerInParent="true"
+                android:padding="10dp"
+                android:text="我的账户"
+                android:textColor="#fff"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/my_name"
+            android:layout_width="fill_parent"
+            android:layout_height="56dp"
+            android:background="@drawable/layout_selector"
+            android:layout_below="@id/my_title"
+            android:clickable="true"
+            android:onClick="loginOnClick">
+
+            <ImageView
+                android:id="@+id/item_v2_icon"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_centerVertical="true"
+                android:layout_marginBottom="4dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="4dp"
+                android:src="@drawable/usericon03" />
+
+            <TextView
+                android:id="@+id/item_my2_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="8dp"
+                android:layout_toRightOf="@id/item_v2_icon"
+                android:gravity="center_vertical"
+                android:text="王小奇"
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
+
+            <ImageView
+                android:id="@+id/item_v2_more"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="16dp"
+                android:src="@drawable/arrow_right_normal" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/my_invest"
+            android:layout_width="fill_parent"
+            android:layout_height="56dp"
+            android:background="@drawable/layout_selector"
+            android:layout_below="@id/my_name"
+            android:clickable="true"
+            android:onClick="myProductClick"
+            android:layout_marginTop="8dp">
+
+            <ImageView
+                android:id="@+id/item_v1_icon"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_centerVertical="true"
+                android:layout_marginBottom="4dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="4dp"
+                android:src="@drawable/usericon05" />
+
+            <TextView
+                android:id="@+id/item_my_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="8dp"
+                android:layout_toRightOf="@id/item_v1_icon"
+                android:gravity="center_vertical"
+                android:text="理财产品"
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
+
+            <ImageView
+                android:id="@+id/item_v1_more"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="16dp"
+                android:src="@drawable/arrow_right_normal" />
+        </RelativeLayout>
+        <View
+            android:layout_width="match_parent"
+            android:id="@+id/item_v1_line"
+            android:layout_height="0.5dp"
+            android:layout_below="@id/my_invest"
+            android:background="@color/background_dark"></View>
+
+        <RelativeLayout
+            android:id="@+id/online_recharge"
+            android:layout_width="fill_parent"
+            android:layout_height="56dp"
+            android:background="@drawable/layout_selector"
+            android:layout_below="@id/item_v1_line"
+            android:clickable="true"
+            android:onClick="productsClick"
+            >
+
+            <ImageView
+                android:id="@+id/item_v6_icon"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_centerVertical="true"
+                android:layout_marginBottom="4dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="4dp"
+                android:src="@drawable/usericon04" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="8dp"
+                android:layout_toRightOf="@id/item_v6_icon"
+                android:gravity="center_vertical"
+                android:text="在线充值"
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
+
+            <ImageView
+                android:id="@+id/item_v6_more"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="16dp"
+                android:src="@drawable/arrow_right_normal" />
+        </RelativeLayout>
+        <View
+            android:layout_width="match_parent"
+            android:id="@+id/item_v4_line"
+            android:layout_height="0.5dp"
+            android:layout_below="@id/online_recharge"
+            android:background="@color/background_dark"></View>
+
+        <RelativeLayout
+            android:id="@+id/online_withdraw"
+            android:layout_width="fill_parent"
+            android:layout_height="56dp"
+            android:background="@drawable/layout_selector"
+            android:layout_below="@id/item_v4_line"
+            android:clickable="true">
+
+            <ImageView
+                android:id="@+id/item_v7_icon"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_centerVertical="true"
+                android:layout_marginBottom="4dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="4dp"
+                android:src="@drawable/usericon02" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="8dp"
+                android:layout_toRightOf="@id/item_v7_icon"
+                android:gravity="center_vertical"
+                android:text="在线提现"
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="16dp"
+                android:src="@drawable/arrow_right_normal" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/account"
+            android:layout_width="fill_parent"
+            android:layout_height="56dp"
+            android:background="@drawable/layout_selector"
+            android:layout_below="@id/online_withdraw"
+            android:layout_marginTop="12dp"
+            android:clickable="true">
+
+            <ImageView
+                android:id="@+id/item_v3_icon"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_centerVertical="true"
+                android:layout_marginBottom="4dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="4dp"
+                android:src="@drawable/usericon01" />
+
+            <TextView
+                android:id="@+id/account_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="8dp"
+                android:layout_toRightOf="@id/item_v3_icon"
+                android:gravity="center_vertical"
+                android:text="第三方托管账户"
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
+
+            <ImageView
+                android:id="@+id/item_v3_more"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="16dp"
+                android:src="@drawable/arrow_right_normal" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:id="@+id/item_v2_line"
+            android:layout_height="0.5dp"
+            android:layout_alignRight="@id/my_name"
+            android:layout_below="@id/account"
+            android:background="@color/background_dark"></View>
+
+        <RelativeLayout
+            android:id="@+id/change_pwd"
+            android:layout_width="fill_parent"
+            android:layout_height="56dp"
+            android:background="@drawable/layout_selector"
+            android:layout_below="@id/item_v2_line"
+            android:clickable="true">
+
+            <ImageView
+                android:id="@+id/item_v4_icon"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_centerVertical="true"
+                android:layout_marginBottom="4dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="4dp"
+                android:src="@drawable/usericon06" />
+
+            <TextView
+                android:id="@+id/change_pwd_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="8dp"
+                android:layout_toRightOf="@id/item_v4_icon"
+                android:gravity="center_vertical"
+                android:text="修改登录密码"
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
+
+            <ImageView
+                android:id="@+id/item_v4_more"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="16dp"
+                android:src="@drawable/arrow_right_normal" />
+        </RelativeLayout>
+        <View
+            android:layout_width="match_parent"
+            android:id="@+id/item_v3_line"
+            android:layout_height="0.5dp"
+            android:layout_below="@id/change_pwd"
+            android:background="@color/background_dark"></View>
+
+        <RelativeLayout
+            android:id="@+id/change_pay_pwd"
+            android:layout_width="fill_parent"
+            android:layout_height="56dp"
+            android:background="@drawable/layout_selector"
+            android:layout_below="@id/item_v3_line"
+            android:clickable="true">
+
+            <ImageView
+                android:id="@+id/item_v5_icon"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_centerVertical="true"
+                android:layout_marginBottom="4dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="4dp"
+                android:src="@drawable/usericon07" />
+
+            <TextView
+                android:id="@+id/change_pay_pwd_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="8dp"
+                android:layout_toRightOf="@id/item_v5_icon"
+                android:gravity="center_vertical"
+                android:text="修改支付密码"
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
+
+            <ImageView
+                android:id="@+id/item_v5_more"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="16dp"
+                android:src="@drawable/arrow_right_normal" />
+        </RelativeLayout>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/button_corner_shape"
+            android:clickable="true"
+            android:text="退出登录"
+            android:textSize="20sp"
+            android:textColor="#FFF"/>
+
+    </LinearLayout>
+</layout>

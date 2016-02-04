@@ -1,0 +1,63 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_centerVertical="true"
+    android:orientation="vertical"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/bg_title"
+        android:visibility="gone"
+        android:gravity="center_horizontal|center_vertical">
+
+        <TextView
+            android:id="@+id/watcher_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:padding="10dp"
+            android:text="盈达资产"
+            android:textColor="#fff"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearlayout_images_slide"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="0dp"
+        android:background="@color/white"
+        android:orientation="vertical">
+    </LinearLayout>
+
+    <com.xeehoo.health.util.CircleMenuLayout
+        android:id="@+id/id_menulayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:layout_margin="16dp"
+        android:background="@drawable/circle_bg3" >
+
+        <RelativeLayout
+            android:id="@+id/id_circle_menu_item_center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <!--<ImageView-->
+                <!--android:layout_width="104dp"-->
+                <!--android:layout_height="104dp"-->
+                <!--android:layout_centerInParent="true"-->
+                <!--android:background="@drawable/turnplate_center_unlogin" />-->
+
+            <ImageView
+                android:layout_width="128dp"
+                android:layout_height="128dp"
+                android:layout_centerInParent="true"
+                android:background="@drawable/turnplate_mask_unlogin_normal" />
+        </RelativeLayout>
+    </com.xeehoo.health.util.CircleMenuLayout>
+
+</LinearLayout>
