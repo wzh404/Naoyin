@@ -17,11 +17,13 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.xeehoo.health.util.RecyclerViewHolderFactory;
 
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment{
     private View rootView;
+    private Context context = null;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -30,9 +32,9 @@ public class HomeFragment extends Fragment {
 
         if (rootView == null) {
             Log.e("onCreateView", "-----in HomeFragment-------");
-            final Context context = getActivity().getBaseContext();
-            TrainView trainView = new TrainView();
-            trainView.init(context, container);
+            this.context = getActivity().getBaseContext();
+            TrainView trainView = new TrainView(context, container);
+//            trainView.init(context, container);
             rootView = trainView.getView();
             HomePresenter presenter = new HomePresenter();
             presenter.onCreate(context, trainView);

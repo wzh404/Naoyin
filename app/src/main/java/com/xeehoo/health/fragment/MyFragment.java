@@ -1,39 +1,93 @@
 package com.xeehoo.health.fragment;
 
-import android.content.Context;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.LinearLayout;
 
-import com.alibaba.fastjson.JSON;
+import com.xeehoo.health.BrainApplication;
+import com.xeehoo.health.MainActivity;
 import com.xeehoo.health.R;
-import com.xeehoo.health.common.view.MoMoRefreshListView;
-import com.xeehoo.health.common.view.MoMoRefreshListView.OnCancelListener;
-import com.xeehoo.health.common.view.MoMoRefreshListView.OnRefreshListener;
-import com.xeehoo.health.common.view.MyView;
-import com.xeehoo.health.share.adapter.ShareListAdapter;
-import com.xeehoo.health.share.bean.ShareContent;
-import com.xeehoo.health.util.AssetsUtils;
-
-import java.util.ArrayList;
-import java.util.List;
-
+import com.xeehoo.health.presenter.LoginPresenter;
+import com.xeehoo.health.view.LoginView;
+import com.xeehoo.health.view.MyView;
 
 public class MyFragment extends Fragment  {
-	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
+//    private View view;
+
+    @Override
+	public View onCreateView(final LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
 		super.onCreateView(inflater, container, savedInstanceState);
-		MyView view = new MyView();
-		view.init(inflater.getContext(), container);
-		return view.getView();
+        Log.e("MY", "----------onCreateView");
+        MyView view = new MyView(inflater.getContext(), container);
+        return view.getView();
+
+//        view = inflater.inflate(R.layout.fragment_my, null);
+//
+//        renderView();
+//        if ("0".equalsIgnoreCase(BrainApplication.token)) {
+//            state = 0;
+//            LinearLayout layout = (LinearLayout)view.findViewById(R.id.activity_login_layout);
+//            layout.setVisibility(View.VISIBLE);
+//        }
+//        else{
+//            state = 1;
+//            LinearLayout layout = (LinearLayout)view.findViewById(R.id.activity_my_layout);
+//            layout.setVisibility(View.GONE);
+//        }
+
+//		if ("0".equalsIgnoreCase(BrainApplication.token)){
+//            LoginView loginView = new LoginView(inflater.getContext(), container);
+//            final LoginPresenter presenter = new LoginPresenter();
+//            presenter.onCreate(inflater.getContext(), null);
+//
+//            Button loginBtn = (Button)loginView.get(R.id.btn_login);
+//            loginBtn.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    presenter.login("18611330404", "123456");
+//                }
+//            });
+//
+//			return loginView.getView();
+//		}else{
+//            MyView view = new MyView(inflater.getContext(), container);
+//			return view.getView();
+//		}
+//
+//        return view;
 	}
+
+//    public void renderView(){
+//        Log.e("MY", "----------renderView");
+//        LinearLayout layout1 = (LinearLayout)view.findViewById(R.id.activity_login_layout);
+//        LinearLayout layout2 = (LinearLayout)view.findViewById(R.id.activity_my_layout);
+//        if ("0".equalsIgnoreCase(BrainApplication.token)) {
+//            Log.e("MY", "----------renderView1");
+//            layout1.setVisibility(View.VISIBLE);
+//            layout2.setVisibility(View.GONE);
+//        }
+//        else{
+//            Log.e("MY", "----------renderView2");
+//            layout1.setVisibility(View.GONE);
+//            layout2.setVisibility(View.VISIBLE);
+//        }
+//    }
 
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 	}
+
+//    public void update(){
+//        Log.e("MY", "----------update");
+//        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+//        transaction.replace(R.id.)
+//    }
 }

@@ -5,6 +5,7 @@ import com.xeehoo.health.R;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 
@@ -16,7 +17,6 @@ import android.widget.TextView;
 public class BaseWebActivity extends Activity {
 
 	protected ProgressWebView mWebView;
-//	private ProgressBar web_progressbar;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -36,22 +36,14 @@ public class BaseWebActivity extends Activity {
 		mWebView.loadUrl(url);
 	}
 
-//	protected void initData() {
-//		Intent intent = getIntent();
-//		Bundle bundle = intent.getExtras();
-//		String url = bundle.getString("url");
-//
-//		// if(!TextUtils.isEmpty(url)&&TextUtils.isEmpty(title)){
-//		mWebView.loadUrl(url);
-//
-//		// }
-//
-//	}
-
 	@Override
 	protected void onDestroy() {
 		// TODO Auto-generated method stub
 		super.onDestroy();
 		mWebView = null;
+	}
+
+	public void exitOnClick(View view) {
+		this.finish();
 	}
 }

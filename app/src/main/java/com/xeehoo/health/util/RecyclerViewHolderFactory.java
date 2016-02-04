@@ -2,6 +2,7 @@ package com.xeehoo.health.util;
 
 import android.content.Context;
 import android.util.SparseArray;
+import android.view.ViewGroup;
 
 import com.xeehoo.health.common.view.ContentView1;
 import com.xeehoo.health.common.view.IView;
@@ -11,46 +12,43 @@ import com.xeehoo.health.common.view.RecyclerViewHolder;
 import com.xeehoo.health.common.view.TrainItemView;
 
 /**
- * Created by WIN10 on 2015/11/13.
+ * Created by wangzunhui on 2015/11/13.
  */
 public class RecyclerViewHolderFactory {
-    public final static int VIEW_TYPE_CONTENT_1 = 1;
-    public final static int VIEW_TYPE_CONTENT_2 = 2;
-    public final static int VIEW_TYPE_TRAIN_ITEM = 3;
-    public final static int VIEW_TYPE_RECOMMEND_TITLE = 4;
-    public final static int VIEW_TYPE_INVALID = -1;
-
     private Context context;
-    private SparseArray<ViewFactory> actions = new SparseArray();
+    private SparseArray<ViewFactory> factories = new SparseArray();
 
     public RecyclerViewHolderFactory(Context context){
-        actions.put(RecyclerViewHolderFactory.VIEW_TYPE_RECOMMEND_TITLE, new RecommendTitleViewFactory());
-        actions.put(RecyclerViewHolderFactory.VIEW_TYPE_CONTENT_1, new ContentView1Factory());
-        actions.put(RecyclerViewHolderFactory.VIEW_TYPE_TRAIN_ITEM, new PlanItemViewFactory());
-        actions.put(RecyclerViewHolderFactory.VIEW_TYPE_CONTENT_2, new TrainItemViewFactory());
+        registerViewFactory(RecyclerViewType.RECOMMEND_TITLE.ordinal(), new RecommendTitleViewFactory());
+        registerViewFactory(RecyclerViewType.TRAIN_ITEM.ordinal(), new TrainItemViewFactory());
+        registerViewFactory(RecyclerViewType.PLAN_ITEM.ordinal(), new PlanItemViewFactory());
 
         this.context = context;
     }
 
-    public RecyclerViewHolder getRecyclerViewHolder(int viewType){
-        if (actions.get(viewType) == null)
+    public RecyclerViewHolder getRecyclerViewHolder(ViewGroup parent, int viewType){
+        if (factories.get(viewType) == null) {
             return null;
+        }
 
-        IView view = actions.get(viewType).create(context);
+        IView view = factories.get(viewType).create(context, parent);
         RecyclerViewHolder holder = new RecyclerViewHolder(view.getView());
 
         return holder;
     }
 
+    public void registerViewFactory(int viewType, ViewFactory viewFactory){
+        factories.put(viewType, viewFactory);
+    }
+
     public interface ViewFactory{
-        public IView create(Context context);
+        public IView create(Context context, ViewGroup parent);
     }
 
     public class RecommendTitleViewFactory implements  ViewFactory{
         @Override
-        public IView create(Context context) {
-            RecommendTitleView view = new RecommendTitleView();
-            view.init(context, null);
+        public IView create(Context context, ViewGroup parent) {
+            RecommendTitleView view = new RecommendTitleView(context, parent);
 
             return view;
         }
@@ -58,9 +56,8 @@ public class RecyclerViewHolderFactory {
 
     public class ContentView1Factory implements  ViewFactory{
         @Override
-        public IView create(Context context) {
-            ContentView1 view = new ContentView1();
-            view.init(context, null);
+        public IView create(Context context, ViewGroup parent) {
+            ContentView1 view = new ContentView1(context, parent);
 
             return view;
         }
@@ -68,9 +65,8 @@ public class RecyclerViewHolderFactory {
 
     public class PlanItemViewFactory implements  ViewFactory{
         @Override
-        public IView create(Context context) {
-            PlanItemView view = new PlanItemView();
-            view.init(context, null);
+        public IView create(Context context, ViewGroup parent) {
+            PlanItemView view = new PlanItemView(context, parent);
 
             return view;
         }
@@ -78,9 +74,8 @@ public class RecyclerViewHolderFactory {
 
     public class TrainItemViewFactory implements  ViewFactory{
         @Override
-        public IView create(Context context) {
-            TrainItemView view = new TrainItemView();
-            view.init(context, null);
+        public IView create(Context context, ViewGroup parent) {
+            TrainItemView view = new TrainItemView(context, parent);
 
             return view;
         }

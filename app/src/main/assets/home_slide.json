@@ -1,10 +1,5 @@
 [
       {
-      	"image": "http://renben.neowave.com.cn:8080/xeehoo/images/image01.jpg",
-      	"title": "脑康01",
-        "url": "http://192.168.10.60/ball"
-      },
-      {
       	"image": "http://renben.neowave.com.cn:8080/xeehoo/images/image02.jpg",
       	"title": "脑康02",
         "url": "http://blog.csdn.net/finddreams/article/details/44301359"

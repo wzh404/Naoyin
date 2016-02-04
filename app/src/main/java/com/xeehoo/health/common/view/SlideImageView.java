@@ -81,7 +81,7 @@ public class SlideImageView implements IView{
     private ImageView createCircleImageView(){
         ImageView iv = new ImageView(context);
         iv.setLayoutParams(new ViewGroup.LayoutParams(24, 24));
-        iv.setPadding(5, 0, 5, 0);
+        iv.setPadding(15, 0, 15, 0);
         iv.setScaleType(ImageView.ScaleType.FIT_XY);
 
         return iv;

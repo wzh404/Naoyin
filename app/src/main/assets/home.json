@@ -1,30 +1,30 @@
 [
   {
-    "type": "V0",
+    "type": "RECOMMEND_TITLE",
     "code": "1000",
     "title": "推荐训练计划",
     "icon": "bike"
   },
   {
-    "type": "V3",
+    "type": "PLAN_ITEM",
     "code": "3000",
     "title": "MCI预防训练",
     "icon": "bike"
   },
   {
-    "type": "V3",
+    "type": "PLAN_ITEM",
     "code": "3000",
     "title": "痴呆初期照护",
     "icon": "bike"
   },
   {
-    "type": "V0",
+    "type": "RECOMMEND_TITLE",
     "code": "1000",
     "title": "推荐单项训练",
     "icon": "bike"
   },
   {
-    "type": "V2",
+    "type": "TRAIN_ITEM",
     "title": "MMSE量表测评",
     "code": "1001",
     "desc": "简易精神状态检查量表",
@@ -32,7 +32,7 @@
     "icon": "topic"
   },
   {
-    "type": "V2",
+    "type": "TRAIN_ITEM",
     "title": "地中海饮食",
     "code": "1002",
     "desc": "地中海饮食可以预防老年痴呆",
@@ -40,7 +40,7 @@
     "icon": "topic"
   },
   {
-    "type": "V2",
+    "type": "TRAIN_ITEM",
     "title": "世界名画欣赏",
     "code": "1003",
     "desc": "梵高、毕加索名画",
@@ -48,7 +48,7 @@
     "icon": "topic"
   },
   {
-    "type": "V2",
+    "type": "TRAIN_ITEM",
     "title": "音乐疗法",
     "code": "1004",
     "desc": "音乐能改善大脑皮层的功能",
@@ -56,7 +56,7 @@
     "icon": "topic"
   },
   {
-    "type": "V2",
+    "type": "TRAIN_ITEM",
     "title": "位置记忆",
     "code": "1004",
     "desc": "短期记忆训练",

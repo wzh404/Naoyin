@@ -13,8 +13,8 @@
     <View
         android:id="@+id/div_tab_bar"
         android:layout_width="match_parent"
-        android:layout_height="2px"
-        android:background="#cccccc" />
+        android:layout_height="1px"
+        android:background="#ddd" />
 
     <android.support.v4.app.FragmentTabHost
         android:id="@android:id/tabhost"

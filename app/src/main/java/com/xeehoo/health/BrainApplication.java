@@ -1,9 +1,11 @@
 package com.xeehoo.health;
 
 import android.app.Application;
+import android.content.pm.PackageManager;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
-import com.nostra13.universalimageloader.cache.memory.impl.UsingFreqLimitedMemoryCache;
 import com.nostra13.universalimageloader.cache.memory.impl.WeakMemoryCache;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -11,14 +13,35 @@ import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 import com.nostra13.universalimageloader.core.download.BaseImageDownloader;
 
+import java.io.IOException;
+import java.util.concurrent.TimeUnit;
+
+import okhttp3.Interceptor;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
+import retrofit2.GsonConverterFactory;
+import retrofit2.Retrofit;
+import retrofit2.RxJavaCallAdapterFactory;
+
 /**
  * Created by wangzunhui on 2015/9/18.
  */
 public class BrainApplication extends Application {
+    private Retrofit retrofit;
+    private Integer versionCode = 0;
+
+    public static String token = "0";
+
+    public Retrofit getRetrofit() {
+        return retrofit;
+    }
+
     @Override
     public void onCreate() {
         super.onCreate();
         initImageLoader();
+        initRetrofit();
     }
 
     private void initImageLoader() {
@@ -40,5 +63,39 @@ public class BrainApplication extends Application {
             .writeDebugLogs() // Remove for release app
             .build();// 开始构建
         ImageLoader.getInstance().init(config);
+    }
+
+    private void initRetrofit(){
+        try {
+            versionCode = this.getPackageManager().getPackageInfo(this.getPackageName(), 0).versionCode;
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        OkHttpClient client = new OkHttpClient.Builder()
+                .connectTimeout(45, TimeUnit.SECONDS)
+                .addInterceptor(new Interceptor() {
+                    @Override
+                    public Response intercept(Chain chain) throws IOException {
+                        Request newRequest = chain.request().newBuilder()
+                                .addHeader("platform", "android")
+                                .addHeader("appVersion", versionCode.toString())
+                                .addHeader("authorization", token == null ? "0" : token)
+                                .build();
+                        return chain.proceed(newRequest);
+                    }
+                })
+                .build();
+
+        Gson gson = new GsonBuilder()
+                .setDateFormat("yyyy-MM-dd HH:mm")
+                .create();
+
+        retrofit = new Retrofit.Builder()
+                .client(client)
+                .baseUrl("http://192.168.0.173:8080")
+                .addConverterFactory(GsonConverterFactory.create(gson))
+                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                .build();
     }
 }

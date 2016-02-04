@@ -4,7 +4,6 @@ import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.View;
 import android.view.ViewGroup;
 
 import com.xeehoo.health.BR;
@@ -14,6 +13,7 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.xeehoo.health.common.view.RecyclerViewHolder;
 import com.xeehoo.health.util.RecyclerViewHolderFactory;
+import com.xeehoo.health.util.RecyclerViewType;
 import com.xeehoo.health.util.ResourceUtils;
 
 /**
@@ -30,8 +30,7 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<RecyclerViewHolder
 
     @Override
     public RecyclerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        Log.e("---onCreate-----", "----viewType-----" + viewType);
-        return recyclerViewHolderFactory.getRecyclerViewHolder(viewType);
+        return recyclerViewHolderFactory.getRecyclerViewHolder(parent,viewType);
     }
 
     @Override
@@ -52,36 +51,13 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<RecyclerViewHolder
     public int getItemViewType(int position) {
         JSONObject obj = (JSONObject) items.get(position);
         String type = obj.getString("type");
-
-        switch (type){
-            case "V0" : return RecyclerViewHolderFactory.VIEW_TYPE_RECOMMEND_TITLE;
-            case "V1" : return RecyclerViewHolderFactory.VIEW_TYPE_CONTENT_1;
-            case "V2" : return RecyclerViewHolderFactory.VIEW_TYPE_CONTENT_2;
-            case "V3" : return RecyclerViewHolderFactory.VIEW_TYPE_TRAIN_ITEM;
-            default: return RecyclerViewHolderFactory.VIEW_TYPE_INVALID;
-        }
-        /*
-        if ("V0".equalsIgnoreCase(type)){
-            return RecyclerViewHolderFactory.VIEW_TYPE_RECOMMEND_TITLE;
-        }
-        else if ("V1".equalsIgnoreCase(type)){
-            return RecyclerViewHolderFactory.VIEW_TYPE_CONTENT_1;
-        }
-        else if ("V2".equalsIgnoreCase(type)){
-            return RecyclerViewHolderFactory.VIEW_TYPE_CONTENT_2;
-        }
-        else if ("V3".equalsIgnoreCase(type)){
-            return RecyclerViewHolderFactory.VIEW_TYPE_TRAIN_ITEM;
-        }
-        else
-            return RecyclerViewHolderFactory.VIEW_TYPE_INVALID;
-            */
+        return RecyclerViewType.valueOf(type).ordinal();
     }
 
     private void convert(Context context, JSONObject obj){
-        String icon = (String)obj.get("icon");
-        if (icon != null){
-            Drawable drawable = ResourceUtils.getDrawable(context, icon);
+        Object icon = obj.get("icon");
+        if (icon != null && icon.getClass() == java.lang.String.class){
+            Drawable drawable = ResourceUtils.getDrawable(context, icon.toString());
             obj.put("icon", drawable);
         }
     }

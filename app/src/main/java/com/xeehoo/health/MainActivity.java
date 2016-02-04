@@ -1,50 +1,37 @@
 package com.xeehoo.health;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.io.DataOutputStream;
 
-import com.xeehoo.health.common.adapter.FragmentAdapter;
+import com.xeehoo.health.activity.LoginActivity;
+import com.xeehoo.health.activity.MyProductActivity;
+import com.xeehoo.health.activity.ProductsActivity;
 import com.xeehoo.health.common.presenter.MainPresenter;
 import com.xeehoo.health.common.view.MainView;
-import com.xeehoo.health.common.view.TabshotContentView;
-import com.xeehoo.health.fragment.HomeFragment;
-import com.xeehoo.health.fragment.BrainFragment;
-import com.xeehoo.health.fragment.MyFragment;
-import com.xeehoo.health.fragment.NurseFragment;
-import com.xeehoo.health.fragment.ShareFragment;
-import com.xeehoo.health.util.User;
 
 
 import android.content.Intent;
-import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.os.StrictMode;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTabHost;
-import android.support.v4.view.ViewPager;
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TabHost;
-import android.widget.TabWidget;
-import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends FragmentActivity {
+	private MainPresenter presenter;
+    private MainView mainView;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-        MainView mv = new MainView();
-        mv.init(this, null);
-		setContentView(mv.getView());
-        MainPresenter presenter = new MainPresenter();
+        mainView = new MainView();
+        mainView.init(this, null);
+		setContentView(mainView.getView());
+        presenter = new MainPresenter();
         presenter.setFragmentManager(this.getSupportFragmentManager());
-        presenter.onCreate(this, mv);
+        presenter.onCreate(this, mainView);
 
 		if (android.os.Build.VERSION.SDK_INT > 9) {
 			StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
@@ -55,6 +42,31 @@ public class MainActivity extends FragmentActivity {
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        Log.e("result", " ok ");
+        Log.e("result", " resultCode " + resultCode);
+        if (resultCode == 2){
+            FragmentTabHost fragmentTabHost = mainView.get(android.R.id.tabhost);
+            fragmentTabHost.setCurrentTab(2);
+        }
+	}
+
+    public void change(){
+        presenter.change();
+    }
+
+	public void loginOnClick(View view){
+		Intent saveIntent = new Intent(MainActivity.this, LoginActivity.class);
+		startActivityForResult(saveIntent, 1);
+	}
+
+	public void myProductClick(View view){
+		Toast.makeText(this, "my product investment", Toast.LENGTH_SHORT).show();
+		Intent saveIntent = new Intent(MainActivity.this, MyProductActivity.class);
+		startActivity(saveIntent);
+	}
+
+	public void productsClick(View view){
+		Toast.makeText(this, "my product investment", Toast.LENGTH_SHORT).show();
+		Intent saveIntent = new Intent(MainActivity.this, ProductsActivity.class);
+		startActivity(saveIntent);
 	}
 }

@@ -2,21 +2,28 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.xeehoo.health"
     android:versionCode="1"
-    android:versionName="1.0" >
+    android:versionName="1.0"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
+    <uses-feature android:name="android.hardware.bluetooth_le" android:required="true"/>
+
+
     <uses-sdk
         android:minSdkVersion="14"
-        android:targetSdkVersion="18" />
+        android:targetSdkVersion="22" />
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/ic_xeehoo"
+        android:icon="@drawable/icon_ydzc"
         android:name=".BrainApplication"
         android:label="@string/app_name"
+        tools:replace="android:icon"
         android:theme="@android:style/Theme.Holo.Light.NoActionBar" >
         <activity
             android:name="com.xeehoo.health.MainActivity"
@@ -36,8 +43,18 @@
         </activity>
         <activity android:name="com.xeehoo.health.share.activity.PhotoActivity" >
         </activity>
-        
+        <activity android:name="com.xeehoo.health.activity.LoginActivity" >
+        </activity>
+        <activity android:name="com.xeehoo.health.activity.PayActivity" >
+        </activity>
+        <activity android:name="com.xeehoo.health.activity.InvestActivity" >
+        </activity>
+        <activity android:name="com.xeehoo.health.activity.MyProductActivity" >
+        </activity>
+        <activity android:name="com.xeehoo.health.activity.ProductsActivity" >
+        </activity>
         <activity android:name="com.xeehoo.health.plan.activity.DailyPlanActivity" />
+        <activity android:name="com.xeehoo.health.util.CircleActivity" />
     </application>
 
 </manifest>
