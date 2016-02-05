@@ -3,7 +3,7 @@ package com.xeehoo.health.fragment;
 
 import android.content.Context;
 import android.databinding.DataBindingUtil;
-import android.databinding.layouts.DataBindingInfo;
+//import android.databinding.layouts.DataBindingInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
