@@ -14,7 +14,7 @@ import android.view.View;
 public class CircleProgressBar extends View {
     private int maxProgress = 100;
     private int progress = 30;
-    private int progressStrokeWidth = 6;
+    private int progressStrokeWidth = 4;
     private String amount = "0";
 
     //画圆所在的距形区域
@@ -53,7 +53,7 @@ public class CircleProgressBar extends View {
         oval.bottom = height - progressStrokeWidth / 2; // 右下角y
 
         canvas.drawArc(oval, -90, 360, false, paint); // 绘制白色圆圈，即进度条背景
-        paint.setColor(Color.rgb(0xff, 0x9f, 0x08));//Color.rgb(0x57, 0x87, 0xb6));ff9f08
+        paint.setColor(Color.rgb(0x94, 0xc5, 0x64));//(0x57, 0x87, 0xb6));//ff9f08
         canvas.drawArc(oval, -90, ((float) progress / maxProgress) * 360, false, paint); // 绘制进度圆弧，这里是蓝色
 
         paint.setStrokeWidth(1);

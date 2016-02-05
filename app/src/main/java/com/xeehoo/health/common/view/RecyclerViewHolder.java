@@ -10,7 +10,15 @@ import android.view.View;
  */
 public class RecyclerViewHolder extends RecyclerView.ViewHolder {
     private ViewDataBinding binding;
-    private View view;
+//    private View view;
+    private IView iView;
+
+    public RecyclerViewHolder(IView v){
+        super(v.getView());
+        binding = DataBindingUtil.bind(v.getView());
+
+        this.iView = v;
+    }
 
     public RecyclerViewHolder(View v) {
         super(v);
@@ -19,5 +27,9 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder {
 
     public ViewDataBinding getBinding() {
         return binding;
+    }
+
+    public IView getIView(){
+        return this.iView;
     }
 }

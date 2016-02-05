@@ -15,6 +15,7 @@ import com.xeehoo.health.rxjava.action.ResultAction1;
 import com.xeehoo.health.rxjava.rxbus.RxBus;
 import com.xeehoo.health.share.bean.ShareService;
 import com.xeehoo.health.view.LoginView;
+import com.xeehoo.health.view.MyAccountItemView;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -51,10 +52,12 @@ public class LoginPresenter extends ServicePresenter {
                 Log.e("token", BrainApplication.token);
 
                 BrainApplication.mobile = view.getMobile();
+                BrainApplication.isLogin = true;
+
                 Result r = new Result();
-                r.setTag("my_fragment_login");
+                r.setTag(MyAccountItemView.TAG_LOGIN);
                 r.setCode("OK");
-                RxBus.get().post("my_fragment_login", r);
+                RxBus.get().post(MyAccountItemView.TAG_LOGIN, r);
 
 //                loginActivity.loginOK();
                 loginActivity.finish();

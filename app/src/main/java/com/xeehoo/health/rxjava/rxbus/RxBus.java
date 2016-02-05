@@ -47,6 +47,18 @@ public class RxBus {
         return subject;
     }
 
+    public void unregister(@NonNull Object tag) {
+        List<Subject> subjects = subjectMapper.get(tag);
+        if (null != subjects) {
+            subjects.clear();
+            if (isEmpty(subjects)) {
+                subjectMapper.remove(tag);
+            }
+        }
+
+        if (DEBUG) Log.d(TAG, "[unregister]subjectMapper: " + subjectMapper);
+    }
+
     public void unregister(@NonNull Object tag, @NonNull Observable observable) {
         List<Subject> subjects = subjectMapper.get(tag);
         if (null != subjects) {

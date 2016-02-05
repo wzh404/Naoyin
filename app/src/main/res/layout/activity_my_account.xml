@@ -14,13 +14,24 @@
         <TextView
             android:id="@+id/watcher_name"
             android:layout_width="wrap_content"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:padding="10dp"
             android:text="我的账户"
             android:textColor="#fff"
-            android:textSize="18dp"
+            android:textSize="16dp"
             android:textStyle="bold" />
+        <ImageButton
+            android:id="@+id/product_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="8dp"
+            android:background="@null"
+            android:clickable="true"
+            android:onClick="exitOnClick"
+            android:src="@drawable/icon_setting" />
     </RelativeLayout>
 
     <android.support.v7.widget.RecyclerView

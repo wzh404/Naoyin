@@ -28,30 +28,40 @@ import rx.functions.Action1;
  * Created by WIN10 on 2016/2/1.
  */
 public class MyAccountItemView extends AbstractView {
+    public final static String TAG_LOGIN = "tag_my_account_login";
     private Context context;
+    private String code;
 
-    public MyAccountItemView(Context context, ViewGroup container){
+    public MyAccountItemView(Context context, ViewGroup container) {
         super.init(context, container, R.layout.item_detail_my_account);
         this.context = context;
     }
 
-    public void setMarginBottom(){
-        RecyclerView.LayoutParams layoutParams = (RecyclerView.LayoutParams)getView().getLayoutParams();
+    public void setMarginBottom() {
+        RecyclerView.LayoutParams layoutParams = (RecyclerView.LayoutParams) getView().getLayoutParams();
         layoutParams.setMargins(0, 0, 0, 20);
     }
 
-    public void setOnClick(final JSONObject obj){
+    public void initData(JSONObject obj) {
+        this.code = obj.getString("code");
+
+        setItemOnClick();
+        setItem();
+    }
+
+    public void setItemOnClick() {
         RelativeLayout relativeLayout = get(R.id.item_my_account_layout);
         relativeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String  code = obj.getString("code");
-                if ("0101".equalsIgnoreCase(code)){
-                    Observable<Result> observable = RxBus.get().register("my_fragment_login", Result.class);
+                if (!BrainApplication.isLogin) {
+                    Observable<Result> observable = RxBus.get().register(MyAccountItemView.TAG_LOGIN, Result.class);
                     observable.subscribeOn(AndroidSchedulers.mainThread())
                             .subscribe(loginAction1);
-                    MainActivity mainActivity = (MainActivity)view.getContext();
+                    MainActivity mainActivity = (MainActivity) view.getContext();
                     mainActivity.loginOnClick(view);
+                } else {
+                    Toast.makeText(context, BrainApplication.mobile, Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -60,47 +70,25 @@ public class MyAccountItemView extends AbstractView {
     private Action1 loginAction1 = new Action1<Result>() {
         @Override
         public void call(Result result) {
-            if (result.isResult("my_fragment_login", "OK")) {
-                initLoginMobile();
+            if (result.isResult(MyAccountItemView.TAG_LOGIN, "OK")) {
+                setItem();
             }
+
+            RxBus.get().unregister(MyAccountItemView.TAG_LOGIN);
         }
     };
 
-    private void initNologinMobile(){
-        TextView textView = get(R.id.item_my_account);
-        textView.setText("请登录!");
-        textView.setTextColor(Color.rgb(0xcc, 0xcc, 0xcc));
-
-        Button logout = get(R.id.my_account_logout);
-        logout.setVisibility(View.GONE);
-
-        RelativeLayout relativeLayout = get(R.id.my_name);
-        relativeLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Observable<Result> observable = RxBus.get().register("my_fragment_login", Result.class);
-                observable.subscribeOn(AndroidSchedulers.mainThread())
-                        .subscribe(loginAction1);
-                MainActivity mainActivity = (MainActivity)context;
-                mainActivity.loginOnClick(view);
+    private void setItem() {
+        if ("0101".equalsIgnoreCase(code)) {
+            if (BrainApplication.isLogin) {
+                TextView textView = get(R.id.item_my_name);
+                textView.setText(BrainApplication.mobile);
+                textView.setTextColor(Color.parseColor("#000000"));
+            } else {
+                TextView textView = get(R.id.item_my_name);
+                textView.setText("请登录!");
+                textView.setTextColor(Color.rgb(0xcc, 0xcc, 0xcc));
             }
-        });
-    }
-
-    private void initLoginMobile(){
-        TextView textView = get(R.id.item_my_name);
-        textView.setText(BrainApplication.mobile);
-        textView.setTextColor(Color.parseColor("#000000"));
-
-//        Button logout = get(R.id.my_account_logout);
-//        logout.setVisibility(View.VISIBLE);
-
-//        RelativeLayout relativeLayout = get(R.id.my_name);
-//        relativeLayout.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Toast.makeText(context, BrainApplication.mobile, Toast.LENGTH_SHORT).show();
-//            }
-//        });
+        }
     }
 }

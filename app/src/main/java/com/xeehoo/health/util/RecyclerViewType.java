@@ -6,5 +6,5 @@ package com.xeehoo.health.util;
 public enum RecyclerViewType {
     ITEM,
     ITEM_MARGIN,
-    LOGOUT,
+    TEL,
 }

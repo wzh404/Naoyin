@@ -48,12 +48,12 @@ public class ProductPresenter extends ServicePresenter{
     private Context context;
     private List<Product> products = new ArrayList<Product>();
     private ProductRecyclerAdapter adapter;
-    private ProductView productView;
+//    private ProductView productView;
     private SwipeRefreshLayout swipeRefreshLayout;
 
     public void onCreate(Context context, ProductView view) {
         this.context = context;
-        this.productView = view;
+//        this.productView = view;
         super.init(context);
 
         swipeRefreshLayout = view.get(R.id.product_swipe_refresh);
@@ -67,7 +67,7 @@ public class ProductPresenter extends ServicePresenter{
                 new SwipeRefreshLayout.OnRefreshListener() {
                     @Override
                     public void onRefresh() {
-                        product();
+                        callProduct();
                     }
                 });
 
@@ -77,17 +77,24 @@ public class ProductPresenter extends ServicePresenter{
 
         adapter = new ProductRecyclerAdapter(context, products);
         recyclerView.setAdapter(adapter);
-
         register("product", productAction1);
 
+        callProduct();
+    }
+
+    private void callProduct(){
+        if (products.size() == 0){
+            BrainApplication.productId = 0;
+        }
         product();
     }
 
     private Action1<Result> productAction1 = new Action1<Result>() {
         @Override
         public void call(Result result) {
-            Toast.makeText(context, result.getCode() + " - " + result.getMsg(), Toast.LENGTH_SHORT).show();
-            if ("OK".equalsIgnoreCase(result.getCode())){
+            Log.e("Product", BrainApplication.productId + " - Product2 size " + products.size());
+//            Toast.makeText(context, result.getCode() + " - " + result.getTag(), Toast.LENGTH_SHORT).show();
+            if (result.isResult("product", "OK")){
                 if (products.size() == 1 && products.get(0).getProductId() == 0){
                     products.clear();
                 }

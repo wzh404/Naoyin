@@ -49,6 +49,12 @@ public class MainActivity extends FragmentActivity {
         }
 	}
 
+	@Override
+	public void onDestroy(){
+		super.onDestroy();
+		Log.e("Main", "onDestroy MainActivity");
+	}
+
 	public void loginOnClick(View view){
 		Intent saveIntent = new Intent(MainActivity.this, LoginActivity.class);
 		startActivityForResult(saveIntent, 1);

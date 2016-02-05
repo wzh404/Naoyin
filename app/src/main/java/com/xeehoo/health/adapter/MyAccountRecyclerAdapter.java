@@ -3,26 +3,16 @@ package com.xeehoo.health.adapter;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-import android.view.View;
 import android.view.ViewGroup;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.xeehoo.health.BR;
-import com.xeehoo.health.R;
 import com.xeehoo.health.common.view.RecyclerViewHolder;
-import com.xeehoo.health.model.Product;
 import com.xeehoo.health.util.RecyclerViewType;
 import com.xeehoo.health.util.ResourceUtils;
-import com.xeehoo.health.view.CircleProgressBar;
 import com.xeehoo.health.view.MyAccountItemView;
-import com.xeehoo.health.view.MyAccountLogoutView;
-import com.xeehoo.health.view.ProductEmptyView;
-import com.xeehoo.health.view.ProductItemView;
-
-import java.math.BigDecimal;
-import java.util.List;
+import com.xeehoo.health.view.MyAccountTelView;
 
 /**
  * Created by WIN10 on 2016/2/1.
@@ -42,24 +32,19 @@ public class MyAccountRecyclerAdapter extends RecyclerView.Adapter<RecyclerViewH
         if (viewType == RecyclerViewType.ITEM_MARGIN.ordinal()){
             MyAccountItemView view = new MyAccountItemView(context, parent);
             view.setMarginBottom();
-            JSONObject obj =  (JSONObject)items.get(currentPosition);
-            view.setOnClick(obj);
 
-            RecyclerViewHolder holder = new RecyclerViewHolder(view.getView());
-
+            RecyclerViewHolder holder = new RecyclerViewHolder(view);
             return holder;
         }
         else if (viewType == RecyclerViewType.ITEM.ordinal()){
             MyAccountItemView view = new MyAccountItemView(context, parent);
-            RecyclerViewHolder holder = new RecyclerViewHolder(view.getView());
-            JSONObject obj =  (JSONObject)items.get(currentPosition);
-            view.setOnClick(obj);
+            RecyclerViewHolder holder = new RecyclerViewHolder(view);
 
             return holder;
         }
-        else if (viewType == RecyclerViewType.LOGOUT.ordinal()){
-            MyAccountLogoutView view = new MyAccountLogoutView(context, parent);
-            RecyclerViewHolder holder = new RecyclerViewHolder(view.getView());
+        else if (viewType == RecyclerViewType.TEL.ordinal()){
+            MyAccountTelView view = new MyAccountTelView(context, parent);
+            RecyclerViewHolder holder = new RecyclerViewHolder(view);
             return holder;
         }
 
@@ -74,6 +59,11 @@ public class MyAccountRecyclerAdapter extends RecyclerView.Adapter<RecyclerViewH
         convert(obj);
         holder.getBinding().setVariable(BR.obj, obj);
         holder.getBinding().executePendingBindings();
+
+        if (holder.getIView() instanceof MyAccountItemView){
+            MyAccountItemView myView = (MyAccountItemView)holder.getIView();
+            myView.initData(obj);
+        }
     }
 
     @Override

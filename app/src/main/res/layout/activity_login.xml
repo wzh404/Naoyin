@@ -58,6 +58,7 @@
         android:padding="5dp"
         android:inputType="number"
         android:singleLine="true"
+        android:text="18611330404"
         android:textColor="#666"
         android:textColorHint="#ddd" />
 
@@ -74,7 +75,7 @@
         android:background="@drawable/bg_edittext"
         android:hint="请输入密码"
         android:padding="5dip"
-        android:text=""
+        android:text="123456"
         android:textColor="#666"
         android:inputType="textPassword"
         android:password="true"
@@ -88,7 +89,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="50dp"
-        android:background="@drawable/button_corner_shape"
+        android:background="@drawable/button_red_corner_shape"
         android:clickable="true"
         android:onClick="loginOnClick"
         android:text="登录"

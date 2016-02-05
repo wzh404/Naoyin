@@ -15,7 +15,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="5dp"
             android:orientation="horizontal">
 
             <TextView
@@ -46,7 +46,7 @@
                     android:layout_marginTop="12dp"
                     android:text="@{product.releaseTime}"
                     android:textColor="#999"
-                    android:textSize="16sp" />
+                    android:textSize="14sp" />
             </LinearLayout>
         </LinearLayout>
 
@@ -83,7 +83,7 @@
                         android:layout_marginLeft="16dp"
                         android:layout_marginTop="8dp"
                         android:text="@{product.loanRate}"
-                        android:textColor="@color/text_selected_color"
+                        android:textColor="@color/alzheimer_red"
                         android:textSize="24sp"
                         android:textStyle="bold" />
 
@@ -167,8 +167,8 @@
 
                 <com.xeehoo.health.view.CircleProgressBar
                     android:id="@+id/circleProgressbar"
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
+                    android:layout_width="72dp"
+                    android:layout_height="72dp"
                     android:layout_marginRight="16dp" />
             </LinearLayout>
         </RelativeLayout>
