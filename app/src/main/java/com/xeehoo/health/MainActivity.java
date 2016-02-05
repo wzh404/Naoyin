@@ -49,10 +49,6 @@ public class MainActivity extends FragmentActivity {
         }
 	}
 
-    public void change(){
-        presenter.change();
-    }
-
 	public void loginOnClick(View view){
 		Intent saveIntent = new Intent(MainActivity.this, LoginActivity.class);
 		startActivityForResult(saveIntent, 1);

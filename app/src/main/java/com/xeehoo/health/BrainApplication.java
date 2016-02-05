@@ -32,6 +32,10 @@ public class BrainApplication extends Application {
     private Integer versionCode = 0;
 
     public static String token = "0";
+    public static String mobile = "0";
+    public static boolean isLogin = false;
+    public static int productId = 0;
+    public static int investId = 0;
 
     public Retrofit getRetrofit() {
         return retrofit;
@@ -93,7 +97,7 @@ public class BrainApplication extends Application {
 
         retrofit = new Retrofit.Builder()
                 .client(client)
-                .baseUrl("http://192.168.0.173:8080")
+                .baseUrl("http://192.168.10.60:8080")
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .build();

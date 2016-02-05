@@ -19,9 +19,9 @@ public class RecyclerViewHolderFactory {
     private SparseArray<ViewFactory> factories = new SparseArray();
 
     public RecyclerViewHolderFactory(Context context){
-        registerViewFactory(RecyclerViewType.RECOMMEND_TITLE.ordinal(), new RecommendTitleViewFactory());
-        registerViewFactory(RecyclerViewType.TRAIN_ITEM.ordinal(), new TrainItemViewFactory());
-        registerViewFactory(RecyclerViewType.PLAN_ITEM.ordinal(), new PlanItemViewFactory());
+//        registerViewFactory(RecyclerViewType.RECOMMEND_TITLE.ordinal(), new RecommendTitleViewFactory());
+//        registerViewFactory(RecyclerViewType.TRAIN_ITEM.ordinal(), new TrainItemViewFactory());
+//        registerViewFactory(RecyclerViewType.PLAN_ITEM.ordinal(), new PlanItemViewFactory());
 
         this.context = context;
     }

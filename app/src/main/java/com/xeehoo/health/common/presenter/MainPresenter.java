@@ -21,6 +21,7 @@ import com.xeehoo.health.common.view.IView;
 import com.xeehoo.health.common.view.TabshotContentView;
 import com.xeehoo.health.fragment.BrainFragment;
 import com.xeehoo.health.fragment.HomeFragment;
+import com.xeehoo.health.fragment.MyAccountFragment;
 import com.xeehoo.health.fragment.MyFragment;
 import com.xeehoo.health.fragment.NurseFragment;
 import com.xeehoo.health.fragment.YdzcHomeFragment;
@@ -45,7 +46,7 @@ public class MainPresenter implements Presenter {
         tbs.add(new TabBean("首页", R.drawable.selector_tab_home, new YdzcHomeFragment()));
         tbs.add(new TabBean("投资理财", R.drawable.selector_tab_share, new YdzcInvestFragment()));
 //        tbs.add(new TabBean("圈子", R.drawable.selector_tab_train, new MyFragment()));
-        tbs.add(new TabBean("我的账户", R.drawable.selector_tab_me, new MyFragment()));
+        tbs.add(new TabBean("我的账户", R.drawable.selector_tab_me, new MyAccountFragment()));
 
         final ViewPager viewPager = view.get(R.id.pager);
         initViewPager(viewPager, tbs);
@@ -58,16 +59,6 @@ public class MainPresenter implements Presenter {
 
             @Override
             public void onPageSelected(int position) {
-                Log.e("Page", "onPageSelected  " + position);
-                if (fragmentTabHost.getCurrentTab() == 2){
-                    if ("0".equalsIgnoreCase(BrainApplication.token)){
-                        MainActivity mainActivity = (MainActivity)context;
-                        mainActivity.loginOnClick(null);
-                        fragmentTabHost.setCurrentTab(0);
-                        return;
-                    }
-                }
-
                 TabWidget widget = fragmentTabHost.getTabWidget();
                 int oldFocusability = widget.getDescendantFocusability();
                 widget.setDescendantFocusability(ViewGroup.FOCUS_BLOCK_DESCENDANTS);
@@ -83,15 +74,6 @@ public class MainPresenter implements Presenter {
         fragmentTabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
             @Override
             public void onTabChanged(String tabId) {
-                Log.e("Page", "onTabChanged  " + fragmentTabHost.getCurrentTab());
-                if (fragmentTabHost.getCurrentTab() == 2){
-                    if ("0".equalsIgnoreCase(BrainApplication.token)){
-                        MainActivity mainActivity = (MainActivity)context;
-                        mainActivity.loginOnClick(null);
-                        fragmentTabHost.setCurrentTab(0);
-                        return;
-                    }
-                }
                 viewPager.setCurrentItem(fragmentTabHost.getCurrentTab());
             }
         });
@@ -130,22 +112,6 @@ public class MainPresenter implements Presenter {
         vp.setAdapter(mFragmentAdapter);
         vp.setCurrentItem(0);
         vp.setOffscreenPageLimit(mFragmentList.size());
-    }
-
-    public void change(){
-//        MyFragment myFragment = (MyFragment)mFragmentAdapter.getItem(2);
-//        myFragment.setState(1);
-//        Log.e("change", "-------myFragment------------");
-//        mFragmentAdapter.remove();
-//        MyFragment f = new MyFragment();
-//        mFragmentAdapter.add(f);
-//        FragmentTransaction transaction=fragmentManager.beginTransaction();
-//
-//        transaction.add(f,"a");
-//        transaction.attach(f);
-//        transaction.commit();
-
-        mFragmentAdapter.notifyDataSetChanged();
     }
 
     private class TabBean {

@@ -84,12 +84,12 @@ public class ServicePresenter {
     }
 
     public void product() {
-        Observable<JsonObject> observable = shareService.products(0);
+        Observable<JsonObject> observable = shareService.products(BrainApplication.productId);
         call(observable, "product");
     }
 
     public void myProduct() {
-        Observable<JsonObject> observable = shareService.myProduct(0);
+        Observable<JsonObject> observable = shareService.myProduct(BrainApplication.investId);
         call(observable, "my_product");
     }
 }

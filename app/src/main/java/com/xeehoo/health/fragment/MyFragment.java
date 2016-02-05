@@ -1,5 +1,8 @@
 package com.xeehoo.health.fragment;
 
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -8,86 +11,95 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.xeehoo.health.BrainApplication;
 import com.xeehoo.health.MainActivity;
 import com.xeehoo.health.R;
+import com.xeehoo.health.activity.LoginActivity;
 import com.xeehoo.health.presenter.LoginPresenter;
+import com.xeehoo.health.rxjava.action.Result;
+import com.xeehoo.health.rxjava.rxbus.RxBus;
 import com.xeehoo.health.view.LoginView;
 import com.xeehoo.health.view.MyView;
 
+import rx.Observable;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Action1;
+
 public class MyFragment extends Fragment  {
-//    private View view;
+    private MyView view;
+    private Context context;
 
     @Override
 	public View onCreateView(final LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 		super.onCreateView(inflater, container, savedInstanceState);
-        Log.e("MY", "----------onCreateView");
-        MyView view = new MyView(inflater.getContext(), container);
-        return view.getView();
+        this.context = inflater.getContext();
+        view = new MyView(context, container);
 
-//        view = inflater.inflate(R.layout.fragment_my, null);
-//
-//        renderView();
-//        if ("0".equalsIgnoreCase(BrainApplication.token)) {
-//            state = 0;
-//            LinearLayout layout = (LinearLayout)view.findViewById(R.id.activity_login_layout);
-//            layout.setVisibility(View.VISIBLE);
-//        }
-//        else{
-//            state = 1;
-//            LinearLayout layout = (LinearLayout)view.findViewById(R.id.activity_my_layout);
-//            layout.setVisibility(View.GONE);
-//        }
-
-//		if ("0".equalsIgnoreCase(BrainApplication.token)){
-//            LoginView loginView = new LoginView(inflater.getContext(), container);
-//            final LoginPresenter presenter = new LoginPresenter();
-//            presenter.onCreate(inflater.getContext(), null);
-//
-//            Button loginBtn = (Button)loginView.get(R.id.btn_login);
-//            loginBtn.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    presenter.login("18611330404", "123456");
-//                }
-//            });
-//
-//			return loginView.getView();
-//		}else{
-//            MyView view = new MyView(inflater.getContext(), container);
-//			return view.getView();
-//		}
-//
-//        return view;
+        if (!BrainApplication.isLogin) {
+            initNologinMobile();
+        }
+        else{
+            initLoginMobile();
+        }
+		return view.getView();
 	}
-
-//    public void renderView(){
-//        Log.e("MY", "----------renderView");
-//        LinearLayout layout1 = (LinearLayout)view.findViewById(R.id.activity_login_layout);
-//        LinearLayout layout2 = (LinearLayout)view.findViewById(R.id.activity_my_layout);
-//        if ("0".equalsIgnoreCase(BrainApplication.token)) {
-//            Log.e("MY", "----------renderView1");
-//            layout1.setVisibility(View.VISIBLE);
-//            layout2.setVisibility(View.GONE);
-//        }
-//        else{
-//            Log.e("MY", "----------renderView2");
-//            layout1.setVisibility(View.GONE);
-//            layout2.setVisibility(View.VISIBLE);
-//        }
-//    }
 
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 	}
 
-//    public void update(){
-//        Log.e("MY", "----------update");
-//        FragmentTransaction transaction = getFragmentManager().beginTransaction();
-//        transaction.replace(R.id.)
-//    }
+    private Action1 loginAction1 = new Action1<Result>() {
+        @Override
+        public void call(Result result) {
+            if (result.isResult("my_fragment_login", "OK")) {
+                initLoginMobile();
+            }
+        }
+    };
+
+    private void initNologinMobile(){
+        TextView textView = view.get(R.id.item_my_account);
+        textView.setText("请登录!");
+        textView.setTextColor(Color.rgb(0xcc, 0xcc, 0xcc));
+
+        Button logout = view.get(R.id.my_account_logout);
+        logout.setVisibility(View.GONE);
+
+        RelativeLayout relativeLayout = view.get(R.id.my_name);
+        relativeLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Observable<Result> observable = RxBus.get().register("my_fragment_login", Result.class);
+                observable.subscribeOn(AndroidSchedulers.mainThread())
+                        .subscribe(loginAction1);
+                Intent saveIntent = new Intent(context, LoginActivity.class);
+                startActivityForResult(saveIntent, 1);
+            }
+        });
+    }
+
+    private void initLoginMobile(){
+        TextView textView = view.get(R.id.item_my_account);
+        textView.setText(BrainApplication.mobile);
+        textView.setTextColor(Color.parseColor("#000000"));
+
+        Button logout = view.get(R.id.my_account_logout);
+        logout.setVisibility(View.VISIBLE);
+
+        RelativeLayout relativeLayout = view.get(R.id.my_name);
+        relativeLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(context, BrainApplication.mobile, Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
 }

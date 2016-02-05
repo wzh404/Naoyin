@@ -1,0 +1,49 @@
+[
+  {
+    "type": "ITEM_MARGIN",
+    "title": "请登录!",
+    "code": "0101",
+    "icon": "usericon03"
+  },
+  {
+    "type": "ITEM",
+    "title": "理财产品",
+    "code": "0201",
+    "icon": "usericon05"
+  },
+  {
+    "type": "ITEM",
+    "title": "在线充值",
+    "code": "0202",
+    "icon": "usericon04"
+  },
+  {
+    "type": "ITEM_MARGIN",
+    "title": "在线提现",
+    "code": "0203",
+    "icon": "usericon02"
+  },
+  {
+    "type": "ITEM",
+    "title": "第三方托管账户",
+    "code": "0301",
+    "icon": "usericon01"
+  },
+  {
+    "type": "ITEM",
+    "title": "修改登录密码",
+    "code": "0302",
+    "icon": "usericon06"
+  },
+  {
+    "type": "ITEM_MARGIN",
+    "title": "修改支付密码",
+    "code": "0303",
+    "icon": "usericon07"
+  },
+  {
+    "type": "LOGOUT",
+    "title": "退出登录",
+    "code": "0901"
+  }
+]

@@ -21,14 +21,11 @@ public class LoginActivity extends Activity {
     private SweetAlertDialog pDialog;
     private LoginView loginView;
 
-//    Handler handler = new Handler();
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         this.loginPresenter = new LoginPresenter();
-
         loginView = new LoginView(this, null);
         setContentView(loginView.getView());
         loginPresenter.onCreate(this, loginView);
@@ -54,9 +51,9 @@ public class LoginActivity extends Activity {
         loginPresenter.login(loginView.getMobile(), loginView.getPwd());
     }
 
-    public void loginOK(){
-        setResult(2);
-    }
+//    public void loginOK(){
+//        setResult(2);
+//    }
 
     public void dismissProgressBar(){
         pDialog.dismiss();
@@ -71,8 +68,8 @@ public class LoginActivity extends Activity {
 //        } else {
 //            Toast.makeText(this, "请先登录", Toast.LENGTH_SHORT).show();
 //        }
-        Intent saveIntent = new Intent(LoginActivity.this, CircleActivity.class);
-        startActivity(saveIntent);
+//        Intent saveIntent = new Intent(LoginActivity.this, CircleActivity.class);
+//        startActivity(saveIntent);
     }
 
     public void regOnClick(View view) {
@@ -88,7 +85,6 @@ public class LoginActivity extends Activity {
     public void onDestroy() {
         super.onDestroy();
         loginPresenter.onDestroy();
-
         Log.e("Destroy", "onDestroy");
     }
 
