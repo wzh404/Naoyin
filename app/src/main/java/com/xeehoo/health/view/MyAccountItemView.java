@@ -54,14 +54,21 @@ public class MyAccountItemView extends AbstractView {
         relativeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                MainActivity mainActivity = (MainActivity) view.getContext();
+
                 if (!BrainApplication.isLogin) {
-                    Observable<Result> observable = RxBus.get().register(MyAccountItemView.TAG_LOGIN, Result.class);
-                    observable.subscribeOn(AndroidSchedulers.mainThread())
-                            .subscribe(loginAction1);
-                    MainActivity mainActivity = (MainActivity) view.getContext();
-                    mainActivity.loginOnClick(view);
+                    if ("0101".equalsIgnoreCase(code)) {
+                        Observable<Result> observable = RxBus.get().register(MyAccountItemView.TAG_LOGIN, Result.class);
+                        observable.subscribeOn(AndroidSchedulers.mainThread())
+                                .subscribe(loginAction1);
+
+                        mainActivity.loginOnClick(view);
+                    } else {
+                        Toast.makeText(context, "请登录！", Toast.LENGTH_SHORT).show();
+                    }
                 } else {
                     Toast.makeText(context, BrainApplication.mobile, Toast.LENGTH_SHORT).show();
+                    mainActivity.route(code);
                 }
             }
         });
@@ -79,14 +86,14 @@ public class MyAccountItemView extends AbstractView {
     };
 
     private void setItem() {
-        if ("0101".equalsIgnoreCase(code)) {
+        if ("0101".equalsIgnoreCase(code)) { // 用户信息
             if (BrainApplication.isLogin) {
                 TextView textView = get(R.id.item_my_name);
                 textView.setText(BrainApplication.mobile);
                 textView.setTextColor(Color.parseColor("#000000"));
             } else {
                 TextView textView = get(R.id.item_my_name);
-                textView.setText("请登录!");
+                textView.setText("请登录/注册新用户");
                 textView.setTextColor(Color.rgb(0xcc, 0xcc, 0xcc));
             }
         }

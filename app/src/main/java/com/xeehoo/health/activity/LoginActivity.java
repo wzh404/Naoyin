@@ -51,15 +51,11 @@ public class LoginActivity extends Activity {
         loginPresenter.login(loginView.getMobile(), loginView.getPwd());
     }
 
-//    public void loginOK(){
-//        setResult(2);
-//    }
-
     public void dismissProgressBar(){
         pDialog.dismiss();
     }
 
-    public void pwdOnClick(View view) {
+    public void resetPwdOnClick(View view) {
 
 //        loginPresenter.resetPwdClick("18611330404", "0000", "123456");
 //        if (BrainApplication.token != null) {
@@ -68,34 +64,21 @@ public class LoginActivity extends Activity {
 //        } else {
 //            Toast.makeText(this, "请先登录", Toast.LENGTH_SHORT).show();
 //        }
-//        Intent saveIntent = new Intent(LoginActivity.this, CircleActivity.class);
-//        startActivity(saveIntent);
+        Intent saveIntent = new Intent(LoginActivity.this, ResetPwdActivity.class);
+        startActivity(saveIntent);
     }
 
-    public void regOnClick(View view) {
+    public void registerOnClick(View view) {
 //        loginPresenter.registerClick("18611330404", "0000", "123456");
 //        loginPresenter.changePwdClick("123456", "123456");
+        Intent saveIntent = new Intent(LoginActivity.this, RegisterActivity.class);
+        startActivity(saveIntent);
     }
-
-//    public void exitOnClick(View view) {
-//        this.finish();
-//    }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
         loginPresenter.onDestroy();
         Log.e("Destroy", "onDestroy");
-    }
-
-    private void startWebview(String title, String url) {
-        Bundle bundle = new Bundle();
-
-        bundle.putString("url", url);
-        bundle.putString("title", title);
-        Intent intent = new Intent(this, BaseWebActivity.class);
-        intent.putExtras(bundle);
-
-        startActivity(intent);
     }
 }

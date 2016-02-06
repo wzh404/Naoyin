@@ -33,7 +33,16 @@ public class ProgressWebView extends WebView {
         progressbar.setProgressDrawable(drawable);
         addView(progressbar);
         setWebChromeClient(new WebChromeClient());
+        setWebViewClient(new MyWebViewClient());
         initWebChromeClient();
+    }
+
+    private class MyWebViewClient extends WebViewClient {
+        @Override
+        public boolean shouldOverrideUrlLoading(WebView view, String url) {
+            view.loadUrl(url);
+            return true;
+        }
     }
 
     public class WebChromeClient extends android.webkit.WebChromeClient {

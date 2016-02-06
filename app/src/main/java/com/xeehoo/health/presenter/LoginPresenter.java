@@ -59,7 +59,6 @@ public class LoginPresenter extends ServicePresenter {
                 r.setCode("OK");
                 RxBus.get().post(MyAccountItemView.TAG_LOGIN, r);
 
-//                loginActivity.loginOK();
                 loginActivity.finish();
             }
         }

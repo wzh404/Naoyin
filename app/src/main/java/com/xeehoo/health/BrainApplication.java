@@ -77,7 +77,7 @@ public class BrainApplication extends Application {
         }
 
         OkHttpClient client = new OkHttpClient.Builder()
-                .connectTimeout(45, TimeUnit.SECONDS)
+                .connectTimeout(10, TimeUnit.SECONDS)
                 .addInterceptor(new Interceptor() {
                     @Override
                     public Response intercept(Chain chain) throws IOException {
@@ -97,7 +97,7 @@ public class BrainApplication extends Application {
 
         retrofit = new Retrofit.Builder()
                 .client(client)
-                .baseUrl("http://192.168.10.60:8080")
+                .baseUrl("http://192.168.0.173:8080")
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .build();

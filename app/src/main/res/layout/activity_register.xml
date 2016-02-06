@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:padding="10dp"
-            android:text="登录"
+            android:text="注册盈达账户"
             android:textColor="#fff"
             android:textSize="18dp"
             android:textStyle="bold" />
@@ -36,46 +36,37 @@
             android:clickable="true"/>
     </RelativeLayout>
 
-    <ImageView
-        android:id="@+id/image"
-        android:layout_width="175dp"
-        android:layout_height="75dp"
-        android:layout_centerVertical="true"
-        android:layout_gravity="center"
-        android:layout_marginTop="50dp"
-        android:src="@drawable/logo"></ImageView>
-
     <EditText
-        android:id="@+id/login_edit_account"
+        android:id="@+id/register_edit_account"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginBottom="5px"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
         android:layout_marginTop="50dp"
         android:background="@drawable/bg_edittext"
-        android:hint="请输入手机号"
+        android:hint="请填写手机号"
         android:padding="5dp"
         android:inputType="number"
         android:singleLine="true"
-        android:text="18611330404"
+        android:text=""
         android:textColor="#666"
         android:textColorHint="#ddd" />
 
     <EditText
-        android:id="@+id/login_edit_password"
+        android:id="@+id/register_edit_password"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_alignParentTop="true"
         android:layout_marginBottom="5px"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="16dp"
         android:singleLine="true"
         android:background="@drawable/bg_edittext"
-        android:hint="请输入密码"
+        android:hint="填写6-14位密码"
         android:padding="5dip"
-        android:text="123456"
+        android:text=""
         android:textColor="#666"
         android:inputType="textPassword"
         android:password="true"
@@ -86,46 +77,28 @@
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginBottom="5px"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/button_red_corner_shape"
         android:clickable="true"
-        android:onClick="loginOnClick"
-        android:text="登录"
+        android:onClick="mobileSmsOnClick"
+        android:text="获取手机验证码"
         android:textColor="#FFF"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:layout_gravity="center"
+        android:layout_gravity="left"
         android:layout_marginTop="12dp"
-        android:text="忘记密码？"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:text="阅读并接受《用户协议》"
         android:textColor="#666"
         android:textSize="16sp"
         android:clickable="true"
-        android:onClick="resetPwdOnClick"/>
+        android:onClick="pwdOnClick"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:layout_weight="0.1"
-        android:gravity="bottom"
-        android:orientation="vertical"
-        android:layout_marginBottom="20dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_gravity="center"
-            android:layout_marginTop="12dp"
-            android:text="还没有账户? 现在去免费注册"
-            android:textColor="#666"
-            android:textSize="16sp"
-            android:clickable="true"
-            android:onClick="registerOnClick"/>
-    </LinearLayout>
 </LinearLayout>
