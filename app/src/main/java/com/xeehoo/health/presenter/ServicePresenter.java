@@ -95,6 +95,6 @@ public class ServicePresenter {
 
     public void invest(Integer productId, Integer amount, String pwd) {
         Observable<JsonObject> observable = shareService.invest(productId, amount, pwd);
-        call(observable, "product");
+        call(observable, "pay");
     }
 }
