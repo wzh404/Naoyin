@@ -92,4 +92,9 @@ public class ServicePresenter {
         Observable<JsonObject> observable = shareService.myProduct(BrainApplication.investId);
         call(observable, "my_product");
     }
+
+    public void invest(Integer productId, Integer amount, String pwd) {
+        Observable<JsonObject> observable = shareService.invest(productId, amount, pwd);
+        call(observable, "product");
+    }
 }

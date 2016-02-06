@@ -103,7 +103,7 @@
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:layout_marginTop="50dp"
-            android:background="@drawable/button_corner_shape"
+            android:background="@drawable/button_red_corner_shape"
             android:clickable="true"
             android:text="立即支付"
             android:textColor="#FFF"

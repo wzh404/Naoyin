@@ -1,5 +1,8 @@
 package com.xeehoo.health.util;
 
+import java.text.NumberFormat;
+import java.util.Locale;
+
 /**
  * Created by WIN10 on 2016/2/4.
  */
@@ -28,5 +31,11 @@ public class CommonUtil {
             return "天";
         }
         return unit;
+    }
+
+    public static String getMoney(String string) {
+        Double numDouble = Double.parseDouble(string);
+        NumberFormat format = NumberFormat.getCurrencyInstance(Locale.CHINA);
+        return format.format(numDouble);
     }
 }

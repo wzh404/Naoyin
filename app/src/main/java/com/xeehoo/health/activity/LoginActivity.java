@@ -77,9 +77,9 @@ public class LoginActivity extends Activity {
 //        loginPresenter.changePwdClick("123456", "123456");
     }
 
-    public void exitOnClick(View view) {
-        this.finish();
-    }
+//    public void exitOnClick(View view) {
+//        this.finish();
+//    }
 
     @Override
     public void onDestroy() {

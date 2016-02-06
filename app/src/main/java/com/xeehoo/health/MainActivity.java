@@ -2,11 +2,14 @@ package com.xeehoo.health;
 
 import java.io.DataOutputStream;
 
+import com.xeehoo.health.activity.InvestActivity;
 import com.xeehoo.health.activity.LoginActivity;
 import com.xeehoo.health.activity.MyProductActivity;
+import com.xeehoo.health.activity.PayActivity;
 import com.xeehoo.health.activity.ProductsActivity;
 import com.xeehoo.health.common.presenter.MainPresenter;
 import com.xeehoo.health.common.view.MainView;
+import com.xeehoo.health.model.Product;
 
 
 import android.content.Intent;
@@ -55,6 +58,10 @@ public class MainActivity extends FragmentActivity {
 		Log.e("Main", "onDestroy MainActivity");
 	}
 
+	public void settingOnClick(View view){
+
+	}
+
 	public void loginOnClick(View view){
 		Intent saveIntent = new Intent(MainActivity.this, LoginActivity.class);
 		startActivityForResult(saveIntent, 1);
@@ -66,9 +73,10 @@ public class MainActivity extends FragmentActivity {
 		startActivity(saveIntent);
 	}
 
-	public void productsClick(View view){
-		Toast.makeText(this, "my product investment", Toast.LENGTH_SHORT).show();
-		Intent saveIntent = new Intent(MainActivity.this, ProductsActivity.class);
-		startActivity(saveIntent);
+	public void payProduct(Product product){
+		Intent intent = new Intent(MainActivity.this, InvestActivity.class);
+		intent.putExtra("product", product);
+
+		startActivity(intent);
 	}
 }

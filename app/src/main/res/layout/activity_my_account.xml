@@ -30,7 +30,7 @@
             android:layout_marginRight="8dp"
             android:background="@null"
             android:clickable="true"
-            android:onClick="exitOnClick"
+            android:onClick="settingOnClick"
             android:src="@drawable/icon_setting" />
     </RelativeLayout>
 

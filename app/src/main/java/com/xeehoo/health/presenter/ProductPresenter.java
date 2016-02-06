@@ -92,7 +92,7 @@ public class ProductPresenter extends ServicePresenter{
     private Action1<Result> productAction1 = new Action1<Result>() {
         @Override
         public void call(Result result) {
-            Log.e("Product", BrainApplication.productId + " - Product2 size " + products.size());
+//            Log.e("Product", BrainApplication.productId + " - Product2 size " + products.size());
 //            Toast.makeText(context, result.getCode() + " - " + result.getTag(), Toast.LENGTH_SHORT).show();
             if (result.isResult("product", "OK")){
                 if (products.size() == 1 && products.get(0).getProductId() == 0){
@@ -100,7 +100,7 @@ public class ProductPresenter extends ServicePresenter{
                 }
 
                 JsonArray items = result.getObj().getAsJsonArray("data");
-                Log.e("Action1", "items size is " + items.size());
+//                Log.e("Action1", "items size is " + items.size());
                 products.addAll(0, Arrays.asList(new Gson().fromJson(items, Product[].class)));
                 adapter.notifyDataSetChanged();
 

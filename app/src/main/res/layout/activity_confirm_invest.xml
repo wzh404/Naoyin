@@ -234,7 +234,7 @@
             android:layout_marginBottom="5dp"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
-            android:background="@drawable/button_corner_shape"
+            android:background="@drawable/button_red_corner_shape"
             android:text="确认下单"
             android:textColor="#FFF"
             android:textSize="24sp"
