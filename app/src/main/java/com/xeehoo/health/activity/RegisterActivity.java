@@ -27,4 +27,8 @@ public class RegisterActivity extends Activity {
         Intent saveIntent = new Intent(RegisterActivity.this, MobileSmsActivity.class);
         startActivity(saveIntent);
     }
+
+    public void exitOnClick(View view) {
+        this.finish();
+    }
 }

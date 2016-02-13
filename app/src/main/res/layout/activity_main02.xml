@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@drawable/bg_title"
-        android:visibility="gone"
+        android:visibility="visible"
         android:gravity="center_horizontal|center_vertical">
 
         <TextView

@@ -33,7 +33,8 @@
             android:background="@null"
             android:padding="4dp"
             android:src="@drawable/back"
-            android:clickable="true"/>
+            android:clickable="true"
+            android:onClick="exitOnClick"/>
     </RelativeLayout>
 
     <EditText

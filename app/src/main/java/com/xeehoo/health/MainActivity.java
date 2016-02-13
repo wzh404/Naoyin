@@ -1,17 +1,14 @@
 package com.xeehoo.health;
 
-import java.io.DataOutputStream;
-
 import com.xeehoo.health.activity.ChangePwdActivity;
 import com.xeehoo.health.activity.InvestActivity;
 import com.xeehoo.health.activity.LoginActivity;
 import com.xeehoo.health.activity.MyProductActivity;
-import com.xeehoo.health.activity.PayActivity;
-import com.xeehoo.health.activity.ProductsActivity;
 import com.xeehoo.health.common.presenter.MainPresenter;
 import com.xeehoo.health.common.view.MainView;
 import com.xeehoo.health.common.webview.BaseWebActivity;
 import com.xeehoo.health.model.Product;
+import com.xeehoo.health.util.AppConfig;
 
 
 import android.content.Intent;
@@ -21,7 +18,6 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTabHost;
 import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
 
 public class MainActivity extends FragmentActivity {
 	private MainPresenter presenter;
@@ -77,9 +73,13 @@ public class MainActivity extends FragmentActivity {
 		startActivity(intent);
 	}
 
+    public void settingOnClick(View view){
+
+    }
+
 	public void route(String code){
         if ("0201".equalsIgnoreCase(code)){
-            startWebview("注册第三方托管账户", "http://192.168.0.173:8080/app/fuiou/register?token=" + BrainApplication.token);
+            startWebview("注册第三方托管账户", AppConfig.WEB_URL + "/app/fuiou/register?token=" + BrainApplication.token);
         }
 		else if ("0202".equalsIgnoreCase(code)){
             Intent saveIntent = new Intent(MainActivity.this, ChangePwdActivity.class);
@@ -94,10 +94,10 @@ public class MainActivity extends FragmentActivity {
             startActivity(saveIntent);
         }
         else if ("0302".equalsIgnoreCase(code)){
-            startWebview("在线充值", "http://192.168.0.173:8080/app/fuiou/recharge?amt=10000&token=" + BrainApplication.token);
+            startWebview("在线充值", AppConfig.WEB_URL + "/app/fuiou/recharge?amt=10000&token=" + BrainApplication.token);
         }
         else if ("0303".equalsIgnoreCase(code)){
-            startWebview("在线提现", "http://192.168.0.173:8080/app/fuiou/withdraw?amt=10000&token=" + BrainApplication.token);
+            startWebview("在线提现", AppConfig.WEB_URL + "/app/fuiou/withdraw?amt=10000&token=" + BrainApplication.token);
         }
 	}
 

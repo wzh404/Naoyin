@@ -56,21 +56,11 @@ public class LoginActivity extends Activity {
     }
 
     public void resetPwdOnClick(View view) {
-
-//        loginPresenter.resetPwdClick("18611330404", "0000", "123456");
-//        if (BrainApplication.token != null) {
-////            startWebview("测试", "http://192.168.10.60:8080/app/fuiou/register?token=" + BrainApplication.token);
-//            startWebview("测试", "http://192.168.10.60:8080/app/fuiou/recharge?token=" + BrainApplication.token);
-//        } else {
-//            Toast.makeText(this, "请先登录", Toast.LENGTH_SHORT).show();
-//        }
         Intent saveIntent = new Intent(LoginActivity.this, ResetPwdActivity.class);
         startActivity(saveIntent);
     }
 
     public void registerOnClick(View view) {
-//        loginPresenter.registerClick("18611330404", "0000", "123456");
-//        loginPresenter.changePwdClick("123456", "123456");
         Intent saveIntent = new Intent(LoginActivity.this, RegisterActivity.class);
         startActivity(saveIntent);
     }
@@ -80,5 +70,9 @@ public class LoginActivity extends Activity {
         super.onDestroy();
         loginPresenter.onDestroy();
         Log.e("Destroy", "onDestroy");
+    }
+
+    public void exitOnClick(View view) {
+        this.finish();
     }
 }

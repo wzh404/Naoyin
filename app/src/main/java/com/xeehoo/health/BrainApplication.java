@@ -12,6 +12,7 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 import com.nostra13.universalimageloader.core.download.BaseImageDownloader;
+import com.xeehoo.health.util.AppConfig;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
@@ -97,7 +98,7 @@ public class BrainApplication extends Application {
 
         retrofit = new Retrofit.Builder()
                 .client(client)
-                .baseUrl("http://192.168.0.173:8080")
+                .baseUrl(AppConfig.WEB_URL)
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .build();

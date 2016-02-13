@@ -27,4 +27,8 @@ public class ResetPwdActivity extends Activity {
         Intent saveIntent = new Intent(ResetPwdActivity.this, MobileSmsActivity.class);
         startActivity(saveIntent);
     }
+
+    public void exitOnClick(View view) {
+        this.finish();
+    }
 }

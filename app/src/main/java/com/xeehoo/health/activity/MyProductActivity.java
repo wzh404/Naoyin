@@ -2,6 +2,7 @@ package com.xeehoo.health.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.View;
 
 import com.xeehoo.health.presenter.MyProductPresenter;
 import com.xeehoo.health.view.MyProductView;
@@ -19,5 +20,9 @@ public class MyProductActivity extends Activity {
         MyProductView mv = new MyProductView(this, null);
         setContentView(mv.getView());
         myProductPresenter.onCreate(this, mv);
+    }
+
+    public void exitOnClick(View view) {
+        this.finish();
     }
 }

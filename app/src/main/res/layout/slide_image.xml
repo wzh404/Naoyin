@@ -10,9 +10,8 @@
         <android.support.v4.view.ViewPager
             android:id="@+id/image_slide_page"
             android:layout_width="fill_parent"
-            android:layout_height="200dp"
+            android:layout_height="150dp"
             android:focusable="true" />
-
         <RelativeLayout
             android:id="@+id/layout_title_text"
             style="@style/Transparent"
@@ -20,22 +19,14 @@
             android:layout_height="30dp"
             android:layout_gravity="bottom">
 
-            <RelativeLayout
+            <LinearLayout
+                android:id="@+id/layout_circle_images"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:id="@+id/layout_circle_images"
-                    android:layout_width="wrap_content"
-                    android:layout_height="15dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginTop="10dp"
-                    android:gravity="right|center"
-                    android:orientation="horizontal" />
-            </RelativeLayout>
+                android:layout_height="15dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:gravity="right|center"
+                android:orientation="horizontal" />
         </RelativeLayout>
     </FrameLayout>

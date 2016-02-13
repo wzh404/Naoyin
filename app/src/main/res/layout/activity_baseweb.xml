@@ -7,7 +7,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="#ff495a" >
+        android:background="@drawable/bg_title" >
 
         <ImageView
             android:id="@+id/activity_selectimg_cancel2"

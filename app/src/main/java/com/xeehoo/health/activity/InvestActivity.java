@@ -70,5 +70,9 @@ public class InvestActivity extends Activity {
             startActivity(intent);
         }
     }
+
+    public void exitOnClick(View view) {
+        this.finish();
+    }
 }
 
