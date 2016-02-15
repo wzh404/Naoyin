@@ -18,7 +18,7 @@ public class MyAccountFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
-        Context context = this.getActivity().getBaseContext();
+        Context context = this.getActivity();
         MyAccountView view = new MyAccountView(context, container);
         MyAccountPresenter presenter = new MyAccountPresenter();
         presenter.onCreate(context, view);

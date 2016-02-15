@@ -49,6 +49,10 @@ public class MyAccountItemView extends AbstractView {
         setItem();
     }
 
+    public String getCode(){
+        return code;
+    }
+
     public void setItemOnClick() {
         RelativeLayout relativeLayout = get(R.id.item_my_account_layout);
         relativeLayout.setOnClickListener(new View.OnClickListener() {
@@ -85,7 +89,7 @@ public class MyAccountItemView extends AbstractView {
         }
     };
 
-    private void setItem() {
+    public void setItem() {
         if ("0101".equalsIgnoreCase(code)) { // 用户信息
             if (BrainApplication.isLogin) {
                 TextView textView = get(R.id.item_my_name);
@@ -96,6 +100,9 @@ public class MyAccountItemView extends AbstractView {
                 textView.setText("请登录/注册新用户");
                 textView.setTextColor(Color.rgb(0xcc, 0xcc, 0xcc));
             }
+
+            MainActivity mainActivity = (MainActivity) view.getContext();
+            mainActivity.setAccountItemView(this);
         }
     }
 }

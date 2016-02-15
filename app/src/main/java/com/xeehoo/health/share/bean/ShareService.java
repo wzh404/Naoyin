@@ -27,7 +27,7 @@ public interface ShareService {
     Observable<JsonObject> setPayPwd(@Query("mobile") String mobile, @Query("sms") String sms, @Query("pwd") String pwd);
 
     @GET("/app/register")
-    Observable<JsonObject> register(@Query("mobile") String mobile, @Query("sms") String sms, @Query("pwd") String pwd);
+    Observable<JsonObject> register(@Query("mobile") String mobile, @Query("sms") String sms, @Query("pwd") String pwd, @Query("invite") String invite);
 
     @GET("/app/fuiou/balance")
     Observable<JsonObject> balance();
@@ -40,6 +40,9 @@ public interface ShareService {
 
     @GET("/app/product")
     Observable<JsonObject> products(@Query("product_id") Integer productId);
+
+    @GET("/app/mobile")
+    Observable<JsonObject> mobile(@Query("mobile") String mobile);
 
     @GET("/app/invest")
     Observable<JsonObject> invest(@Query("product_id") Integer productId, @Query("amount")Integer amount, @Query("pwd")String pwd);

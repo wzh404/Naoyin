@@ -18,7 +18,7 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class LoginActivity extends Activity {
     private LoginPresenter loginPresenter;
-    private SweetAlertDialog pDialog;
+    private SweetAlertDialog dialog;
     private LoginView loginView;
 
     @Override
@@ -30,10 +30,10 @@ public class LoginActivity extends Activity {
         setContentView(loginView.getView());
         loginPresenter.onCreate(this, loginView);
 
-        pDialog = new SweetAlertDialog(this, SweetAlertDialog.PROGRESS_TYPE);
-        pDialog.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
-        pDialog.setTitleText("Loading");
-        pDialog.setCancelable(false);
+        dialog = new SweetAlertDialog(this, SweetAlertDialog.PROGRESS_TYPE);
+        dialog.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
+        dialog.setTitleText("Loading");
+        dialog.setCancelable(false);
     }
 
     public void loginOnClick(View view) {
@@ -47,16 +47,17 @@ public class LoginActivity extends Activity {
             return;
         }
 
-        pDialog.show();
+        dialog.show();
         loginPresenter.login(loginView.getMobile(), loginView.getPwd());
     }
 
     public void dismissProgressBar(){
-        pDialog.dismiss();
+        dialog.dismiss();
     }
 
     public void resetPwdOnClick(View view) {
         Intent saveIntent = new Intent(LoginActivity.this, ResetPwdActivity.class);
+        saveIntent.putExtra("type", "login");
         startActivity(saveIntent);
     }
 

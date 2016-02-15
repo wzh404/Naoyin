@@ -9,6 +9,7 @@ import com.xeehoo.health.common.view.MainView;
 import com.xeehoo.health.common.webview.BaseWebActivity;
 import com.xeehoo.health.model.Product;
 import com.xeehoo.health.util.AppConfig;
+import com.xeehoo.health.view.MyAccountItemView;
 
 
 import android.content.Intent;
@@ -18,12 +19,14 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTabHost;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 public class MainActivity extends FragmentActivity {
 	private MainPresenter presenter;
     private MainView mainView;
+    private MyAccountItemView accountItemView;
 
-	@Override
+    @Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
@@ -61,6 +64,8 @@ public class MainActivity extends FragmentActivity {
 		startActivityForResult(saveIntent, 1);
 	}
 
+
+
 //	public void myProductClick(View view){
 //		Intent saveIntent = new Intent(MainActivity.this, MyProductActivity.class);
 //		startActivity(saveIntent);
@@ -74,7 +79,10 @@ public class MainActivity extends FragmentActivity {
 	}
 
     public void settingOnClick(View view){
-
+        Toast.makeText(this, getAccountItemView().getCode(), Toast.LENGTH_SHORT).show();
+        BrainApplication.isLogin = false;
+        BrainApplication.token = null;
+        getAccountItemView().setItem();
     }
 
 	public void route(String code){
@@ -83,10 +91,12 @@ public class MainActivity extends FragmentActivity {
         }
 		else if ("0202".equalsIgnoreCase(code)){
             Intent saveIntent = new Intent(MainActivity.this, ChangePwdActivity.class);
+            saveIntent.putExtra("type", "login");
             startActivity(saveIntent);
 		}
         else if ("0203".equalsIgnoreCase(code)){
             Intent saveIntent = new Intent(MainActivity.this, ChangePwdActivity.class);
+            saveIntent.putExtra("type", "pay");
             startActivity(saveIntent);
         }
         else if ("0301".equalsIgnoreCase(code)){
@@ -112,4 +122,11 @@ public class MainActivity extends FragmentActivity {
         startActivity(intent);
     }
 
+    public MyAccountItemView getAccountItemView() {
+        return accountItemView;
+    }
+
+    public void setAccountItemView(MyAccountItemView accountItemView) {
+        this.accountItemView = accountItemView;
+    }
 }

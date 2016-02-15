@@ -25,7 +25,7 @@ public class ResultAction1 implements Action1 {
             JsonObject jsonObject = (JsonObject)o;
             Result r = new Result();
             r.setTag(tag);
-            Log.e(tag, "----------------" + tag);
+
             if ("OK".equalsIgnoreCase(jsonObject.get("resultCode").getAsString())) {
                 r.setCode("OK");
                 if (jsonObject.get("resultMsg") != null){
@@ -33,7 +33,7 @@ public class ResultAction1 implements Action1 {
                 }
                 r.setObj(jsonObject);
             } else {
-                r.setCode("ER");
+                r.setCode(jsonObject.get("resultCode").getAsString());
                 r.setMsg(jsonObject.get("resultMsg").getAsString());
             }
 

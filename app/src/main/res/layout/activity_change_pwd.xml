@@ -38,7 +38,7 @@
     </RelativeLayout>
 
     <EditText
-        android:id="@+id/register_edit_account"
+        android:id="@+id/change_edit_password"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginBottom="5px"
@@ -48,15 +48,14 @@
         android:background="@drawable/bg_edittext"
         android:hint="请输入原密码"
         android:padding="5dp"
-        android:inputType="number"
+        android:inputType="textPassword"
         android:singleLine="true"
         android:text=""
         android:textColor="#666"
-        android:password="true"
         android:textColorHint="#ddd" />
 
     <EditText
-        android:id="@+id/change_edit_password"
+        android:id="@+id/change_edit_new_password"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_alignParentTop="true"
@@ -71,7 +70,6 @@
         android:text=""
         android:textColor="#666"
         android:inputType="textPassword"
-        android:password="true"
         android:textColorHint="#ddd" />
 
     <EditText
@@ -90,7 +88,6 @@
         android:text=""
         android:textColor="#666"
         android:inputType="textPassword"
-        android:password="true"
         android:textColorHint="#ddd" />
 
     <Button
@@ -103,7 +100,7 @@
         android:layout_marginTop="16dp"
         android:background="@drawable/button_red_corner_shape"
         android:clickable="true"
-        android:onClick="loginOnClick"
+        android:onClick="changePwdOnClick"
         android:text="确定"
         android:textColor="#FFF"/>
 
@@ -118,5 +115,6 @@
         android:text="忘记密码?"
         android:textColor="#666"
         android:textSize="16sp"
-        android:clickable="true"/>
+        android:clickable="true"
+        android:onClick="resetPwdOnClick"/>
 </LinearLayout>

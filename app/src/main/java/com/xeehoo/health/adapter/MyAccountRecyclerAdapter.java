@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.xeehoo.health.BR;
+import com.xeehoo.health.MainActivity;
 import com.xeehoo.health.common.view.RecyclerViewHolder;
 import com.xeehoo.health.util.RecyclerViewType;
 import com.xeehoo.health.util.ResourceUtils;
@@ -20,7 +21,7 @@ import com.xeehoo.health.view.MyAccountTelView;
 public class MyAccountRecyclerAdapter extends RecyclerView.Adapter<RecyclerViewHolder> {
     private JSONArray items;
     private Context context;
-    private int currentPosition = 0;
+//    private int currentPosition = 0;
 
     public MyAccountRecyclerAdapter(Context context, JSONArray items){
         this.items = items;
@@ -53,7 +54,7 @@ public class MyAccountRecyclerAdapter extends RecyclerView.Adapter<RecyclerViewH
 
     @Override
     public void onBindViewHolder(RecyclerViewHolder holder, int position) {
-        currentPosition = position;
+//        currentPosition = position;
         JSONObject obj =  (JSONObject)items.get(position);
 
         convert(obj);

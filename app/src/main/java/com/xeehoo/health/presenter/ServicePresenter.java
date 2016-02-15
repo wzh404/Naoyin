@@ -63,14 +63,24 @@ public class ServicePresenter {
         call(observable, "password");
     }
 
-    public void register(String name, String sms, String pwd) {
-        Observable<JsonObject> observable = shareService.register(name, sms, pwd);
+    public void resetPayPwd(String name, String sms, String pwd) {
+        Observable<JsonObject> observable = shareService.setPayPwd(name, sms, pwd);
+        call(observable, "pay_password");
+    }
+
+    public void register(String name, String sms, String pwd, String invite) {
+        Observable<JsonObject> observable = shareService.register(name, sms, pwd, invite);
         call(observable, "register");
     }
 
     public void changePwd(String oldPwd, String newPwd) {
         Observable<JsonObject> observable = shareService.changePwd(oldPwd, newPwd);
         call(observable, "change_password");
+    }
+
+    public void changePayPwd(String oldPwd, String newPwd) {
+        Observable<JsonObject> observable = shareService.changePayPwd(oldPwd, newPwd);
+        call(observable, "change_pay_password");
     }
 
     public void balance() {
@@ -96,5 +106,10 @@ public class ServicePresenter {
     public void invest(Integer productId, Integer amount, String pwd) {
         Observable<JsonObject> observable = shareService.invest(productId, amount, pwd);
         call(observable, "pay");
+    }
+
+    public void mobile(String mobile) {
+        Observable<JsonObject> observable = shareService.mobile(mobile);
+        call(observable, "mobile");
     }
 }
