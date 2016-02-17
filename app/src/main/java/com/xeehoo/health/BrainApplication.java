@@ -35,6 +35,7 @@ public class BrainApplication extends Application {
     public static String token = "0";
     public static String mobile = "0";
     public static boolean isLogin = false;
+    public static boolean isAccount = false;  // 第三方托管账户
     public static int productId = 0;
     public static int investId = 0;
 

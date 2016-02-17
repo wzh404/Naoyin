@@ -14,9 +14,12 @@ import android.widget.Toast;
 import com.jungly.gridpasswordview.GridPasswordView;
 import com.xeehoo.health.R;
 import com.xeehoo.health.model.Product;
+import com.xeehoo.health.util.CommonUtil;
 import com.xeehoo.health.util.MoneyUtil;
 
+import java.math.BigDecimal;
 import java.text.NumberFormat;
+import java.util.Date;
 import java.util.Locale;
 
 /**
@@ -32,6 +35,13 @@ public class InvestActivity extends Activity {
         setContentView(R.layout.activity_confirm_invest);
         product = getIntent().getParcelableExtra("product");
 
+        TextView textViewName = (TextView)findViewById(R.id.online_product_name);
+        textViewName.setText(product.getProductName());
+
+        textViewName = (TextView)findViewById(R.id.online_product_invest_date);
+        textViewName.setText(CommonUtil.tomorrow());
+
+        final TextView textViewIncome = (TextView)findViewById(R.id.online_product_income);
         final TextView textViewRmb = (TextView)findViewById(R.id.invest_amount_rmb);
         final EditText editAmount = (EditText)findViewById(R.id.invest_amount);
         editAmount.addTextChangedListener(new TextWatcher() {
@@ -49,9 +59,20 @@ public class InvestActivity extends Activity {
                 if (!"".equalsIgnoreCase(a.trim())){
                     String rmb = MoneyUtil.convert(a + ".00");
                     textViewRmb.setText(rmb);
+
+                    Date startDate = CommonUtil.getDate(product.getReleaseTime());
+                    Date closeDate = product.getCloseDate();
+                    long days = CommonUtil.diffDate(startDate, closeDate);
+                    BigDecimal income = CommonUtil.calculateInterest(
+                            new BigDecimal(a),
+                            new BigDecimal(product.getLoanRate()),
+                            days);
+                    String strIncome = income.setScale(2, BigDecimal.ROUND_HALF_DOWN).toString();
+                    textViewIncome.setText(strIncome);
                 }
                 else{
                     textViewRmb.setText("");
+                    textViewIncome.setText("0.00");
                 }
             }
         });

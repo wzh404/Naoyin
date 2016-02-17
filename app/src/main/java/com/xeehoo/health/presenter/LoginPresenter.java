@@ -53,6 +53,7 @@ public class LoginPresenter extends ServicePresenter {
 
                 BrainApplication.mobile = view.getMobile();
                 BrainApplication.isLogin = true;
+                BrainApplication.isAccount = result.getObj().get("account").getAsBoolean();
 
                 Result r = new Result();
                 r.setTag(MyAccountItemView.TAG_LOGIN);

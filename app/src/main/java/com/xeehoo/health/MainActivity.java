@@ -1,9 +1,11 @@
 package com.xeehoo.health;
 
+import com.xeehoo.health.activity.BalanceActivity;
 import com.xeehoo.health.activity.ChangePwdActivity;
 import com.xeehoo.health.activity.InvestActivity;
 import com.xeehoo.health.activity.LoginActivity;
 import com.xeehoo.health.activity.MyProductActivity;
+import com.xeehoo.health.activity.UserActivity;
 import com.xeehoo.health.common.presenter.MainPresenter;
 import com.xeehoo.health.common.view.MainView;
 import com.xeehoo.health.common.webview.BaseWebActivity;
@@ -64,18 +66,13 @@ public class MainActivity extends FragmentActivity {
 		startActivityForResult(saveIntent, 1);
 	}
 
-
-
 //	public void myProductClick(View view){
 //		Intent saveIntent = new Intent(MainActivity.this, MyProductActivity.class);
 //		startActivity(saveIntent);
 //	}
 
 	public void payProduct(Product product){
-		Intent intent = new Intent(MainActivity.this, InvestActivity.class);
-		intent.putExtra("product", product);
-
-		startActivity(intent);
+        startWebview(product.getProductName(), "https://www.jyc99.com/AndroidInterface/pdetail.html?code=20160217133117&proId=46B4B94F73C817C7&token=10EE39D2-54F0-458D-A6E7-D3EFC504A1D2", product);
 	}
 
     public void settingOnClick(View view){
@@ -87,7 +84,8 @@ public class MainActivity extends FragmentActivity {
 
 	public void route(String code){
         if ("0201".equalsIgnoreCase(code)){
-            startWebview("注册第三方托管账户", AppConfig.WEB_URL + "/app/fuiou/register?token=" + BrainApplication.token);
+            Intent saveIntent = new Intent(MainActivity.this, UserActivity.class);
+            startActivity(saveIntent);
         }
 		else if ("0202".equalsIgnoreCase(code)){
             Intent saveIntent = new Intent(MainActivity.this, ChangePwdActivity.class);
@@ -103,24 +101,28 @@ public class MainActivity extends FragmentActivity {
             Intent saveIntent = new Intent(MainActivity.this, MyProductActivity.class);
             startActivity(saveIntent);
         }
-        else if ("0302".equalsIgnoreCase(code)){
-            startWebview("在线充值", AppConfig.WEB_URL + "/app/fuiou/recharge?amt=10000&token=" + BrainApplication.token);
+        else if ("0302".equalsIgnoreCase(code)) {
+            if (BrainApplication.isAccount) {
+                Intent saveIntent = new Intent(MainActivity.this, BalanceActivity.class);
+                saveIntent.putExtra("type", "recharge");
+                startActivity(saveIntent);
+            }
+            else{
+                Toast.makeText(this, "还没有注册托管账户！", Toast.LENGTH_SHORT).show();
+            }
         }
         else if ("0303".equalsIgnoreCase(code)){
-            startWebview("在线提现", AppConfig.WEB_URL + "/app/fuiou/withdraw?amt=10000&token=" + BrainApplication.token);
+            if (BrainApplication.isAccount) {
+                Intent saveIntent = new Intent(MainActivity.this, BalanceActivity.class);
+                saveIntent.putExtra("type", "withdraw");
+                startActivity(saveIntent);
+            }
+            else{
+                Toast.makeText(this, "还没有注册托管账户！", Toast.LENGTH_SHORT).show();
+            }
         }
+
 	}
-
-    private void startWebview(String title, String url) {
-        Bundle bundle = new Bundle();
-
-        bundle.putString("url", url);
-        bundle.putString("title", title);
-        Intent intent = new Intent(this, BaseWebActivity.class);
-        intent.putExtras(bundle);
-
-        startActivity(intent);
-    }
 
     public MyAccountItemView getAccountItemView() {
         return accountItemView;
@@ -128,5 +130,18 @@ public class MainActivity extends FragmentActivity {
 
     public void setAccountItemView(MyAccountItemView accountItemView) {
         this.accountItemView = accountItemView;
+    }
+
+    private void startWebview(String title, String url, Product product) {
+        Bundle bundle = new Bundle();
+
+        bundle.putString("url", url);
+        bundle.putString("title", title);
+        bundle.putString("type", "invest");
+        bundle.putParcelable("product", product);
+        Intent intent = new Intent(this, BaseWebActivity.class);
+        intent.putExtras(bundle);
+
+        startActivity(intent);
     }
 }

@@ -11,12 +11,11 @@
         android:background="@drawable/bg_title">
 
         <TextView
-            android:id="@+id/watcher_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:padding="10dp"
-            android:text="认购产品"
+            android:text="第三方托管账户"
             android:textColor="#fff"
             android:textSize="18dp"
             android:textStyle="bold" />
@@ -36,7 +35,7 @@
     </RelativeLayout>
 
     <TextView
-        android:id="@+id/online_product_name"
+        android:id="@+id/fuiou_user_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#1172bd"
@@ -45,7 +44,7 @@
         android:layout_marginRight="16dp"
         android:layout_marginBottom="16dp"
         android:layout_gravity="left"
-        android:text="产品20150312"
+        android:text="王尊会"
         android:textStyle="bold"
         android:textSize="20sp" />
 
@@ -61,10 +60,45 @@
             android:layout_marginLeft="32dp"
             android:layout_marginRight="8dp"
             android:layout_gravity="left"
-            android:text="最大投资金额:"
+            android:text="手机号码:"
             android:textSize="16sp" />
 
         <TextView
+            android:id="@+id/fuiou_user_mobile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#666"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="16dp"
+            android:layout_gravity="left"
+            android:text="18611330404"
+            android:textSize="16sp" />
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp"
+        android:background="@color/background_dark"></View>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="4dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#666"
+            android:layout_marginLeft="32dp"
+            android:layout_marginRight="8dp"
+            android:layout_gravity="left"
+            android:text="账户余额:"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/fuiou_user_ct"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#666"
@@ -93,10 +127,11 @@
             android:layout_marginLeft="32dp"
             android:layout_marginRight="8dp"
             android:layout_gravity="left"
-            android:text="最小投资金额:"
+            android:text="可用余额:"
             android:textSize="16sp" />
 
         <TextView
+            android:id="@+id/fuiou_user_ca"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#666"
@@ -125,18 +160,51 @@
             android:layout_marginLeft="32dp"
             android:layout_marginRight="8dp"
             android:layout_gravity="left"
-            android:text="产品起息日期:"
+            android:text="冻结金额:"
             android:textSize="16sp" />
 
         <TextView
-            android:id="@+id/online_product_invest_date"
+            android:id="@+id/fuiou_user_cf"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#666"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="16dp"
             android:layout_gravity="left"
-            android:text="2016-02-04"
+            android:text="￥0"
+            android:textSize="16sp" />
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp"
+        android:background="@color/background_dark"></View>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="4dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#666"
+            android:layout_marginLeft="32dp"
+            android:layout_marginRight="8dp"
+            android:layout_gravity="left"
+            android:text="未结金额:"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/fuiou_user_cu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#666"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="16dp"
+            android:layout_gravity="left"
+            android:text="￥0"
             android:textSize="16sp" />
     </LinearLayout>
     <View
@@ -147,101 +215,67 @@
         android:background="@color/background_dark"></View>
 
     <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#666"
-            android:layout_marginLeft="32dp"
-            android:layout_marginRight="8dp"
-            android:layout_gravity="center_vertical"
-            android:text="认购金额:"
-            android:textSize="16sp" />
-
-        <EditText
-            android:id="@+id/invest_amount"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:textColor="#666"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="32dp"
-            android:text=""
-            android:singleLine="true"
-            android:inputType="number"
-            android:gravity="center_vertical|right"
-            android:hint="0"
-            android:maxLength="9"
-            android:textColorHint="#ddd"
-            android:textSize="20sp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
-        android:gravity="right">
-        <TextView
-            android:id="@+id/invest_amount_rmb"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#666"
-            android:layout_marginRight="32dp"
-            android:text="壹仟元整"
-            android:textSize="16sp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#666"
-            android:layout_marginLeft="32dp"
-            android:layout_marginRight="8dp"
-            android:layout_gravity="left"
-            android:text="预计收益:"
-            android:textSize="16sp" />
-
-        <TextView
-            android:id="@+id/online_product_income"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#FF6600"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="16dp"
-            android:layout_gravity="left"
-            android:text="￥102.50"
-            android:textSize="16sp" />
-    </LinearLayout>
-
-    <LinearLayout
+        android:id = "@+id/fuiou_user_register"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:layout_weight="0.1"
         android:gravity="bottom"
         android:orientation="vertical"
-        android:layout_marginBottom="20dp">
+        android:layout_marginBottom="20dp"
+        android:visibility="gone">
 
         <Button
             android:layout_width="match_parent"
-            android:layout_height="48dp"
+            android:layout_height="40dp"
             android:layout_marginBottom="5dp"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:background="@drawable/button_red_corner_shape"
-            android:text="确认下单"
+            android:text="还没有托管账户，请点击注册"
             android:textColor="#FFF"
-            android:textSize="24sp"
+            android:textSize="16sp"
             android:textStyle="bold"
             android:clickable="true"
-            android:onClick="investOnClick"/>
+            android:onClick="fuiouUserOnClick"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id = "@+id/fuiou_user_recharge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_weight="0.1"
+        android:gravity="bottom|center_horizontal"
+        android:orientation="horizontal"
+        android:layout_marginBottom="20dp"
+        android:visibility="gone">
+
+        <Button
+            android:layout_width="120dp"
+            android:layout_height="40dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:background="@drawable/button_red_corner_shape"
+            android:text="提现"
+            android:textColor="#FFF"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:clickable="true"
+            android:onClick="withdrawOnClick"/>
+        <Button
+            android:layout_width="120dp"
+            android:layout_height="40dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:background="@drawable/button_red_corner_shape"
+            android:text="充值"
+            android:textColor="#FFF"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:clickable="true"
+            android:onClick="rechargeOnClick"/>
     </LinearLayout>
 </LinearLayout>

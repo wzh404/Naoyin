@@ -61,6 +61,10 @@
         </activity>
         <activity android:name="com.xeehoo.health.activity.MobileSmsActivity" >
         </activity>
+        <activity android:name="com.xeehoo.health.activity.UserActivity" >
+        </activity>
+        <activity android:name="com.xeehoo.health.activity.BalanceActivity" >
+        </activity>
         <activity android:name="com.xeehoo.health.plan.activity.DailyPlanActivity" />
         <activity android:name="com.xeehoo.health.util.CircleActivity" />
     </application>

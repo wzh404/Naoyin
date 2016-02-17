@@ -10,7 +10,6 @@ import android.widget.Toast;
 import com.xeehoo.health.presenter.ChangePwdPresenter;
 import com.xeehoo.health.util.ValidateUtil;
 import com.xeehoo.health.view.ChangePwdView;
-import com.xeehoo.health.view.MobileSmsView;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 

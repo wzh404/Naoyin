@@ -2,12 +2,12 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@drawable/bg_title" >
+        android:background="@drawable/bg_title">
 
         <ImageView
             android:id="@+id/activity_selectimg_cancel2"
@@ -15,28 +15,49 @@
             android:layout_height="40dp"
             android:layout_centerVertical="true"
             android:layout_marginLeft="8dp"
-            android:gravity="center"
-            android:src="@drawable/back"
             android:clickable="true"
-            android:onClick="exitOnClick"/>
+            android:gravity="center"
+            android:onClick="exitOnClick"
+            android:src="@drawable/back" />
 
         <TextView
             android:id="@+id/webview_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
             android:layout_centerVertical="true"
             android:layout_marginLeft="8dp"
-            android:layout_centerInParent="true"
             android:text="相册"
             android:textColor="#ffffff"
             android:textSize="20sp" />
     </RelativeLayout>
 
-    <com.xeehoo.health.common.webview.ProgressWebView
-        android:id="@+id/baseweb_webview"
+    <RelativeLayout
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:fadeScrollbars="true"
-        android:scrollbarStyle="insideOverlay" />
+        android:layout_height="fill_parent">
+        <com.xeehoo.health.common.webview.ProgressWebView
+            android:id="@+id/baseweb_webview"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginBottom="5dp"
+            android:fadeScrollbars="true"
+            android:scrollbarStyle="insideOverlay" />
 
+        <TextView
+            android:id="@+id/bt_rengou"
+            android:layout_width="fill_parent"
+            android:layout_height="45.0dip"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="20.0dip"
+            android:layout_marginLeft="12.0dip"
+            android:layout_marginRight="12.0dip"
+            android:background="#fffa4c00"
+            android:gravity="center"
+            android:text="抢购"
+            android:textColor="#ffffffff"
+            android:textSize="16.0sp"
+            android:visibility="gone"
+            android:clickable="true"
+            android:onClick="webviewOnClick"/>
+    </RelativeLayout>
 </LinearLayout>

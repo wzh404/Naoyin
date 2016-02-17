@@ -7,6 +7,9 @@ import com.google.gson.annotations.SerializedName;
 import com.xeehoo.health.util.CommonUtil;
 
 import java.math.BigDecimal;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Created by WIN10 on 2016/2/1.
@@ -34,6 +37,20 @@ public class Product implements Parcelable {
     private BigDecimal totalAmount;
 
     private String investUnit;
+
+    public Date getCloseDate(){
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            Date startDate = sdf.parse(releaseTime);
+            Date closeDate = CommonUtil.calculateInvestClosingDate(startDate, investDay);
+
+            return closeDate;
+        }catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
 
     public String getInvestUnit() {
         return CommonUtil.getInvestUnit(this.investDay);
@@ -107,6 +124,7 @@ public class Product implements Parcelable {
         this.totalAmount = new BigDecimal(source.readString());
         this.investDay = source.readString();
         this.loanRate = source.readString();
+        this.releaseTime = source.readString();
     }
 
     @Override
@@ -122,6 +140,7 @@ public class Product implements Parcelable {
         dest.writeString(this.totalAmount.toPlainString());
         dest.writeString(this.investDay);
         dest.writeString(this.loanRate);
+        dest.writeString(this.releaseTime);
     }
 
     public static final Parcelable.Creator<Product> CREATOR = new  Parcelable.Creator<Product>(){

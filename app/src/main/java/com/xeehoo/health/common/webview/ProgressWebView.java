@@ -43,6 +43,13 @@ public class ProgressWebView extends WebView {
             view.loadUrl(url);
             return true;
         }
+
+        @Override
+        public void onPageFinished(WebView paramAnonymousWebView, String paramAnonymousString)
+        {
+            paramAnonymousWebView.loadUrl("javascript:bindData('10EE39D2-54F0-458D-A6E7-D3EFC504A1D2')");
+            super.onPageFinished(paramAnonymousWebView, paramAnonymousString);
+        }
     }
 
     public class WebChromeClient extends android.webkit.WebChromeClient {
