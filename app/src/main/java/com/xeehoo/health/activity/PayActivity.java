@@ -23,6 +23,7 @@ public class PayActivity extends Activity {
     private Integer amt;
     private String type;
     private Integer payId;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

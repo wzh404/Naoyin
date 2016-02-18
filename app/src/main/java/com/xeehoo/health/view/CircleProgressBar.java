@@ -53,7 +53,7 @@ public class CircleProgressBar extends View {
         oval.bottom = height - progressStrokeWidth / 2; // 右下角y
 
         canvas.drawArc(oval, -90, 360, false, paint); // 绘制白色圆圈，即进度条背景
-        paint.setColor(Color.rgb(0x94, 0xc5, 0x64));//(0x57, 0x87, 0xb6));//ff9f08
+        paint.setColor(Color.rgb(0x11, 0x72, 0xbd));//(0x57, 0x87, 0xb6));//ff9f08 //1172bd
         canvas.drawArc(oval, -90, ((float) progress / maxProgress) * 360, false, paint); // 绘制进度圆弧，这里是蓝色
 
         paint.setStrokeWidth(1);

@@ -1,6 +1,8 @@
 package com.xeehoo.health.view;
 
 import android.content.Context;
+import android.text.InputFilter;
+import android.text.InputType;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -19,6 +21,21 @@ public class ChangePwdView extends AbstractView {
     public void setTitle(String title){
         TextView titleView = get(R.id.change_pwd_title);
         titleView.setText(title);
+    }
+
+    public void setPay(){
+        EditText pwdEditText = get(R.id.change_edit_new_password);
+        pwdEditText.setHint("请输入6位数字密码");
+        pwdEditText.setInputType(InputType.TYPE_CLASS_NUMBER|InputType.TYPE_NUMBER_VARIATION_PASSWORD);
+        pwdEditText.setFilters(new InputFilter[]{new InputFilter.LengthFilter(6)});
+
+        pwdEditText = get(R.id.change_edit_password);
+        pwdEditText.setInputType(InputType.TYPE_CLASS_NUMBER|InputType.TYPE_NUMBER_VARIATION_PASSWORD);
+        pwdEditText.setFilters(new InputFilter[]{new InputFilter.LengthFilter(6)});
+
+        pwdEditText = get(R.id.change_edit_retry_password);
+        pwdEditText.setInputType(InputType.TYPE_CLASS_NUMBER|InputType.TYPE_NUMBER_VARIATION_PASSWORD);
+        pwdEditText.setFilters(new InputFilter[]{new InputFilter.LengthFilter(6)});
     }
 
     public String getPwd(){

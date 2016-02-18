@@ -33,6 +33,10 @@ public class ResetPwdActivity extends Activity {
         type = getIntent().getStringExtra("type");
         resetPwdView = new ResetPwdView(this, null);
         setContentView(resetPwdView.getView());
+
+        if ("pay".equalsIgnoreCase(type)){
+            resetPwdView.setPay();
+        }
         resetPwdPresenter = new ResetPwdPresenter();
         resetPwdPresenter.onCreate(this, resetPwdView, type);
 

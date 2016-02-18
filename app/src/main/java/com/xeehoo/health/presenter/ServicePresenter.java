@@ -112,4 +112,5 @@ public class ServicePresenter {
         Observable<JsonObject> observable = shareService.mobile(mobile);
         call(observable, "mobile");
     }
+
 }

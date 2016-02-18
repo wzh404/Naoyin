@@ -22,7 +22,7 @@
             android:textStyle="bold" />
 
         <ImageButton
-            android:id="@+id/product_back"
+            android:id="@+id/product_more"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
@@ -30,7 +30,6 @@
             android:layout_marginRight="8dp"
             android:background="@null"
             android:clickable="true"
-            android:onClick="exitOnClick"
             android:src="@drawable/more" />
     </RelativeLayout>
 

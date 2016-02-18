@@ -217,7 +217,7 @@
             android:layout_marginLeft="8dp"
             android:layout_marginRight="16dp"
             android:layout_gravity="left"
-            android:text="￥102.50"
+            android:text="￥0.00"
             android:textSize="16sp" />
     </LinearLayout>
 

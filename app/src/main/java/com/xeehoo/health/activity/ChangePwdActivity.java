@@ -30,6 +30,11 @@ public class ChangePwdActivity extends Activity {
         type = getIntent().getStringExtra("type");
         changePwdView = new ChangePwdView(this, null);
         setContentView(changePwdView.getView());
+
+        if ("pay".equalsIgnoreCase(type)){
+            changePwdView.setPay();
+        }
+
         changePwdPresenter = new ChangePwdPresenter();
         changePwdPresenter.onCreate(this, changePwdView, type);
 

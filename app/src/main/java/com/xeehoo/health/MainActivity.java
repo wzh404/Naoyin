@@ -72,7 +72,10 @@ public class MainActivity extends FragmentActivity {
 //	}
 
 	public void payProduct(Product product){
-        startWebview(product.getProductName(), "https://www.jyc99.com/AndroidInterface/pdetail.html?code=20160217133117&proId=46B4B94F73C817C7&token=10EE39D2-54F0-458D-A6E7-D3EFC504A1D2", product);
+        startWebview(
+                product.getProductName(),
+                AppConfig.WEB_URL + "/app/product/details?product_id=" + product.getProductId(),
+                product);
 	}
 
     public void settingOnClick(View view){

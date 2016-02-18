@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -81,17 +82,19 @@ public class MyProductPresenter extends ServicePresenter {
     private Action1<Result> myProductAction1 = new Action1<Result>() {
         @Override
         public void call(Result result) {
-            if ("OK".equalsIgnoreCase(result.getCode())){
+            Log.e("Product", BrainApplication.investId + " - Product2 size " + myProducts.size());
+            Toast.makeText(context, result.getCode() + " - " + result.getTag(), Toast.LENGTH_SHORT).show();
+            if (result.isResult("my_product", "OK")){
                 if (myProducts.size() == 1 && myProducts.get(0).getInvestId() == 0){
                     myProducts.clear();
                 }
 
                 JsonArray items = result.getObj().getAsJsonArray("data");
-                myProducts.addAll(Arrays.asList(new Gson().fromJson(items, MyProduct[].class)));
+                myProducts.addAll(0, Arrays.asList(new Gson().fromJson(items, MyProduct[].class)));
                 adapter.notifyDataSetChanged();
 
                 if (myProducts.size() > 0) {
-                    BrainApplication.productId = myProducts.get(0).getInvestId().intValue();
+                    BrainApplication.investId = myProducts.get(0).getInvestId().intValue();
                 }
             }
 

@@ -1,6 +1,7 @@
 package com.xeehoo.health.view;
 
 import android.content.Context;
+import android.text.InputFilter;
 import android.text.InputType;
 import android.view.ViewGroup;
 import android.widget.EditText;
@@ -24,7 +25,9 @@ public class ResetPwdView extends AbstractView {
 
     public void setPay(){
         EditText pwdEditText = get(R.id.set_edit_password);
+        pwdEditText.setHint("请输入6位数字密码");
         pwdEditText.setInputType(InputType.TYPE_CLASS_NUMBER|InputType.TYPE_NUMBER_VARIATION_PASSWORD);
+        pwdEditText.setFilters(new InputFilter[]{new InputFilter.LengthFilter(6)});
     }
 
     public String getMobile(){
