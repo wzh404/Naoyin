@@ -22,6 +22,8 @@ import java.text.NumberFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
+
 /**
  * Created by wangzunhui on 2016/2/3.
  */
@@ -88,12 +90,24 @@ public class InvestActivity extends Activity {
             intent.putExtra("amount", amount);
             intent.putExtra("payId", product.getProductId());
 
-            startActivity(intent);
+            startActivityForResult(intent, 0);
         }
     }
 
     public void exitOnClick(View view) {
         this.finish();
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        Log.e("invest", requestCode + " resultCode " + resultCode);
+        if (resultCode == 1){
+            new SweetAlertDialog(this, SweetAlertDialog.SUCCESS_TYPE)
+                    .setTitleText("投资成功")
+//                    .setContentText("You clicked the button!")
+                    .show();
+        }
     }
 }
 

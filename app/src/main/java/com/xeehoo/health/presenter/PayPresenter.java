@@ -21,18 +21,14 @@ import rx.functions.Action1;
  */
 public class PayPresenter  extends ServicePresenter {
     private Context context;
-    private SweetAlertDialog dialog;
-    private PayView view;
+    private PayView payView;
+    private Integer resultCode;
 
-    public void onCreate(Context context, PayView view) {
+    public void onCreate(Context context, PayView payView) {
         this.context = context;
-        this.view = view;
+        this.payView = payView;
+        this.resultCode = 0;
         super.init(context);
-
-        dialog = new SweetAlertDialog(context, SweetAlertDialog.PROGRESS_TYPE);
-        dialog.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
-        dialog.setTitleText("Loading");
-        dialog.setCancelable(false);
 
         register("pay", payAction1);
     }
@@ -41,9 +37,10 @@ public class PayPresenter  extends ServicePresenter {
         @Override
         public void call(Result result) {
             PayActivity payActivity = (PayActivity) context;
-            dialog.dismiss();
+            payView.dismissDialog();
             Toast.makeText(context, result.getTag() + " - " + result.getCode() + " - " + result.getMsg(), Toast.LENGTH_SHORT).show();
             if (result.isResult("pay", "OK")) {
+                payActivity.setResult(1);
                 payActivity.finish();
             }
         }

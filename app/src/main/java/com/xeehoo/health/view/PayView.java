@@ -1,11 +1,14 @@
 package com.xeehoo.health.view;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.xeehoo.health.R;
 import com.xeehoo.health.common.view.AbstractView;
+
+import cn.pedant.SweetAlert.SweetAlertDialog;
 
 /**
  * Created by WIN10 on 2015/11/14.
@@ -13,6 +16,7 @@ import com.xeehoo.health.common.view.AbstractView;
 public class PayView extends AbstractView {
     public PayView(Context context, ViewGroup container){
         super.init(context, container, R.layout.activity_pay);
+        initDialog();
     }
 
     public void setPayName(String name){

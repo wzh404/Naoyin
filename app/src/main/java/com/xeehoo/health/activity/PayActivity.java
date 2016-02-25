@@ -20,6 +20,8 @@ import java.util.Locale;
  */
 public class PayActivity extends Activity {
     private PayPresenter presenter;
+    private PayView payView;
+
     private Integer amt;
     private String type;
     private Integer payId;
@@ -28,7 +30,7 @@ public class PayActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        PayView payView = new PayView(this, null);
+        payView = new PayView(this, null);
         setContentView(payView.getView());
 
         this.presenter = new PayPresenter();
@@ -48,7 +50,7 @@ public class PayActivity extends Activity {
         GridPasswordView v = (GridPasswordView)findViewById(R.id.pay);
         Toast.makeText(this, v.getPassWord(),Toast.LENGTH_SHORT).show();
         if ("invest".equalsIgnoreCase(type)){
-            Log.e("invest", "-------------");
+            payView.showDialog();
             presenter.invest(payId, amt, v.getPassWord());
         }
     }

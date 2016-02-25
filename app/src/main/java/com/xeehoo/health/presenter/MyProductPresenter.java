@@ -75,6 +75,7 @@ public class MyProductPresenter extends ServicePresenter {
         adapter = new MyProductRecyclerAdapter(context, myProducts);
         recyclerView.setAdapter(adapter);
 
+        BrainApplication.investId = 0;
         register("my_product", myProductAction1);
         myProduct();
     }
