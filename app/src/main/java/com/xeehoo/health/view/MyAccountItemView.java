@@ -19,6 +19,7 @@ import com.xeehoo.health.activity.LoginActivity;
 import com.xeehoo.health.common.view.AbstractView;
 import com.xeehoo.health.rxjava.action.Result;
 import com.xeehoo.health.rxjava.rxbus.RxBus;
+import com.xeehoo.health.util.CommonUtil;
 
 import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
@@ -39,7 +40,7 @@ public class MyAccountItemView extends AbstractView {
 
     public void setMarginBottom() {
         RecyclerView.LayoutParams layoutParams = (RecyclerView.LayoutParams) getView().getLayoutParams();
-        layoutParams.setMargins(0, 0, 0, 20);
+        layoutParams.setMargins(0, 0, 0, CommonUtil.dip2px(context, 10.0f));
     }
 
     public void initData(JSONObject obj) {

@@ -57,7 +57,7 @@
             android:layout_height="0.5dp"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
-            android:background="@color/background_dark"></View>
+            android:background="#ccc"></View>
 
         <RelativeLayout
             android:layout_width="match_parent"

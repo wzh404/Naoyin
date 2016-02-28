@@ -27,6 +27,7 @@ import com.xeehoo.health.rxjava.action.Result;
 import com.xeehoo.health.rxjava.action.ResultAction1;
 import com.xeehoo.health.rxjava.rxbus.RxBus;
 import com.xeehoo.health.share.bean.ShareService;
+import com.xeehoo.health.util.CommonUtil;
 import com.xeehoo.health.view.ProductView;
 
 import java.util.ArrayList;
@@ -73,7 +74,7 @@ public class ProductPresenter extends ServicePresenter{
 
         RecyclerView recyclerView = view.get(R.id.product_recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
-        recyclerView.addItemDecoration(new SpacesItemDecoration(12));
+        recyclerView.addItemDecoration(new SpacesItemDecoration(CommonUtil.dip2px(context,12.0f)));
 
         adapter = new ProductRecyclerAdapter(context, products);
         recyclerView.setAdapter(adapter);
