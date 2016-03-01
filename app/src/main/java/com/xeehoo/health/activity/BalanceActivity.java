@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import com.xeehoo.health.BrainApplication;
 import com.xeehoo.health.common.webview.BaseWebActivity;
@@ -16,7 +17,7 @@ import java.math.BigDecimal;
 /**
  * 在线充值、提现
  *
- * Created by WIN10 on 2016/2/2.
+ * Created by wangzunhui on 2016/2/2.
  */
 public class BalanceActivity extends Activity {
     private BalancePresenter balancePresenter;
@@ -51,6 +52,10 @@ public class BalanceActivity extends Activity {
     }
 
     public void withdrawOrRechargeOnClick(View view) {
+        if ("".equalsIgnoreCase(balanceView.getMoney())){
+            Toast.makeText(this, "请输入金额", Toast.LENGTH_SHORT).show();
+            return;
+        }
         Long longMoney = new BigDecimal(balanceView.getMoney()).multiply(new BigDecimal(100)).longValue();
         String money = longMoney.toString();
 

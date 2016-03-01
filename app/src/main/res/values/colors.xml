@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="alzheimer_red">#FF0033</color>
+    <color name="common_line_gray">#ffe8e9eb</color>
+    <color name="ydzc_blue_color">#ff1172bd</color>
+    <color name="lagou_user_line">#ffe5e5e5</color>
+    <color name="lagou_user_txt">#ff333333</color>
+    <color name="msg_invite_no_result">#fff0f1f5</color>
+    <color name="lagou_user_setting_btn">#ffff7452</color>
     <color name="white">#ffffffff</color>
     <color name="gray9">#999</color>
     <color name="black">#ff000000</color>

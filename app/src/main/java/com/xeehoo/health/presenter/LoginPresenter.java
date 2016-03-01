@@ -47,7 +47,7 @@ public class LoginPresenter extends ServicePresenter {
         public void call(Result result) {
             LoginActivity loginActivity = (LoginActivity) context;
             loginActivity.dismissProgressBar();
-            Toast.makeText(context, result.getTag() + " - " + result.getCode() + " - " + result.getMsg(), Toast.LENGTH_SHORT).show();
+
             if (result.isResult("login", "OK")) {
                 BrainApplication.token = result.getMsg();
                 Log.e("token", BrainApplication.token);
@@ -56,12 +56,15 @@ public class LoginPresenter extends ServicePresenter {
                 BrainApplication.isLogin = true;
                 BrainApplication.isAccount = result.getObj().get("account").getAsBoolean();
 
-                Result r = new Result();
-                r.setTag(MyAccountItemView.TAG_LOGIN);
-                r.setCode("OK");
-                RxBus.get().post(MyAccountItemView.TAG_LOGIN, r);
-
+//                Result r = new Result();
+//                r.setTag(MyAccountItemView.TAG_LOGIN);
+//                r.setCode("OK");
+//                RxBus.get().post(MyAccountItemView.TAG_LOGIN, r);
+                loginActivity.setResult(9);
                 loginActivity.finish();
+            }
+            else {
+                Toast.makeText(context, result.getMsg(), Toast.LENGTH_SHORT).show();
             }
         }
     };

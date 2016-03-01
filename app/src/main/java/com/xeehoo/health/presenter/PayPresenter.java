@@ -38,10 +38,13 @@ public class PayPresenter  extends ServicePresenter {
         public void call(Result result) {
             PayActivity payActivity = (PayActivity) context;
             payView.dismissDialog();
-            Toast.makeText(context, result.getTag() + " - " + result.getCode() + " - " + result.getMsg(), Toast.LENGTH_SHORT).show();
+
             if (result.isResult("pay", "OK")) {
+                Toast.makeText(context, "投资成功", Toast.LENGTH_SHORT).show();
                 payActivity.setResult(1);
                 payActivity.finish();
+            } else {
+                Toast.makeText(context, result.getMsg(), Toast.LENGTH_SHORT).show();
             }
         }
     };

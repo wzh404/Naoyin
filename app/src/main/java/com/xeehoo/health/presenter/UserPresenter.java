@@ -45,7 +45,6 @@ public class UserPresenter extends ServicePresenter {
         @Override
         public void call(Result result) {
             dialog.dismiss();
-            Toast.makeText(context, result.getTag() + " - " + result.getCode() + " - " + result.getMsg(), Toast.LENGTH_SHORT).show();
             if (result.isResult("user", "OK")) {
                 JsonObject jsonObject = result.getObj();
                 userView.setUserName(jsonObject.get("name").getAsString());
@@ -58,6 +57,7 @@ public class UserPresenter extends ServicePresenter {
                 userView.showRecharge();
             }
             else{
+                Toast.makeText(context,  result.getMsg(), Toast.LENGTH_SHORT).show();
                 userView.setUserName("没有实名认证");
                 userView.setUserMobile(BrainApplication.mobile);
                 userView.setUserCt("0.00");

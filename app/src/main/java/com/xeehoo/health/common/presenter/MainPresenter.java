@@ -37,19 +37,20 @@ public class MainPresenter implements Presenter {
     private Context context;
     private FragmentManager fragmentManager;
     private FragmentAdapter mFragmentAdapter;
+    private MyAccountFragment myAccountFragment;
 
     @Override
     public void onCreate(final Context context, IView view) {
         this.context = context;
 
-        List<TabBean> tbs = new ArrayList<TabBean>();
-        tbs.add(new TabBean("首页", R.drawable.selector_tab_home, new YdzcHomeFragment()));
-        tbs.add(new TabBean("投资理财", R.drawable.selector_tab_share, new YdzcInvestFragment()));
-//        tbs.add(new TabBean("圈子", R.drawable.selector_tab_train, new MyFragment()));
-        tbs.add(new TabBean("我的账户", R.drawable.selector_tab_me, new MyAccountFragment()));
+        List<TabBean> tabs = new ArrayList<TabBean>();
+        tabs.add(new TabBean("首页", R.drawable.selector_tab_home, new YdzcHomeFragment()));
+        tabs.add(new TabBean("投资理财", R.drawable.selector_tab_share, new YdzcInvestFragment()));
+        this.myAccountFragment = new MyAccountFragment();
+        tabs.add(new TabBean("我的账户", R.drawable.selector_tab_me, myAccountFragment));
 
         final ViewPager viewPager = view.get(R.id.pager);
-        initViewPager(viewPager, tbs);
+        initViewPager(viewPager, tabs);
 
         final FragmentTabHost fragmentTabHost = view.get(android.R.id.tabhost);
         viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -78,7 +79,7 @@ public class MainPresenter implements Presenter {
             }
         });
 
-        initTabs(fragmentTabHost, viewPager, tbs);
+        initTabs(fragmentTabHost, viewPager, tabs);
     }
 
     public void setFragmentManager(FragmentManager fragmentManager) {
@@ -102,16 +103,22 @@ public class MainPresenter implements Presenter {
         mTabHost.getTabWidget().setShowDividers(LinearLayout.SHOW_DIVIDER_NONE);
     }
 
-    private void initViewPager(ViewPager vp, List<TabBean> tbs) {
+    private void initViewPager(ViewPager vp, List<TabBean> tabs) {
         List<Fragment> mFragmentList = new ArrayList<Fragment>();
-        for (TabBean tb : tbs) {
-            mFragmentList.add(tb.fragment);
+        for (TabBean tab : tabs) {
+            mFragmentList.add(tab.fragment);
         }
 
         mFragmentAdapter = new FragmentAdapter(fragmentManager, mFragmentList);
         vp.setAdapter(mFragmentAdapter);
         vp.setCurrentItem(0);
         vp.setOffscreenPageLimit(mFragmentList.size());
+    }
+
+    public void setLogin(){
+        if (myAccountFragment != null){
+            myAccountFragment.setLogin();
+        }
     }
 
     private class TabBean {

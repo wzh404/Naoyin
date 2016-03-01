@@ -270,7 +270,7 @@
             android:layout_marginBottom="5dp"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
-            android:background="@drawable/button_red_corner_shape"
+            android:background="@drawable/button_blue_corner_shape"
             android:text="充值"
             android:textColor="#FFF"
             android:textSize="16sp"

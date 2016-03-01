@@ -13,9 +13,11 @@ import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
 import com.nostra13.universalimageloader.core.ImageLoader;
+import com.xeehoo.health.BrainApplication;
 import com.xeehoo.health.R;
 import com.xeehoo.health.activity.InvestActivity;
 import com.xeehoo.health.activity.LoginActivity;
+import com.xeehoo.health.activity.MyProductActivity;
 import com.xeehoo.health.activity.PayActivity;
 import com.xeehoo.health.common.adapter.SlideImageAdapter;
 import com.xeehoo.health.common.bean.SlidePage;
@@ -83,19 +85,18 @@ public class YdzcHomeFragment extends Fragment {
             mCircleMenuLayout.setOnMenuItemClickListener(new CircleMenuLayout.OnMenuItemClickListener() {
                 @Override
                 public void itemClick(View view, int pos) {
-                    Toast.makeText(context, mItemTexts[pos],
-                            Toast.LENGTH_SHORT).show();
-                    if (pos == 0) {
-                        Intent intent = new Intent(context, PayActivity.class);
-                        intent.putExtra("name", "投资 产品20120930134");
-                        intent.putExtra("amount", "1500");
-                        intent.putExtra("action", "invest");
-
-                        startActivity(intent);
-                    }
-                    else if (pos == 1) {
-                        Intent intent = new Intent(context, InvestActivity.class);
-                        startActivity(intent);
+//                    Toast.makeText(context, mItemTexts[pos],
+//                            Toast.LENGTH_SHORT).show();
+                    if (pos == 5) {
+                        if (BrainApplication.isLogin){
+                            Intent intent = new Intent(context, MyProductActivity.class);
+                            startActivity(intent);
+                        }
+                        else{
+                            Toast.makeText(context,
+                                    "请登录后查看",
+                                    Toast.LENGTH_SHORT).show();
+                        }
                     }
                 }
 

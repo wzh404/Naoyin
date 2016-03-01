@@ -45,15 +45,19 @@ public class MobileSmsPresenter extends ServicePresenter {
         public void call(Result result) {
             MobileSmsActivity mobileSmsActivity = (MobileSmsActivity) context;
             mobileSmsActivity.dismissProgressBar();
-            Toast.makeText(context, result.getTag() + " - " + result.getCode() + " - " + result.getMsg(), Toast.LENGTH_SHORT).show();
             if (result.isResult("register", "OK")) {
+                Toast.makeText(context,  "注册成功", Toast.LENGTH_SHORT).show();
                 mobileSmsActivity.finish();
             }
             else if (result.isResult("pay_password", "OK")) {
+                Toast.makeText(context,  "设置登录密码成功", Toast.LENGTH_SHORT).show();
                 mobileSmsActivity.finish();
             }
             else if (result.isResult("password", "OK")) {
+                Toast.makeText(context,  "设置支付密码成功", Toast.LENGTH_SHORT).show();
                 mobileSmsActivity.finish();
+            } else {
+                Toast.makeText(context,  result.getMsg(), Toast.LENGTH_SHORT).show();
             }
         }
     };

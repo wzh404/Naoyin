@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/activity_login_layout"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:layout_centerVertical="true"
     android:background="#fff"
-    android:id="@+id/activity_login_layout"
     android:orientation="vertical">
 
     <RelativeLayout
@@ -31,10 +31,10 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
             android:background="@null"
-            android:padding="4dp"
-            android:src="@drawable/back"
             android:clickable="true"
-            android:onClick="exitOnClick"/>
+            android:onClick="exitOnClick"
+            android:padding="4dp"
+            android:src="@drawable/back" />
     </RelativeLayout>
 
     <EditText
@@ -47,8 +47,8 @@
         android:layout_marginTop="50dp"
         android:background="@drawable/bg_edittext"
         android:hint="请填写手机号"
-        android:padding="5dp"
         android:inputType="number"
+        android:padding="5dp"
         android:singleLine="true"
         android:text=""
         android:textColor="#666"
@@ -63,14 +63,14 @@
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginTop="16dp"
-        android:singleLine="true"
         android:background="@drawable/bg_edittext"
         android:hint="填写6-14位密码"
+        android:inputType="textPassword"
         android:padding="5dip"
+        android:password="true"
+        android:singleLine="true"
         android:text=""
         android:textColor="#666"
-        android:inputType="textPassword"
-        android:password="true"
         android:textColorHint="#ddd" />
 
     <Button
@@ -85,21 +85,20 @@
         android:clickable="true"
         android:onClick="mobileSmsOnClick"
         android:text="获取手机验证码"
-        android:textColor="#FFF"/>
+        android:textColor="#FFF" />
 
-    <TextView
+    <CheckBox
+        android:id="@+id/cb_user_protocol"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_gravity="left"
-        android:layout_marginTop="12dp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:text="阅读并接受《用户协议》"
+        android:layout_marginTop="12dp"
+        android:checked="false"
+        android:text="阅读并接受《盈达用户协议》"
         android:textColor="#666"
-        android:textSize="16sp"
-        android:clickable="true"
-        android:onClick="pwdOnClick"/>
-
+        android:textSize="16sp"></CheckBox>
 
 </LinearLayout>

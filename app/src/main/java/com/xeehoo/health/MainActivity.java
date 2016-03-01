@@ -6,6 +6,7 @@ import com.xeehoo.health.activity.InvestActivity;
 import com.xeehoo.health.activity.LoginActivity;
 import com.xeehoo.health.activity.MyProductActivity;
 import com.xeehoo.health.activity.UserActivity;
+import com.xeehoo.health.activity.UserSettingActivity;
 import com.xeehoo.health.common.presenter.MainPresenter;
 import com.xeehoo.health.common.view.MainView;
 import com.xeehoo.health.common.webview.BaseWebActivity;
@@ -24,9 +25,12 @@ import android.view.View;
 import android.widget.Toast;
 
 public class MainActivity extends FragmentActivity {
+    public final static int ACTIVITY_REQUEST_LOGIN = 1;
+    public final static int ACTIVITY_REQUEST_LOGOUT = 2;
+
 	private MainPresenter presenter;
     private MainView mainView;
-    private MyAccountItemView accountItemView;
+//    private MyAccountItemView accountItemView;
 
     @Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -48,22 +52,28 @@ public class MainActivity extends FragmentActivity {
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        Log.e("result", " resultCode " + resultCode);
-        if (resultCode == 2){
-            FragmentTabHost fragmentTabHost = mainView.get(android.R.id.tabhost);
-            fragmentTabHost.setCurrentTab(2);
+//        Log.e("result", " resultCode " + resultCode);
+//        if (resultCode == 2){
+//            FragmentTabHost fragmentTabHost = mainView.get(android.R.id.tabhost);
+//            fragmentTabHost.setCurrentTab(2);
+//        }
+//        else
+        if (resultCode == 9){
+            presenter.setLogin();
+        }
+        else if (resultCode == 10){
+            presenter.setLogin();
         }
 	}
 
 	@Override
 	public void onDestroy(){
 		super.onDestroy();
-		Log.e("Main", "onDestroy MainActivity");
 	}
 
 	public void loginOnClick(View view){
 		Intent saveIntent = new Intent(MainActivity.this, LoginActivity.class);
-		startActivityForResult(saveIntent, 1);
+		startActivityForResult(saveIntent, MainActivity.ACTIVITY_REQUEST_LOGIN);
 	}
 
 //	public void myProductClick(View view){
@@ -78,12 +88,12 @@ public class MainActivity extends FragmentActivity {
                 product);
 	}
 
-    public void settingOnClick(View view){
-        Toast.makeText(this, getAccountItemView().getCode(), Toast.LENGTH_SHORT).show();
-        BrainApplication.isLogin = false;
-        BrainApplication.token = null;
-        getAccountItemView().setItem();
-    }
+//    public void settingOnClick(View view){
+////        Toast.makeText(this, getAccountItemView().getCode(), Toast.LENGTH_SHORT).show();
+//        BrainApplication.isLogin = false;
+//        BrainApplication.token = null;
+////        getAccountItemView().setItem();
+//    }
 
 	public void route(String code){
         if ("0201".equalsIgnoreCase(code)){
@@ -124,16 +134,19 @@ public class MainActivity extends FragmentActivity {
                 Toast.makeText(this, "还没有注册托管账户！", Toast.LENGTH_SHORT).show();
             }
         }
-
+        else if ("0500".equalsIgnoreCase(code)){
+            Intent saveIntent = new Intent(MainActivity.this, UserSettingActivity.class);
+            startActivityForResult(saveIntent, MainActivity.ACTIVITY_REQUEST_LOGOUT);
+        }
 	}
 
-    public MyAccountItemView getAccountItemView() {
-        return accountItemView;
-    }
-
-    public void setAccountItemView(MyAccountItemView accountItemView) {
-        this.accountItemView = accountItemView;
-    }
+//    public MyAccountItemView getAccountItemView() {
+//        return accountItemView;
+//    }
+//
+//    public void setAccountItemView(MyAccountItemView accountItemView) {
+//        this.accountItemView = accountItemView;
+//    }
 
     private void startWebview(String title, String url, Product product) {
         Bundle bundle = new Bundle();

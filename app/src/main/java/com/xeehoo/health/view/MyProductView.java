@@ -13,6 +13,7 @@ import com.xeehoo.health.common.view.IView;
 public class MyProductView extends AbstractView {
     public void init(Context context, ViewGroup container){
         super.init(context, container, R.layout.activity_my_product);
+        initDialog();
     }
 
     public MyProductView(Context context, ViewGroup container){

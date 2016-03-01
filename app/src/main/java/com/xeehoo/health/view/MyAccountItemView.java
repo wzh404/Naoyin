@@ -47,7 +47,7 @@ public class MyAccountItemView extends AbstractView {
         this.code = obj.getString("code");
 
         setItemOnClick();
-        setItem();
+//        setItem();
     }
 
     public String getCode(){
@@ -61,49 +61,49 @@ public class MyAccountItemView extends AbstractView {
             public void onClick(View v) {
                 MainActivity mainActivity = (MainActivity) view.getContext();
 
-                if (!BrainApplication.isLogin) {
-                    if ("0101".equalsIgnoreCase(code)) {
-                        Observable<Result> observable = RxBus.get().register(MyAccountItemView.TAG_LOGIN, Result.class);
-                        observable.subscribeOn(AndroidSchedulers.mainThread())
-                                .subscribe(loginAction1);
-
-                        mainActivity.loginOnClick(view);
-                    } else {
+                if (!BrainApplication.isLogin && ! "0500".equalsIgnoreCase(code)) {
+//                    if ("0101".equalsIgnoreCase(code)) {
+//                        Observable<Result> observable = RxBus.get().register(MyAccountItemView.TAG_LOGIN, Result.class);
+//                        observable.subscribeOn(AndroidSchedulers.mainThread())
+//                                .subscribe(loginAction1);
+//
+//                        mainActivity.loginOnClick(view);
+//                    } else {
                         Toast.makeText(context, "请登录！", Toast.LENGTH_SHORT).show();
-                    }
+//                    }
                 } else {
-                    Toast.makeText(context, BrainApplication.mobile, Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(context, BrainApplication.mobile, Toast.LENGTH_SHORT).show();
                     mainActivity.route(code);
                 }
             }
         });
     }
 
-    private Action1 loginAction1 = new Action1<Result>() {
-        @Override
-        public void call(Result result) {
-            if (result.isResult(MyAccountItemView.TAG_LOGIN, "OK")) {
-                setItem();
-            }
+//    private Action1 loginAction1 = new Action1<Result>() {
+//        @Override
+//        public void call(Result result) {
+//            if (result.isResult(MyAccountItemView.TAG_LOGIN, "OK")) {
+//                setItem();
+//            }
+//
+//            RxBus.get().unregister(MyAccountItemView.TAG_LOGIN);
+//        }
+//    };
 
-            RxBus.get().unregister(MyAccountItemView.TAG_LOGIN);
-        }
-    };
-
-    public void setItem() {
-        if ("0101".equalsIgnoreCase(code)) { // 用户信息
-            if (BrainApplication.isLogin) {
-                TextView textView = get(R.id.item_my_name);
-                textView.setText(BrainApplication.mobile);
-                textView.setTextColor(Color.parseColor("#000000"));
-            } else {
-                TextView textView = get(R.id.item_my_name);
-                textView.setText("请登录/注册新用户");
-                textView.setTextColor(Color.rgb(0xcc, 0xcc, 0xcc));
-            }
-
-            MainActivity mainActivity = (MainActivity) view.getContext();
-            mainActivity.setAccountItemView(this);
-        }
-    }
+//    public void setItem() {
+//        if ("0101".equalsIgnoreCase(code)) { // 用户信息
+//            if (BrainApplication.isLogin) {
+//                TextView textView = get(R.id.item_my_name);
+//                textView.setText(BrainApplication.mobile);
+//                textView.setTextColor(Color.parseColor("#000000"));
+//            } else {
+//                TextView textView = get(R.id.item_my_name);
+//                textView.setText("请登录/注册新用户");
+//                textView.setTextColor(Color.rgb(0xcc, 0xcc, 0xcc));
+//            }
+//
+//            MainActivity mainActivity = (MainActivity) view.getContext();
+//            mainActivity.setAccountItemView(this);
+//        }
+//    }
 }

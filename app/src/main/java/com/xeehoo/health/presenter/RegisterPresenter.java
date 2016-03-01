@@ -31,9 +31,10 @@ public class RegisterPresenter extends ServicePresenter {
         public void call(Result result) {
             RegisterActivity registerActivity = (RegisterActivity) context;
             registerActivity.dismissProgressBar();
-            Toast.makeText(context, result.getTag() + " - " + result.getCode() + " - " + result.getMsg(), Toast.LENGTH_SHORT).show();
             if (result.isResult("mobile", "ER18")) { // 号码不存在
                 registerActivity.sendMobileSms();
+            } else {
+                Toast.makeText(context, result.getMsg(), Toast.LENGTH_SHORT).show();
             }
         }
     };

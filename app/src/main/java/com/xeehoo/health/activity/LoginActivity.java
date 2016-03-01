@@ -32,7 +32,7 @@ public class LoginActivity extends Activity {
 
         dialog = new SweetAlertDialog(this, SweetAlertDialog.PROGRESS_TYPE);
         dialog.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
-        dialog.setTitleText("Loading");
+        dialog.setTitleText("登录中...");
         dialog.setCancelable(false);
     }
 
@@ -70,7 +70,6 @@ public class LoginActivity extends Activity {
     public void onDestroy() {
         super.onDestroy();
         loginPresenter.onDestroy();
-        Log.e("Destroy", "onDestroy");
     }
 
     public void exitOnClick(View view) {

@@ -25,7 +25,9 @@ import com.xeehoo.health.rxjava.action.Result;
 import com.xeehoo.health.rxjava.action.ResultAction1;
 import com.xeehoo.health.rxjava.rxbus.RxBus;
 import com.xeehoo.health.share.bean.ShareService;
+import com.xeehoo.health.util.CommonUtil;
 import com.xeehoo.health.util.User;
+import com.xeehoo.health.view.MyProductView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -47,10 +49,11 @@ public class MyProductPresenter extends ServicePresenter {
     private List<MyProduct> myProducts = new ArrayList<MyProduct>();
     private MyProductRecyclerAdapter adapter;
     private SwipeRefreshLayout swipeRefreshLayout;
+    private MyProductView myProductView;
 
-
-    public void onCreate(Context context, IView view) {
+    public void onCreate(Context context, MyProductView view) {
         this.context = context;
+        this.myProductView = view;
         super.init(context);
 
         swipeRefreshLayout = view.get(R.id.my_product_swipe_refresh);
@@ -70,13 +73,14 @@ public class MyProductPresenter extends ServicePresenter {
 
         RecyclerView recyclerView = view.get(R.id.my_product_recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
-        recyclerView.addItemDecoration(new SpacesItemDecoration(12));
+        recyclerView.addItemDecoration(new SpacesItemDecoration(CommonUtil.dip2px(context,10.0f)));
 
         adapter = new MyProductRecyclerAdapter(context, myProducts);
         recyclerView.setAdapter(adapter);
 
         BrainApplication.investId = 0;
         register("my_product", myProductAction1);
+        myProductView.showDialog();
         myProduct();
     }
 
@@ -84,7 +88,8 @@ public class MyProductPresenter extends ServicePresenter {
         @Override
         public void call(Result result) {
             Log.e("Product", BrainApplication.investId + " - Product2 size " + myProducts.size());
-            Toast.makeText(context, result.getCode() + " - " + result.getTag(), Toast.LENGTH_SHORT).show();
+            myProductView.dismissDialog();
+//            Toast.makeText(context, result.getCode() + " - " + result.getTag(), Toast.LENGTH_SHORT).show();
             if (result.isResult("my_product", "OK")){
                 if (myProducts.size() == 1 && myProducts.get(0).getInvestId() == 0){
                     myProducts.clear();

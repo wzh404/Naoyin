@@ -37,11 +37,14 @@ public class ChangePwdPresenter extends ServicePresenter {
         public void call(Result result) {
             ChangePwdActivity changePwdActivity = (ChangePwdActivity) context;
             changePwdActivity.dismissProgressBar();
-            Toast.makeText(context, result.getTag() + " - " + result.getCode() + " - " + result.getMsg(), Toast.LENGTH_SHORT).show();
             if (result.isResult("change_password", "OK")) {
+                Toast.makeText(context, "修改登录密码成功",Toast.LENGTH_SHORT).show();
                 changePwdActivity.finish();
             } else if (result.isResult("change_pay_password", "OK")) {
+                Toast.makeText(context, "修改支付密码成功",Toast.LENGTH_SHORT).show();
                 changePwdActivity.finish();
+            } else {
+                Toast.makeText(context, result.getMsg(), Toast.LENGTH_SHORT).show();
             }
         }
     };

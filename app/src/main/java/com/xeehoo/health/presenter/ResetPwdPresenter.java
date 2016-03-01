@@ -33,18 +33,19 @@ public class ResetPwdPresenter extends ServicePresenter {
             view.setPay();
         }
 
-        register("set_pwd", resetPwdAction1);
+//        register("set_pwd", resetPwdAction1);
     }
 
-    private Action1 resetPwdAction1 = new Action1<Result>() {
-        @Override
-        public void call(Result result) {
-            ResetPwdActivity resetPwdActivity = (ResetPwdActivity) context;
-            resetPwdActivity.dismissProgressBar();
-            Toast.makeText(context, result.getTag() + " - " + result.getCode() + " - " + result.getMsg(), Toast.LENGTH_SHORT).show();
-            if (result.isResult("set_pwd", "OK")) {
-
-            }
-        }
-    };
+//    private Action1 resetPwdAction1 = new Action1<Result>() {
+//        @Override
+//        public void call(Result result) {
+//            ResetPwdActivity resetPwdActivity = (ResetPwdActivity) context;
+//            resetPwdActivity.dismissProgressBar();
+//            if (result.isResult("set_pwd", "OK")) {
+//
+//            } else {
+//                Toast.makeText(context, result.getMsg(), Toast.LENGTH_SHORT).show();
+//            }
+//        }
+//    };
 }

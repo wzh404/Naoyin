@@ -31,7 +31,6 @@
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -64,6 +63,8 @@
         <activity android:name="com.xeehoo.health.activity.UserActivity" >
         </activity>
         <activity android:name="com.xeehoo.health.activity.BalanceActivity" >
+        </activity>
+        <activity android:name="com.xeehoo.health.activity.UserSettingActivity" >
         </activity>
         <activity android:name="com.xeehoo.health.plan.activity.DailyPlanActivity" />
         <activity android:name="com.xeehoo.health.util.CircleActivity" />

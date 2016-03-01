@@ -1,11 +1,5 @@
 [
   {
-    "type": "ITEM_MARGIN",
-    "title": "请登录!",
-    "code": "0101",
-    "icon": "usericon03"
-  },
-  {
     "type": "ITEM",
     "title": "第三方托管账户",
     "code": "0201",
@@ -25,7 +19,7 @@
   },
   {
     "type": "ITEM",
-    "title": "理财产品",
+    "title": "我的投资",
     "code": "0301",
     "icon": "usericon05"
   },
@@ -36,33 +30,20 @@
     "icon": "usericon04"
   },
   {
-    "type": "ITEM_MARGIN",
+    "type": "ITEM",
     "title": "在线提现",
     "code": "0303",
     "icon": "usericon02"
   },
-
   {
-    "type": "ITEM",
-    "title": "在线客服",
-    "code": "0401",
+    "type": "ITEM_MARGIN",
+    "title": "更多设置",
+    "code": "0500",
     "icon": "usericon01"
   },
   {
-    "type": "ITEM",
-    "title": "我的消息",
-    "code": "0402",
-    "icon": "usericon06"
-  },
-  {
-    "type": "ITEM_MARGIN",
-    "title": "常见问题",
-    "code": "0403",
-    "icon": "usericon07"
-  },
-  {
     "type": "TEL",
-    "title": "客服 400-011-7777",
+    "title": "客服",
     "code": "0901"
   }
 ]
