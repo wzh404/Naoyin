@@ -56,9 +56,7 @@ public class MyAccountItemView extends AbstractView {
 
     public void setItemOnClick() {
         RelativeLayout relativeLayout = get(R.id.item_my_account_layout);
-        relativeLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        relativeLayout.setOnClickListener(v  -> {
                 MainActivity mainActivity = (MainActivity) view.getContext();
 
                 if (!BrainApplication.isLogin && ! "0500".equalsIgnoreCase(code)) {
@@ -75,8 +73,8 @@ public class MyAccountItemView extends AbstractView {
 //                    Toast.makeText(context, BrainApplication.mobile, Toast.LENGTH_SHORT).show();
                     mainActivity.route(code);
                 }
-            }
-        });
+            });
+//        });
     }
 
 //    private Action1 loginAction1 = new Action1<Result>() {
