@@ -8,4 +8,5 @@ public enum RecyclerViewType {
     ITEM_MARGIN,
     TEL,
     LOGOUT,
+    LOGIN,
 }

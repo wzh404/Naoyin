@@ -17,10 +17,10 @@ import com.xeehoo.health.common.view.AbstractView;
 public class MyAccountView extends AbstractView {
     public MyAccountView(Context context, ViewGroup container){
         super.init(context, container, R.layout.activity_my_account);
-        layout();
+//        layout();
     }
 
-    public void layout(){
+    public void layout2(){
         LinearLayout unloginLayout = get(R.id.user_unlogin_layout);
         RelativeLayout loginLayout = get(R.id.user_login_layout);
         TextView textView = get(R.id.user_name);

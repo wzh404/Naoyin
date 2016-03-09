@@ -29,6 +29,6 @@ public class MyAccountFragment extends Fragment {
     }
 
     public void setLogin(){
-        myAccountView.layout();
+//        myAccountView.layout();
     }
 }
