@@ -13,6 +13,7 @@ import com.xeehoo.health.common.view.RecyclerViewHolder;
 import com.xeehoo.health.util.RecyclerViewType;
 import com.xeehoo.health.util.ResourceUtils;
 import com.xeehoo.health.view.MyAccountItemView;
+import com.xeehoo.health.view.MyAccountLoginView;
 import com.xeehoo.health.view.MyAccountLogoutView;
 import com.xeehoo.health.view.MyAccountTelView;
 
@@ -51,6 +52,11 @@ public class MyAccountRecyclerAdapter extends RecyclerView.Adapter<RecyclerViewH
         }
         else if (viewType == RecyclerViewType.LOGOUT.ordinal()){
             MyAccountLogoutView view = new MyAccountLogoutView(context, parent);
+            RecyclerViewHolder holder = new RecyclerViewHolder(view);
+            return holder;
+        }
+        else if (viewType == RecyclerViewType.LOGIN.ordinal()){
+            MyAccountLoginView view = new MyAccountLoginView(context, parent);
             RecyclerViewHolder holder = new RecyclerViewHolder(view);
             return holder;
         }

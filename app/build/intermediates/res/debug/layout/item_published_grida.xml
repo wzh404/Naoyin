@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center" >
+
+    <ImageView
+        android:id="@+id/item_grida_image"
+        android:layout_width="68dp"
+        android:layout_height="68dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_launcher" >
+    </ImageView>
+
+    <ImageView
+        android:id="@+id/unselected"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_margin="0dp"
+        android:src="@drawable/image_remove" />
+
+</RelativeLayout><!-- From: file:/D:/StudioProjects/ViewPagerDemo/app/src/main/res/layout/item_published_grida.xml -->

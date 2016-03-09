@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/linearlayout_images_slide"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" 
+    >
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/image_slide_page"
+        android:layout_width="fill_parent"
+        android:layout_height="200dp"
+        android:focusable="true" />
+
+    <RelativeLayout
+        android:id="@+id/layout_title_text"
+        style="@style/Transparent"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_gravity="bottom" >
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/tvSlideTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:gravity="center_vertical"
+                android:textColor="@android:color/white"
+                android:textSize="10dip"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:id="@+id/layout_circle_images"
+                android:layout_width="wrap_content"
+                android:layout_height="15dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@id/tvSlideTitle"
+                android:gravity="right|center"
+                android:orientation="horizontal" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+</FrameLayout><!-- From: file:/D:/StudioProjects/ViewPagerDemo/app/src/main/res/layout/slide_image.xml -->

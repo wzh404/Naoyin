@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical"
+    android:paddingRight="20dp" >
+    
+    <TextView
+        android:id="@+id/tv_plan_time"
+        android:layout_width="wrap_content"
+        android:layout_height="25dp"
+        android:layout_alignRight="@+id/view_1"
+        android:gravity="center_vertical"
+        android:layout_marginRight="10dp"
+        android:textColor="#FF9900"
+        android:text="Morning"
+        android:textSize="12sp" />
+   <View
+       android:id="@+id/view_1"
+       android:layout_width="1dp"
+       android:layout_height="25dp"
+       android:layout_marginLeft="50dp"
+       android:background="#ddd" />
+
+    <TextView
+        android:id="@+id/tv_live_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/view_1"
+        android:layout_alignRight="@id/view_1"
+        android:paddingRight="15dp"
+        android:gravity="center_vertical"
+        android:text="生活"
+        android:textColor="#ccc"
+        android:textStyle="normal"
+        android:textSize="16dp" />
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_below="@+id/view_1"
+        android:layout_marginLeft="40dp"
+        android:src="@drawable/timeline_green" />
+
+    <View
+        android:id="@+id/view_2"
+        android:layout_width="1dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/image"
+        android:layout_marginLeft="50dp"
+        android:layout_alignBottom="@+id/relative"
+        android:background="#ddd" />
+
+    <RelativeLayout
+        android:id="@+id/relative"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/image"
+        android:layout_toRightOf="@+id/image"
+        android:background="@drawable/timeline_content"
+        android:padding="10dp" >
+<!--  
+        <ImageView
+            android:id="@+id/image_1"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:src="@drawable/bg_green_circle_smic" />
+-->
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:ellipsize="end"
+            android:maxEms="7"
+            android:paddingLeft="5dp"
+            android:singleLine="false"
+            android:text="测试数据"
+            android:textSize="16sp" />
+
+    </RelativeLayout>
+
+</RelativeLayout><!-- From: file:/D:/StudioProjects/ViewPagerDemo/app/src/main/res/layout/lv_daily_plan.xml -->
