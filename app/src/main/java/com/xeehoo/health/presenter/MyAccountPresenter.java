@@ -50,4 +50,8 @@ public class MyAccountPresenter extends ServicePresenter{
         adapter = new MyAccountRecyclerAdapter(context, jsonArray);
         recyclerView.setAdapter(adapter);
     }
+
+    public void showLogin(){
+        adapter.showLogin();
+    }
 }

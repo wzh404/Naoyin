@@ -59,10 +59,10 @@ public class MainActivity extends FragmentActivity {
 //        }
 //        else
         if (resultCode == 9){
-            presenter.setLogin();
+            presenter.showLogin();
         }
         else if (resultCode == 10){
-            presenter.setLogin();
+            presenter.showLogin();
         }
 	}
 

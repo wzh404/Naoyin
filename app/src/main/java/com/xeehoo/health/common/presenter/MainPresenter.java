@@ -115,9 +115,9 @@ public class MainPresenter implements Presenter {
         vp.setOffscreenPageLimit(mFragmentList.size());
     }
 
-    public void setLogin(){
+    public void showLogin(){
         if (myAccountFragment != null){
-            myAccountFragment.setLogin();
+            myAccountFragment.showLogin();
         }
     }
 

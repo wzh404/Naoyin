@@ -23,6 +23,7 @@ import com.xeehoo.health.view.MyAccountTelView;
 public class MyAccountRecyclerAdapter extends RecyclerView.Adapter<RecyclerViewHolder> {
     private JSONArray items;
     private Context context;
+    private MyAccountLoginView loginView;
 //    private int currentPosition = 0;
 
     public MyAccountRecyclerAdapter(Context context, JSONArray items){
@@ -56,8 +57,8 @@ public class MyAccountRecyclerAdapter extends RecyclerView.Adapter<RecyclerViewH
             return holder;
         }
         else if (viewType == RecyclerViewType.LOGIN.ordinal()){
-            MyAccountLoginView view = new MyAccountLoginView(context, parent);
-            RecyclerViewHolder holder = new RecyclerViewHolder(view);
+            this.loginView = new MyAccountLoginView(context, parent);
+            RecyclerViewHolder holder = new RecyclerViewHolder(loginView);
             return holder;
         }
 
@@ -89,6 +90,10 @@ public class MyAccountRecyclerAdapter extends RecyclerView.Adapter<RecyclerViewH
         JSONObject obj = (JSONObject) items.get(position);
         String type = obj.getString("type");
         return RecyclerViewType.valueOf(type).ordinal();
+    }
+
+    public void showLogin(){
+        loginView.layout();
     }
 
     private void convert(JSONObject obj){
