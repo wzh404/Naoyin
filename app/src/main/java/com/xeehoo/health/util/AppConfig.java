@@ -5,5 +5,5 @@ package com.xeehoo.health.util;
  */
 public class AppConfig {
     public static boolean DEBUG = true;
-    public static String  WEB_URL= "http://192.168.0.173:8080";
+    public static String  WEB_URL= "http://192.168.10.60:8080";
 }

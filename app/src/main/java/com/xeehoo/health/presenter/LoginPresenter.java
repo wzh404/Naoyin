@@ -1,6 +1,7 @@
 package com.xeehoo.health.presenter;
 
 import android.content.Context;
+import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -14,6 +15,7 @@ import com.xeehoo.health.rxjava.action.Result;
 import com.xeehoo.health.rxjava.action.ResultAction1;
 import com.xeehoo.health.rxjava.rxbus.RxBus;
 import com.xeehoo.health.share.bean.ShareService;
+import com.xeehoo.health.util.AssetsUtils;
 import com.xeehoo.health.view.LoginView;
 import com.xeehoo.health.view.MyAccountItemView;
 
@@ -50,11 +52,14 @@ public class LoginPresenter extends ServicePresenter {
 
             if (result.isResult("login", "OK")) {
                 BrainApplication.token = result.getMsg();
-                Log.e("token", BrainApplication.token);
+                Log.e("token2", BrainApplication.token);
+                final TelephonyManager tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+                Log.e("token2", "device id is " + tm.getDeviceId());
 
                 BrainApplication.mobile = view.getMobile();
                 BrainApplication.isLogin = true;
                 BrainApplication.isAccount = result.getObj().get("account").getAsBoolean();
+                AssetsUtils.saveParas(context);
 
 //                Result r = new Result();
 //                r.setTag(MyAccountItemView.TAG_LOGIN);
@@ -62,6 +67,7 @@ public class LoginPresenter extends ServicePresenter {
 //                RxBus.get().post(MyAccountItemView.TAG_LOGIN, r);
                 loginActivity.setResult(9);
                 loginActivity.finish();
+
             }
             else {
                 Toast.makeText(context, result.getMsg(), Toast.LENGTH_SHORT).show();

@@ -12,10 +12,12 @@ import com.xeehoo.health.common.view.MainView;
 import com.xeehoo.health.common.webview.BaseWebActivity;
 import com.xeehoo.health.model.Product;
 import com.xeehoo.health.util.AppConfig;
+import com.xeehoo.health.util.AssetsUtils;
 import com.xeehoo.health.view.MyAccountItemView;
 
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.v4.app.FragmentActivity;
@@ -36,6 +38,7 @@ public class MainActivity extends FragmentActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
+        AssetsUtils.initParas(this);
         mainView = new MainView();
         mainView.init(this, null);
 		setContentView(mainView.getView());
@@ -75,6 +78,11 @@ public class MainActivity extends FragmentActivity {
 		Intent saveIntent = new Intent(MainActivity.this, LoginActivity.class);
 		startActivityForResult(saveIntent, MainActivity.ACTIVITY_REQUEST_LOGIN);
 	}
+
+    public void call(View view){
+        Intent intent=new Intent("android.intent.action.CALL", Uri.parse("tel:400-411-7777"));
+        startActivity(intent);
+    }
 
 //	public void myProductClick(View view){
 //		Intent saveIntent = new Intent(MainActivity.this, MyProductActivity.class);

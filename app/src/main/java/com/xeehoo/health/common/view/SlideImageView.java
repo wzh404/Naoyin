@@ -27,14 +27,21 @@ public class SlideImageView implements IView{
     private SparseArray<ImageView> circleImageViews = new SparseArray<ImageView>();
     private Context context;
     private ViewGroup circleImageViewGroup;
+    private ViewPager viewPager;
 
     public void init(LayoutInflater inflater, ViewGroup container){
         this.context = inflater.getContext();
         view = inflater.inflate(R.layout.slide_image, null);
-        ViewPager viewPager = get(R.id.image_slide_page);
+        this.viewPager = get(R.id.image_slide_page);
         this.circleImageViewGroup = get(R.id.layout_circle_images);
 
         viewPager.setOnPageChangeListener(new SlideImagePageChangeListener(this));
+    }
+
+    public void setCurrentView(int index){
+        this.setSelectedCircleImageView(index);
+        this.setOtherUnselectedCircleImageView(index);
+        viewPager.setCurrentItem(index);
     }
 
     public ImageView addImageView(){

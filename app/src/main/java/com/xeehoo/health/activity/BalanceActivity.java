@@ -56,7 +56,12 @@ public class BalanceActivity extends Activity {
             Toast.makeText(this, "请输入金额", Toast.LENGTH_SHORT).show();
             return;
         }
+
         Long longMoney = new BigDecimal(balanceView.getMoney()).multiply(new BigDecimal(100)).longValue();
+        if (longMoney.longValue() < 100){
+            Toast.makeText(this, "输入金额不能小于1元", Toast.LENGTH_SHORT).show();
+            return;
+        }
         String money = longMoney.toString();
 
         if ("withdraw".equalsIgnoreCase(type)){

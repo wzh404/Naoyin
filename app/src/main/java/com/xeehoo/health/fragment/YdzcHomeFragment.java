@@ -3,6 +3,7 @@ package com.xeehoo.health.fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -49,6 +50,11 @@ public class YdzcHomeFragment extends Fragment {
             R.drawable.ic_credit, R.drawable.ic_other,
             R.drawable.ic_trans};
 
+    Handler handler = new Handler();
+    private SlideImageView slideImageView;
+    private int imageSizes;
+    private int inx = 0;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -68,16 +74,18 @@ public class YdzcHomeFragment extends Fragment {
 		/* 创建RecyclerView头 */
             String slide = AssetsUtils.getFromAssets(context, "home_slide.json");
             List<SlidePage> slidePages = JSON.parseArray(slide, SlidePage.class);
-            SlideImageView slideImageView = new SlideImageView();
-            slideImageView.init(inflater, null);
+            this.imageSizes = slidePages.size();
+
+            this.slideImageView = new SlideImageView();
+            this.slideImageView.init(inflater, null);
             for (int i = 0; i < slidePages.size(); i++) {
                 SlidePage slidePage = slidePages.get(i);
-                ImageView iv = slideImageView.addImageView();
+                ImageView iv = this.slideImageView.addImageView();
                 ImageLoader.getInstance().displayImage(slidePage.getImage(), iv);
             }
-            slideImageView.getViewPager().setAdapter(new SlideImageAdapter(slideImageView));
+            this.slideImageView.getViewPager().setAdapter(new SlideImageAdapter(this.slideImageView));
             LinearLayout linearLayout = (LinearLayout) rootView.findViewById(R.id.linearlayout_images_slide);
-            linearLayout.addView(slideImageView.getView());
+            linearLayout.addView(this.slideImageView.getView());
 
 //            homeRecyclerAdapter.setHeaderViewHolder(slideImageView.getView());
 
@@ -113,6 +121,16 @@ public class YdzcHomeFragment extends Fragment {
         if (parent != null) {
             parent.removeView(rootView);
         }
+
+        handler.postDelayed(r, 5000);
         return rootView;
     }
+
+    Runnable  r = new Runnable() {
+        @Override
+        public void run() {
+            slideImageView.setCurrentView((++inx) % imageSizes);
+            handler.postDelayed(r, 5000);
+        }
+    };
 }

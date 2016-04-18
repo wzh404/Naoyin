@@ -8,6 +8,7 @@ import android.view.View;
 
 import com.xeehoo.health.BrainApplication;
 import com.xeehoo.health.MainActivity;
+import com.xeehoo.health.util.AssetsUtils;
 import com.xeehoo.health.view.UserSettingView;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
@@ -55,6 +56,7 @@ public class UserSettingActivity extends Activity {
                             BrainApplication.productId = 0;
                             BrainApplication.mobile = null;
 
+                            AssetsUtils.clearParas(activity);
                             activity.setResult(10);
                             activity.finish();
                         }
