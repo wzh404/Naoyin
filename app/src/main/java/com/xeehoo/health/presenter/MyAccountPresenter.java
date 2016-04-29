@@ -41,6 +41,8 @@ public class MyAccountPresenter extends ServicePresenter{
         this.myAccountView = view;
         super.init(context);
 
+        register("user_retry_login", retryLoginAction1);
+
         RecyclerView recyclerView = view.get(R.id.my_account_recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
         recyclerView.addItemDecoration(new SpacesItemDecoration(0));
@@ -54,4 +56,12 @@ public class MyAccountPresenter extends ServicePresenter{
     public void showLogin(){
         adapter.showLogin();
     }
+
+    private Action1 retryLoginAction1 = new Action1<Result>() {
+
+        @Override
+        public void call(Result result) {
+            showLogin();
+        }
+    };
 }

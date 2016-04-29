@@ -59,7 +59,7 @@ public class MyAccountItemView extends AbstractView {
         relativeLayout.setOnClickListener(v  -> {
                 MainActivity mainActivity = (MainActivity) view.getContext();
 
-                if (!BrainApplication.isLogin && ! "0500".equalsIgnoreCase(code)) {
+                if (! BrainApplication.isLogin && ! "0500".equalsIgnoreCase(code)) {
 //                    if ("0101".equalsIgnoreCase(code)) {
 //                        Observable<Result> observable = RxBus.get().register(MyAccountItemView.TAG_LOGIN, Result.class);
 //                        observable.subscribeOn(AndroidSchedulers.mainThread())

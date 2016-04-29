@@ -5,6 +5,7 @@ import android.util.Log;
 
 
 import com.google.gson.JsonObject;
+import com.xeehoo.health.BrainApplication;
 import com.xeehoo.health.rxjava.rxbus.RxBus;
 
 import rx.functions.Action1;
@@ -35,6 +36,12 @@ public class ResultAction1 implements Action1 {
             } else {
                 r.setCode(jsonObject.get("resultCode").getAsString());
                 r.setMsg(jsonObject.get("resultMsg").getAsString());
+            }
+
+            if ("ER90".equalsIgnoreCase(r.getCode())){
+                BrainApplication.isLogin = false;
+                BrainApplication.token = "0";
+                RxBus.get().post("user_retry_login", r);
             }
 
             RxBus.get().post(tag, r);
