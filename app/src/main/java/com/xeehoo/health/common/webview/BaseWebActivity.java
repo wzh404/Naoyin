@@ -76,7 +76,7 @@ public class BaseWebActivity extends Activity {
 
     public void webviewOnClick(View view){
 //        Toast.makeText(this, "type is " + type, Toast.LENGTH_SHORT).show();
-        if ("product".equalsIgnoreCase(type)){
+        if ("invest".equalsIgnoreCase(type)){
             Product product = getIntent().getParcelableExtra("product");
             Intent intent = new Intent(BaseWebActivity.this, InvestActivity.class);
             intent.putExtra("product", product);
@@ -96,7 +96,7 @@ public class BaseWebActivity extends Activity {
         }
         else if ("myProduct".equalsIgnoreCase(type)){
             MyProduct myProduct = getIntent().getParcelableExtra("myProduct");
-            Toast.makeText(this, myProduct.getInvestRate().toString(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, myProduct.getInvestRate().toPlainString(), Toast.LENGTH_SHORT).show();
         }
     }
 
