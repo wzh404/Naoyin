@@ -98,6 +98,11 @@ public class ServicePresenter {
         call(observable, "product");
     }
 
+    public void transfer() {
+        Observable<JsonObject> observable = shareService.transfers();
+        call(observable, "transfer");
+    }
+
     public void myProduct() {
         Observable<JsonObject> observable = shareService.myProduct(BrainApplication.investId);
         call(observable, "my_product");
@@ -106,6 +111,11 @@ public class ServicePresenter {
     public void invest(Integer productId, Integer amount, String pwd) {
         Observable<JsonObject> observable = shareService.invest(productId, amount, pwd);
         call(observable, "pay");
+    }
+
+    public void transferComplete(Integer transferId, String pwd) {
+        Observable<JsonObject> observable = shareService.transferComplete(transferId, pwd);
+        call(observable, "transfer_complete");
     }
 
     public void mobile(String mobile) {

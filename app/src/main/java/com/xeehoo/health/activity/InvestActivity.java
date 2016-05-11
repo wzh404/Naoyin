@@ -83,7 +83,7 @@ public class InvestActivity extends Activity {
     public void investOnClick(View view){
         EditText editAmount = (EditText)findViewById(R.id.invest_amount);
         String amount = editAmount.getText().toString();
-        if (!"".equalsIgnoreCase(amount)){
+        if (! "".equalsIgnoreCase(amount)){
             Intent intent = new Intent(this, PayActivity.class);
             intent.putExtra("type", "invest");
             intent.putExtra("name", product.getProductName());

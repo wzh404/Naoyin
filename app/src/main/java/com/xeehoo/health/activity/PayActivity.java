@@ -22,7 +22,7 @@ public class PayActivity extends Activity {
     private PayPresenter presenter;
     private PayView payView;
 
-    private Integer amt;
+    private String amount;
     private String type;
     private Integer payId;
 
@@ -38,8 +38,8 @@ public class PayActivity extends Activity {
 
         this.type = getIntent().getStringExtra("type");
         String name = getIntent().getStringExtra("name");
-        String amount = getIntent().getStringExtra("amount");
-        this.amt = Integer.parseInt(amount);
+        this.amount = getIntent().getStringExtra("amount");
+//        this.amt = Integer.parseInt(amount);
         this.payId = getIntent().getIntExtra("payId", 0);
 
         payView.setPayAmount(getMoney(amount));
@@ -48,10 +48,14 @@ public class PayActivity extends Activity {
 
     public void payOnClick(View view){
         GridPasswordView v = (GridPasswordView)findViewById(R.id.pay);
-        Toast.makeText(this, v.getPassWord(),Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, v.getPassWord(),Toast.LENGTH_SHORT).show();
         if ("invest".equalsIgnoreCase(type)){
             payView.showDialog();
-            presenter.invest(payId, amt, v.getPassWord());
+            presenter.invest(payId, Integer.parseInt(this.amount), v.getPassWord());
+        }
+        else if ("transfer".equalsIgnoreCase(type)){
+            payView.showDialog();
+            presenter.transferComplete(payId, v.getPassWord());
         }
     }
 
@@ -65,6 +69,10 @@ public class PayActivity extends Activity {
     public void onDestroy(){
         super.onDestroy();
         presenter.onDestroy();
+    }
+
+    public void exitOnClick(View view) {
+        this.finish();
     }
 }
 

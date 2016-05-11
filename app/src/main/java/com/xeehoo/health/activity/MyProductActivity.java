@@ -1,11 +1,16 @@
 package com.xeehoo.health.activity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
 import com.xeehoo.health.BrainApplication;
+import com.xeehoo.health.common.webview.BaseWebActivity;
+import com.xeehoo.health.model.MyProduct;
+import com.xeehoo.health.model.Transfer;
 import com.xeehoo.health.presenter.MyProductPresenter;
+import com.xeehoo.health.util.AppConfig;
 import com.xeehoo.health.view.MyProductView;
 
 /**
@@ -35,5 +40,18 @@ public class MyProductActivity extends Activity {
 
     public void exitOnClick(View view) {
         this.finish();
+    }
+
+    public void startTransferWebview(MyProduct myProduct){
+        Bundle bundle = new Bundle();
+
+        bundle.putString("url", AppConfig.WEB_URL + "/app/user/investment?invest_id=" + myProduct.getInvestId());
+        bundle.putString("title", myProduct.getProductName());
+        bundle.putString("type", "myProduct");
+        bundle.putParcelable("myProduct", myProduct);
+        Intent intent = new Intent(this, BaseWebActivity.class);
+        intent.putExtras(bundle);
+
+        startActivity(intent);
     }
 }

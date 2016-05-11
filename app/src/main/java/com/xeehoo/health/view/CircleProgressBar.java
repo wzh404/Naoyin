@@ -17,7 +17,7 @@ public class CircleProgressBar extends View {
     private int maxProgress = 100;
     private int progress = 30;
     private int progressStrokeWidth = 10;
-    private String amount = "0";
+    private String unit = "%";
     private Context context;
 
     //画圆所在的距形区域
@@ -61,7 +61,7 @@ public class CircleProgressBar extends View {
         canvas.drawArc(oval, -90, ((float) progress / maxProgress) * 360, false, paint); // 绘制进度圆弧，这里是蓝色
 
         paint.setStrokeWidth(1);
-        String text2 = progress + "%"; //amount + "万";// + progress + "%";
+        String text2 = progress + unit; //amount + "万";// + progress + "%";
         int textHeight = height / 4;
         paint.setTextSize(CommonUtil.sp2px(context, 16.0f));
 
@@ -87,8 +87,8 @@ public class CircleProgressBar extends View {
         this.invalidate();
     }
 
-    public void setAmount(String amount){
-        this.amount = amount;
+    public void setUnit(String unit){
+        this.unit = unit;
         this.invalidate();
     }
 

@@ -31,6 +31,7 @@ public class PayPresenter  extends ServicePresenter {
         super.init(context);
 
         register("pay", payAction1);
+        register("transfer_complete", payAction1);
     }
 
     private Action1 payAction1 = new Action1<Result>() {
@@ -43,7 +44,12 @@ public class PayPresenter  extends ServicePresenter {
                 Toast.makeText(context, "投资成功", Toast.LENGTH_SHORT).show();
                 payActivity.setResult(1);
                 payActivity.finish();
-            } else {
+            }
+            if (result.isResult("transfer_complete", "OK")) {
+                Toast.makeText(context, "债权转让成功", Toast.LENGTH_SHORT).show();
+                payActivity.setResult(1);
+                payActivity.finish();
+            }else {
                 Toast.makeText(context, result.getMsg(), Toast.LENGTH_SHORT).show();
             }
         }

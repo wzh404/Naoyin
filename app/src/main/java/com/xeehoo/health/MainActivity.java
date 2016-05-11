@@ -11,6 +11,7 @@ import com.xeehoo.health.common.presenter.MainPresenter;
 import com.xeehoo.health.common.view.MainView;
 import com.xeehoo.health.common.webview.BaseWebActivity;
 import com.xeehoo.health.model.Product;
+import com.xeehoo.health.model.Transfer;
 import com.xeehoo.health.util.AppConfig;
 import com.xeehoo.health.util.AssetsUtils;
 import com.xeehoo.health.view.MyAccountItemView;
@@ -168,4 +169,6 @@ public class MainActivity extends FragmentActivity {
 
         startActivity(intent);
     }
+
+
 }

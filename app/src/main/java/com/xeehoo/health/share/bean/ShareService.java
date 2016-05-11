@@ -41,9 +41,16 @@ public interface ShareService {
     @GET("/app/product")
     Observable<JsonObject> products(@Query("product_id") Integer productId);
 
+    @GET("/app/user/transfers")
+    Observable<JsonObject> transfers();
+
     @GET("/app/mobile")
     Observable<JsonObject> mobile(@Query("mobile") String mobile);
 
     @GET("/app/invest")
     Observable<JsonObject> invest(@Query("product_id") Integer productId, @Query("amount")Integer amount, @Query("pwd")String pwd);
+
+    @GET("/app/user/transferComplete")
+    Observable<JsonObject> transferComplete(@Query("transfer_id") Integer transferId, @Query("pwd")String pwd);
+
 }

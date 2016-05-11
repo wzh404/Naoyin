@@ -20,6 +20,7 @@ import com.xeehoo.health.activity.InvestActivity;
 import com.xeehoo.health.activity.LoginActivity;
 import com.xeehoo.health.activity.MyProductActivity;
 import com.xeehoo.health.activity.PayActivity;
+import com.xeehoo.health.activity.TransferActivity;
 import com.xeehoo.health.common.adapter.SlideImageAdapter;
 import com.xeehoo.health.common.bean.SlidePage;
 import com.xeehoo.health.common.view.SlideImageView;
@@ -105,6 +106,10 @@ public class YdzcHomeFragment extends Fragment {
                                     "请登录后查看",
                                     Toast.LENGTH_SHORT).show();
                         }
+                    }
+                    else if (pos == 3){
+                        Intent intent = new Intent(context, TransferActivity.class);
+                        startActivity(intent);
                     }
                 }
 
