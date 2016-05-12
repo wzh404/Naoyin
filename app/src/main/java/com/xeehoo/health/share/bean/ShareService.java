@@ -3,6 +3,8 @@ package com.xeehoo.health.share.bean;
 import com.google.gson.JsonObject;
 
 
+import java.math.BigDecimal;
+
 import retrofit2.http.GET;
 import retrofit2.http.Query;
 import rx.Observable;
@@ -52,5 +54,12 @@ public interface ShareService {
 
     @GET("/app/user/transferComplete")
     Observable<JsonObject> transferComplete(@Query("transfer_id") Integer transferId, @Query("pwd")String pwd);
+
+    @GET("/app/user/transfer")
+    Observable<JsonObject> transferRequest(@Query("invest_id") Integer investId, @Query("amount")BigDecimal amount);
+
+    @GET("/app/user/transfer/cancel")
+    Observable<JsonObject> cancelTransferRequest(@Query("invest_id") Integer investId);
+
 
 }

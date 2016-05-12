@@ -3,9 +3,11 @@ package com.xeehoo.health.common.webview;
 import com.xeehoo.health.R;
 import com.xeehoo.health.activity.InvestActivity;
 import com.xeehoo.health.activity.PayActivity;
+import com.xeehoo.health.activity.TransferRequestActivity;
 import com.xeehoo.health.model.MyProduct;
 import com.xeehoo.health.model.Product;
 import com.xeehoo.health.model.Transfer;
+import com.xeehoo.health.presenter.WebviewPresenter;
 import com.xeehoo.health.util.CommonUtil;
 
 import android.app.Activity;
@@ -29,11 +31,15 @@ import java.math.BigDecimal;
 public class BaseWebActivity extends Activity {
 	protected ProgressWebView mWebView;
     private String  type;
+    private WebviewPresenter presenter;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_baseweb);
+
+        this.presenter = new WebviewPresenter();
+        presenter.onCreate(this);
 
 		mWebView = (ProgressWebView) findViewById(R.id.baseweb_webview);
 		mWebView.getSettings().setJavaScriptEnabled(true);
@@ -51,7 +57,21 @@ public class BaseWebActivity extends Activity {
             TextView textView = (TextView)findViewById(R.id.bt_rengou);
             textView.setVisibility(View.VISIBLE);
             if ("myProduct".equalsIgnoreCase(type)){
-                textView.setText("我要转让");
+                MyProduct myProduct = getIntent().getParcelableExtra("myProduct");
+                if ("U".equalsIgnoreCase(myProduct.getInvestStatus())) { // 还款中
+                    if ("N".equalsIgnoreCase(myProduct.getTransferStatus())) { // 未申请转让
+                        textView.setText("我要转让");
+                    }
+                    else if ("R".equalsIgnoreCase(myProduct.getTransferStatus())) { //转让中
+                        textView.setText("取消转让");
+                    }
+                    else{
+                        textView.setVisibility(View.GONE);
+                    }
+                }
+                else { // 其它状态
+                    textView.setVisibility(View.GONE);
+                }
             }
             RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams)mWebView.getLayoutParams();
             layoutParams.bottomMargin = CommonUtil.dip2px(this, 85.0f);
@@ -67,8 +87,9 @@ public class BaseWebActivity extends Activity {
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
-		mWebView = null;
-	}
+		presenter.onDestroy();
+        mWebView = null;
+    }
 
 	public void exitOnClick(View view) {
 		this.finish();
@@ -96,7 +117,16 @@ public class BaseWebActivity extends Activity {
         }
         else if ("myProduct".equalsIgnoreCase(type)){
             MyProduct myProduct = getIntent().getParcelableExtra("myProduct");
-            Toast.makeText(this, myProduct.getInvestRate().toPlainString(), Toast.LENGTH_SHORT).show();
+            if ("U".equalsIgnoreCase(myProduct.getInvestStatus())) { // 还款中
+                if ("N".equalsIgnoreCase(myProduct.getTransferStatus())) { // 未转让
+                    Intent intent = new Intent(BaseWebActivity.this, TransferRequestActivity.class);
+                    intent.putExtra("myProduct", myProduct);
+
+                    startActivity(intent);
+                } else if ("R".equalsIgnoreCase(myProduct.getTransferStatus())) { // 转让中
+                    presenter.cancelTransferRequest(myProduct.getInvestId());
+                }
+            }
         }
     }
 

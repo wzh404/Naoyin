@@ -15,10 +15,14 @@ public class MyProductItemView extends AbstractView {
         super.init(context, container, R.layout.item_my_product);
     }
 
-    public void setMyProductState(String state){
+    public void setMyProductState(String state, String transferStatus){
         Button button = get(R.id.my_product_state);
         if ("U".equalsIgnoreCase(state)){
-            button.setText("还款中");
+            if (transferStatus.equalsIgnoreCase("R")){
+                button.setText("转让中");
+            } else{
+                button.setText("还款中");
+            }
         }
         else if ("D".equalsIgnoreCase(state)){
             button.setText("已还款");

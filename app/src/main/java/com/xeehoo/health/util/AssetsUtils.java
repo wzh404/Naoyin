@@ -46,7 +46,7 @@ public class AssetsUtils {
 
     public static String getKey(Context context){
         final TelephonyManager tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
-        Log.e("token", "device id is " + tm.getDeviceId());
+//        Log.e("token", "device id is " + tm.getDeviceId());
         String key = tm.getDeviceId();
         if (key == null || "".equals(key)){
             key = "20160418";
@@ -111,11 +111,11 @@ public class AssetsUtils {
     }
 
     public static void saveParas(Context context){
-        String key = getKey(context);
+//        String key = getKey(context);
         SharedPreferences sharedPreferences = context.getSharedPreferences("ydzc", context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
-        byte[] info = encrypt(key, BrainApplication.token.getBytes());
+        byte[] info = encrypt(BrainApplication.mobile, BrainApplication.token.getBytes());
         editor.putString("key", Base64.encodeToString(info, Base64.DEFAULT));
         editor.putString("mobile", BrainApplication.mobile);
         editor.putBoolean("account", BrainApplication.isAccount);
@@ -128,19 +128,24 @@ public class AssetsUtils {
     }
 
     public static void initParas(Context context){
-        String key = getKey(context);
+//        String key = getKey(context);
         SharedPreferences sharedPreferences = context.getSharedPreferences("ydzc", context.MODE_PRIVATE);
+        String mobile = sharedPreferences.getString("mobile", "0");
+        if ("0".equals(mobile)){
+            return;
+        }
+
         String val = sharedPreferences.getString("key", "0");
         if ("0".equals(val)){
             return;
         }
 
         byte[] info = Base64.decode(val, Base64.DEFAULT);
-        byte[] r = decrypt(key, info);
-        Log.e("encrypt", new String(r));
+        byte[] r = decrypt(mobile, info);
+//        Log.e("encrypt", new String(r));
 
         BrainApplication.token = new String(r);
-        BrainApplication.mobile = sharedPreferences.getString("mobile", "0");
+        BrainApplication.mobile = mobile;
         BrainApplication.isAccount = sharedPreferences.getBoolean("account", false);
         if ("0".equals(BrainApplication.mobile)){
             BrainApplication.isLogin = false;

@@ -101,7 +101,7 @@ public class InvestActivity extends Activity {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        Log.e("invest", requestCode + " resultCode " + resultCode);
+//        Log.e("invest", requestCode + " resultCode " + resultCode);
         if (resultCode == 1){
             new SweetAlertDialog(this, SweetAlertDialog.SUCCESS_TYPE)
                     .setTitleText("投资成功")

@@ -10,6 +10,7 @@ import com.xeehoo.health.rxjava.action.ResultAction1;
 import com.xeehoo.health.rxjava.rxbus.RxBus;
 import com.xeehoo.health.share.bean.ShareService;
 
+import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -123,4 +124,13 @@ public class ServicePresenter {
         call(observable, "mobile");
     }
 
+    public void transferRequest(Integer investId, BigDecimal amount){
+        Observable<JsonObject> observable = shareService.transferRequest(investId, amount);
+        call(observable, "transfer_request");
+    }
+
+    public void cancelTransferRequest(Integer investId){
+        Observable<JsonObject> observable = shareService.cancelTransferRequest(investId);
+        call(observable, "transfer_request_cancel");
+    }
 }

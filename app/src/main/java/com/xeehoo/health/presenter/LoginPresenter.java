@@ -52,9 +52,9 @@ public class LoginPresenter extends ServicePresenter {
 
             if (result.isResult("login", "OK")) {
                 BrainApplication.token = result.getMsg();
-                Log.e("token2", BrainApplication.token);
-                final TelephonyManager tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
-                Log.e("token2", "device id is " + tm.getDeviceId());
+//                Log.e("token2", BrainApplication.token);
+//                final TelephonyManager tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+//                Log.e("token2", "device id is " + tm.getDeviceId());
 
                 BrainApplication.mobile = view.getMobile();
                 BrainApplication.isLogin = true;

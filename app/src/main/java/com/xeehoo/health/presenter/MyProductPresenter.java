@@ -87,21 +87,21 @@ public class MyProductPresenter extends ServicePresenter {
     private Action1<Result> myProductAction1 = new Action1<Result>() {
         @Override
         public void call(Result result) {
-            Log.e("Product", BrainApplication.investId + " - Product2 size " + myProducts.size());
+//            Log.e("Product", BrainApplication.investId + " - Product2 size " + myProducts.size());
             myProductView.dismissDialog();
 //            Toast.makeText(context, result.getCode() + " - " + result.getTag(), Toast.LENGTH_SHORT).show();
             if (result.isResult("my_product", "OK")){
-                if (myProducts.size() == 1 && myProducts.get(0).getInvestId() == 0){
+//                if (myProducts.size() == 1 && myProducts.get(0).getInvestId() == 0){
                     myProducts.clear();
-                }
+//                }
 
                 JsonArray items = result.getObj().getAsJsonArray("data");
                 myProducts.addAll(0, Arrays.asList(new Gson().fromJson(items, MyProduct[].class)));
                 adapter.notifyDataSetChanged();
 
-                if (myProducts.size() > 0) {
-                    BrainApplication.investId = myProducts.get(0).getInvestId().intValue();
-                }
+//                if (myProducts.size() > 0) {
+//                    BrainApplication.investId = myProducts.get(0).getInvestId().intValue();
+//                }
             }
 
             if (myProducts.size() == 0){

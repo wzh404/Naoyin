@@ -69,6 +69,8 @@
         <activity android:name="com.xeehoo.health.activity.UserSettingActivity" >
         </activity>
         <activity android:name="com.xeehoo.health.plan.activity.DailyPlanActivity" />
+        <activity android:name="com.xeehoo.health.activity.TransferRequestActivity" />
+
         <activity android:name="com.xeehoo.health.util.CircleActivity" />
     </application>
 

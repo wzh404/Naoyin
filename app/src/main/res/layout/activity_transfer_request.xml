@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/bg_title">
+
+        <TextView
+            android:id="@+id/transfer_request_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:padding="10dp"
+            android:text="转让"
+            android:textColor="#fff"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+
+        <ImageButton
+            android:id="@+id/transfer_request_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:background="@null"
+            android:padding="4dp"
+            android:src="@drawable/back"
+            android:clickable="true"
+            android:onClick="exitOnClick"/>
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#666"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="50dp"
+        android:text="请输入转让价格:"
+        android:textSize="16sp" />
+
+    <EditText
+        android:id="@+id/transfer_request_amount"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginBottom="30dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/bg_edittext"
+        android:hint="0"
+        android:padding="5dp"
+        android:inputType="numberDecimal"
+        android:singleLine="true"
+        android:maxLength="9"
+        android:text=""
+        android:textSize="16sp"
+        android:textColor="#666"
+        android:textColorHint="#ddd" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#666"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="8dp"
+            android:layout_gravity="left"
+            android:text="投资本金:"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/transfer_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#666"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="16dp"
+            android:layout_gravity="left"
+            android:text="100.00"
+            android:textSize="16sp" />
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:background="@color/background_dark"></View>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="4dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#666"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="8dp"
+            android:layout_gravity="left"
+            android:text="投资利息:"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/transfer_income"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#666"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="16dp"
+            android:layout_gravity="left"
+            android:text="4.35"
+            android:textSize="16sp" />
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:background="@color/background_dark"></View>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="4dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#666"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="8dp"
+            android:layout_gravity="left"
+            android:text="转让折扣:"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/transfer_discount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#666"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="16dp"
+            android:layout_gravity="left"
+            android:text="-"
+            android:textSize="16sp" />
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:background="@color/background_dark"></View>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="4dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#1172bd"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="8dp"
+            android:layout_gravity="left"
+            android:text="转让手续费:"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/transfer_fee"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#1172bd"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="16dp"
+            android:layout_gravity="left"
+            android:text="0.0"
+            android:textSize="16sp" />
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:background="@color/background_dark"></View>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/button_red_corner_shape"
+        android:clickable="true"
+        android:text="确定"
+        android:textColor="#FFF"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:onClick="transferRequestOnClick"/>
+</LinearLayout>

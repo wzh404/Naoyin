@@ -42,6 +42,9 @@ public class MyProduct implements Parcelable {
     @SerializedName("invest_closing_date")
     private String investClosingDate;
 
+    @SerializedName("transfer_status")
+    private String transferStatus;
+
     private String amount;
     private String income;
 
@@ -64,6 +67,14 @@ public class MyProduct implements Parcelable {
         DecimalFormat format = new DecimalFormat(",###.##");
         double amt = investIncome.setScale(2,BigDecimal.ROUND_DOWN).doubleValue();
         return format.format(amt);
+    }
+
+    public String getTransferStatus() {
+        return transferStatus;
+    }
+
+    public void setTransferStatus(String transferStatus) {
+        this.transferStatus = transferStatus;
     }
 
     public BigDecimal getInvestRate() {
@@ -150,6 +161,7 @@ public class MyProduct implements Parcelable {
         this.investRate = new BigDecimal(source.readString());
         this.investStartDate = source.readString();
         this.investClosingDate = source.readString();
+        this.transferStatus = source.readString();
     }
 
     @Override
@@ -168,6 +180,7 @@ public class MyProduct implements Parcelable {
         dest.writeString(this.investRate.toPlainString());
         dest.writeString(this.investStartDate);
         dest.writeString(this.investClosingDate);
+        dest.writeString(this.transferStatus);
     }
 
     public static final Parcelable.Creator<MyProduct> CREATOR = new  Parcelable.Creator<MyProduct>(){

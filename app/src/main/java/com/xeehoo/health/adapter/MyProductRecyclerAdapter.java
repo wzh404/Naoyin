@@ -5,9 +5,11 @@ import android.graphics.Point;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,6 +20,7 @@ import com.xeehoo.health.BR;
 import com.xeehoo.health.R;
 import com.xeehoo.health.activity.MyProductActivity;
 import com.xeehoo.health.activity.TransferActivity;
+import com.xeehoo.health.common.view.IView;
 import com.xeehoo.health.common.view.RecyclerViewHolder;
 import com.xeehoo.health.model.MyProduct;
 import com.xeehoo.health.view.MyProductItemView;
@@ -40,12 +43,12 @@ public class MyProductRecyclerAdapter extends RecyclerView.Adapter<RecyclerViewH
     @Override
     public RecyclerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         if (viewType == 0){
-            View v = new ProductEmptyView(context, parent).getView();
+            IView v = new ProductEmptyView(context, parent);
 
             RecyclerViewHolder holder = new RecyclerViewHolder(v);
             return holder;
         } else {
-            View v = new MyProductItemView(context, parent).getView();
+            IView v = new MyProductItemView(context, parent);
 
             RecyclerViewHolder holder = new RecyclerViewHolder(v);
             return holder;
@@ -59,24 +62,20 @@ public class MyProductRecyclerAdapter extends RecyclerView.Adapter<RecyclerViewH
 
         MyProduct myProduct = items.get(position);
 
-//        if (holder.getIView() instanceof MyProductItemView){
-//
-//
-//
-//        }
-//        MyProductItemView view = (MyProductItemView)holder.getIView();
-//        view.setMyProductState(myProduct.getInvestStatus());
+        if (holder.getIView() instanceof MyProductItemView){
+            MyProductItemView view = (MyProductItemView)holder.getIView();
+            view.setMyProductState(myProduct.getInvestStatus(), myProduct.getTransferStatus());
+        }
 
         holder.getBinding().setVariable(BR.my, myProduct);
         holder.getBinding().executePendingBindings();
-
 
         final MyProductActivity activity = (MyProductActivity)holder.itemView.getContext();
         LinearLayout linearLayout = (LinearLayout)holder.itemView.findViewById(R.id.item_my_product);
         linearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, myProduct.getInvestId() + "", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(context, myProduct.getInvestId() + "", Toast.LENGTH_SHORT).show();
                 activity.startTransferWebview(myProduct);
             }
         });
