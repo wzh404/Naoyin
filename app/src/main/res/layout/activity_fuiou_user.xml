@@ -34,185 +34,191 @@
             android:onClick="exitOnClick"/>
     </RelativeLayout>
 
-    <TextView
-        android:id="@+id/fuiou_user_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="#1172bd"
-        android:layout_marginTop="50dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="16dp"
-        android:layout_gravity="left"
-        android:text="王尊会"
-        android:textStyle="bold"
-        android:textSize="20sp" />
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="48dp"
+        android:background="@color/white"
+        android:clickable="true"
+        android:paddingLeft="16dp">
 
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#666"
-            android:layout_marginLeft="32dp"
-            android:layout_marginRight="8dp"
-            android:layout_gravity="left"
-            android:text="手机号码:"
-            android:textSize="16sp" />
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:text="用户姓名"
+            android:textColor="@color/lagou_user_txt"
+            android:textSize="16.0sp" />
+        <TextView
+            android:id="@+id/fuiou_user_name"
+            android:layout_width="wrap_content"
+            android:layout_height="50sp"
+            android:layout_alignParentRight="true"
+            android:gravity="center_vertical"
+            android:textSize="16.0sp"
+            android:layout_marginRight="16dp"
+            android:text="王尊会" />
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="0.33000004dip"
+            android:layout_alignParentBottom="true"
+            android:background="@color/lagou_user_line" />
+    </RelativeLayout>
 
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="48dp"
+        android:background="@color/white"
+        android:clickable="true"
+        android:paddingLeft="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:text="第三方账户"
+            android:textColor="@color/lagou_user_txt"
+            android:textSize="16.0sp" />
         <TextView
             android:id="@+id/fuiou_user_mobile"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#666"
-            android:layout_marginLeft="8dp"
+            android:layout_height="50sp"
+            android:layout_alignParentRight="true"
+            android:gravity="center_vertical"
+            android:textSize="16.0sp"
             android:layout_marginRight="16dp"
-            android:layout_gravity="left"
-            android:text="18611330404"
-            android:textSize="16sp" />
-    </LinearLayout>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginRight="32dp"
-        android:background="@color/background_dark"></View>
+            android:text="13811300303" />
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="0.33000004dip"
+            android:layout_alignParentBottom="true"
+            android:background="@color/lagou_user_line" />
+    </RelativeLayout>
 
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
+    <RelativeLayout
+    android:layout_width="fill_parent"
+    android:layout_height="48dp"
+    android:background="@color/white"
+    android:clickable="true"
+    android:paddingLeft="16dp">
+
+    <TextView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:layout_marginBottom="4dp">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#666"
-            android:layout_marginLeft="32dp"
-            android:layout_marginRight="8dp"
-            android:layout_gravity="left"
-            android:text="账户余额:"
-            android:textSize="16sp" />
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:text="账户余额"
+        android:textColor="@color/lagou_user_txt"
+        android:textSize="16.0sp" />
+    <TextView
+        android:id="@+id/fuiou_user_ct"
+        android:layout_width="wrap_content"
+        android:layout_height="50sp"
+        android:layout_alignParentRight="true"
+        android:gravity="center_vertical"
+        android:textSize="16.0sp"
+        android:layout_marginRight="16dp"
+        android:text="￥1,000,000" />
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="0.33000004dip"
+        android:layout_alignParentBottom="true"
+        android:background="@color/lagou_user_line" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="48dp"
+        android:background="@color/white"
+        android:clickable="true"
+        android:paddingLeft="16dp">
 
         <TextView
-            android:id="@+id/fuiou_user_ct"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#666"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="16dp"
-            android:layout_gravity="left"
-            android:text="￥1,000,000"
-            android:textSize="16sp" />
-    </LinearLayout>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginRight="32dp"
-        android:background="@color/background_dark"></View>
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:layout_marginBottom="4dp">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#666"
-            android:layout_marginLeft="32dp"
-            android:layout_marginRight="8dp"
-            android:layout_gravity="left"
-            android:text="可用余额:"
-            android:textSize="16sp" />
-
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:text="可用余额"
+            android:textColor="@color/lagou_user_txt"
+            android:textSize="16.0sp" />
         <TextView
             android:id="@+id/fuiou_user_ca"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#666"
-            android:layout_marginLeft="8dp"
+            android:layout_height="50sp"
+            android:layout_alignParentRight="true"
+            android:gravity="center_vertical"
+            android:textSize="16.0sp"
             android:layout_marginRight="16dp"
-            android:layout_gravity="left"
-            android:text="￥1,000"
-            android:textSize="16sp" />
-    </LinearLayout>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginRight="32dp"
-        android:background="@color/background_dark"></View>
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:layout_marginBottom="4dp">
+            android:text="￥1,000,000" />
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="0.33000004dip"
+            android:layout_alignParentBottom="true"
+            android:background="@color/lagou_user_line" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="48dp"
+        android:background="@color/white"
+        android:clickable="true"
+        android:paddingLeft="16dp">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#666"
-            android:layout_marginLeft="32dp"
-            android:layout_marginRight="8dp"
-            android:layout_gravity="left"
-            android:text="冻结金额:"
-            android:textSize="16sp" />
-
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:text="冻结金额"
+            android:textColor="@color/lagou_user_txt"
+            android:textSize="16.0sp" />
         <TextView
             android:id="@+id/fuiou_user_cf"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#666"
-            android:layout_marginLeft="8dp"
+            android:layout_height="50sp"
+            android:layout_alignParentRight="true"
+            android:gravity="center_vertical"
+            android:textSize="16.0sp"
             android:layout_marginRight="16dp"
-            android:layout_gravity="left"
-            android:text="￥0"
-            android:textSize="16sp" />
-    </LinearLayout>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginRight="32dp"
-        android:background="@color/background_dark"></View>
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:layout_marginBottom="4dp">
+            android:text="￥1,000,000" />
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="0.33000004dip"
+            android:layout_alignParentBottom="true"
+            android:background="@color/lagou_user_line" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="48dp"
+        android:background="@color/white"
+        android:clickable="true"
+        android:paddingLeft="16dp">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#666"
-            android:layout_marginLeft="32dp"
-            android:layout_marginRight="8dp"
-            android:layout_gravity="left"
-            android:text="未结金额:"
-            android:textSize="16sp" />
-
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:text="未结金额"
+            android:textColor="@color/lagou_user_txt"
+            android:textSize="16.0sp" />
         <TextView
             android:id="@+id/fuiou_user_cu"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#666"
-            android:layout_marginLeft="8dp"
+            android:layout_height="50sp"
+            android:layout_alignParentRight="true"
+            android:gravity="center_vertical"
+            android:textSize="16.0sp"
             android:layout_marginRight="16dp"
-            android:layout_gravity="left"
-            android:text="￥0"
-            android:textSize="16sp" />
-    </LinearLayout>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginRight="32dp"
-        android:background="@color/background_dark"></View>
+            android:text="￥1,000,000" />
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="0.33000004dip"
+            android:layout_alignParentBottom="true"
+            android:background="@color/lagou_user_line" />
+    </RelativeLayout>
 
     <LinearLayout
         android:id = "@+id/fuiou_user_register"
@@ -222,13 +228,12 @@
         android:layout_weight="0.1"
         android:gravity="bottom"
         android:orientation="vertical"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="16dp"
         android:visibility="gone">
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:layout_marginBottom="5dp"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:background="@drawable/button_red_corner_shape"
@@ -248,15 +253,15 @@
         android:layout_weight="0.1"
         android:gravity="bottom|center_horizontal"
         android:orientation="horizontal"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="16dp"
         android:visibility="gone">
 
         <Button
             android:layout_width="120dp"
             android:layout_height="40dp"
-            android:layout_marginBottom="5dp"
+            android:layout_weight="1"
             android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
+            android:layout_marginRight="8dp"
             android:background="@drawable/button_red_corner_shape"
             android:text="提现"
             android:textColor="#FFF"
@@ -267,8 +272,8 @@
         <Button
             android:layout_width="120dp"
             android:layout_height="40dp"
-            android:layout_marginBottom="5dp"
-            android:layout_marginLeft="16dp"
+            android:layout_weight="1"
+            android:layout_marginLeft="8dp"
             android:layout_marginRight="16dp"
             android:background="@drawable/button_blue_corner_shape"
             android:text="充值"
