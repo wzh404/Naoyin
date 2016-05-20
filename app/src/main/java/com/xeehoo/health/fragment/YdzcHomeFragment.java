@@ -1,10 +1,16 @@
 package com.xeehoo.health.fragment;
 
+import android.Manifest;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Handler;
+import android.provider.Settings;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +19,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
+import com.desmond.squarecamera.CameraActivity;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.xeehoo.health.BrainApplication;
 import com.xeehoo.health.R;
@@ -55,6 +62,9 @@ public class YdzcHomeFragment extends Fragment {
     private SlideImageView slideImageView;
     private int imageSizes;
     private int inx = 0;
+
+    private static final int REQUEST_CAMERA = 0;
+    private static final int REQUEST_CAMERA_PERMISSION = 1;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -111,6 +121,10 @@ public class YdzcHomeFragment extends Fragment {
                         Intent intent = new Intent(context, TransferActivity.class);
                         startActivity(intent);
                     }
+                    else if (pos == 4){
+                        Intent startCustomCameraIntent = new Intent(context, CameraActivity.class);
+                        startActivityForResult(startCustomCameraIntent, REQUEST_CAMERA);
+                    }
                 }
 
                 @Override
@@ -138,4 +152,21 @@ public class YdzcHomeFragment extends Fragment {
             handler.postDelayed(r, 5000);
         }
     };
+
+    public void requestForCameraPermission(View view) {
+        final String permission = Manifest.permission.CAMERA;
+        if (ContextCompat.checkSelfPermission(context, permission)
+                != PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), permission)) {
+                // Show permission rationale
+            } else {
+                // Handle the result in Activity#onRequestPermissionResult(int, String[], int[])
+                ActivityCompat.requestPermissions(getActivity(), new String[]{permission}, REQUEST_CAMERA_PERMISSION);
+            }
+        } else {
+            // Start CameraActivity
+            Intent startCustomCameraIntent = new Intent(context, CameraActivity.class);
+            startActivityForResult(startCustomCameraIntent, REQUEST_CAMERA);
+        }
+    }
 }

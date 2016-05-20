@@ -1,5 +1,6 @@
 package com.xeehoo.health;
 
+import com.desmond.squarecamera.ImageUtility;
 import com.xeehoo.health.activity.BalanceActivity;
 import com.xeehoo.health.activity.ChangePwdActivity;
 import com.xeehoo.health.activity.InvestActivity;
@@ -18,14 +19,23 @@ import com.xeehoo.health.view.MyAccountItemView;
 
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.Point;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.StrictMode;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTabHost;
 import android.util.Log;
+import android.view.Display;
 import android.view.View;
 import android.widget.Toast;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 public class MainActivity extends FragmentActivity {
     public final static int ACTIVITY_REQUEST_LOGIN = 1;
@@ -56,7 +66,7 @@ public class MainActivity extends FragmentActivity {
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-//        Log.e("result", " resultCode " + resultCode);
+        Log.e("result", " resultCode " + resultCode);
 //        if (resultCode == 2){
 //            FragmentTabHost fragmentTabHost = mainView.get(android.R.id.tabhost);
 //            fragmentTabHost.setCurrentTab(2);
@@ -68,7 +78,43 @@ public class MainActivity extends FragmentActivity {
         else if (resultCode == 10){
             presenter.showLogin();
         }
+        if (resultCode == -1) {
+            Uri photoUri = data.getData();
+            // Get the bitmap in according to the width of the device
+            Display display = getWindowManager().getDefaultDisplay();
+            Point mSize = new Point();
+            display.getSize(mSize);
+
+
+            Bitmap bitmap = ImageUtility.decodeSampledBitmapFromPath(photoUri.getPath(), mSize.x, mSize.x);
+//            ((ImageView) findViewById(R.id.image)).setImageBitmap(bitmap);
+            saveImage(bitmap);
+        }
 	}
+
+    public static void  saveImage(Bitmap bmp) {
+        File appDir = new File(Environment.getExternalStorageDirectory().getPath(), "Boohee");
+        if (! appDir.exists()) {
+            Log.e("--------", "############Create");
+            appDir.mkdir();
+        }
+        Log.e("--------", appDir.getAbsolutePath());
+        String fileName = System.currentTimeMillis() + ".jpg";
+        File file = new File(appDir, fileName);
+        try {
+            FileOutputStream fos = new FileOutputStream(file);
+            bmp.compress(Bitmap.CompressFormat.JPEG, 100, fos);
+            fos.flush();
+            fos.close();
+            Log.e("--------", "############Create File");
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            Log.e("--------", "############Create File e1");
+        } catch (IOException e) {
+            e.printStackTrace();
+            Log.e("--------", "############Create File e2");
+        }
+    }
 
 	@Override
 	public void onDestroy(){
