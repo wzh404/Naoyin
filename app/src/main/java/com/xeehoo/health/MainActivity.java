@@ -88,9 +88,23 @@ public class MainActivity extends FragmentActivity {
 
             Bitmap bitmap = ImageUtility.decodeSampledBitmapFromPath(photoUri.getPath(), mSize.x, mSize.x);
 //            ((ImageView) findViewById(R.id.image)).setImageBitmap(bitmap);
-            saveImage(bitmap);
+            saveImage(ImageCrop(bitmap));
         }
 	}
+
+    public static Bitmap ImageCrop(Bitmap bitmap) {
+        int w = bitmap.getWidth(); // 得到图片的宽，高
+        int h = bitmap.getHeight();
+
+        int wh = 160;// 裁切后所取的正方形区域边长
+
+        int retX = w / 4 ;//基于原图，取正方形左上角x坐标
+        int retY = h / 2 - 80;
+
+        Log.e("--------", retX + " - " + retY);
+        //下面这句是关键
+        return Bitmap.createBitmap(bitmap, retX, retY, w - retX, wh, null, false);
+    }
 
     public static void  saveImage(Bitmap bmp) {
         File appDir = new File(Environment.getExternalStorageDirectory().getPath(), "Boohee");
@@ -98,7 +112,7 @@ public class MainActivity extends FragmentActivity {
             Log.e("--------", "############Create");
             appDir.mkdir();
         }
-        Log.e("--------", appDir.getAbsolutePath());
+        Log.e("--------", bmp.getWidth() + " - " + bmp.getHeight());
         String fileName = System.currentTimeMillis() + ".jpg";
         File file = new File(appDir, fileName);
         try {
